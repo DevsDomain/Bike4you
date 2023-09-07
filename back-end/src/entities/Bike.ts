@@ -46,6 +46,9 @@ export class Bike {
     @Column({nullable:false, length:200})
     description:string;
 
+    @Column({nullable:false})
+    status:boolean
+
     @ManyToOne(() => Brand)
     @JoinColumn({name: "idbrand" })
     brand: Brand;
