@@ -1,12 +1,22 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Column, OneToMany } from "typeorm";
+import { PrimaryGeneratedColumn } from "typeorm";
+import { Entity } from "typeorm";
+import { Rent } from "./Rent";
+
 @Entity({ name: "users" })
 export class User {
-  // define a chave primária como autoincremento. A propriedade primaryKeyConstraintName
-  // é opcional, usamos ela para setar o nome da restrição da chave primária no SGBD
-  @PrimaryGeneratedColumn({ primaryKeyConstraintName: "pk-user" })
-  id: number;
-  @Column({ nullable: false, unique: true, length: 50 })
-  mail: string;
-  @Column({ nullable: false, length: 100 })
-  password: string;
+    @PrimaryGeneratedColumn()
+    id: number;
+    
+    @Column({nullable:false, length:15, unique:true})
+    alias: string;
+
+    @Column({nullable:false, length:100})
+    mail: string;
+
+    @Column({nullable:false, length:20})
+    phone: string;
+
+    @OneToMany(() => Rent, (rent) => rent.bike)
+    rents: Rent[];
 }
