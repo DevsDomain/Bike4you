@@ -19,4 +19,5 @@ export class User {
 
     @OneToMany(() => Rent, (rent) => rent.bike)
     rents: Rent[];
+  password: any;
 }
