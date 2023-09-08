@@ -41,7 +41,7 @@ export class Bike {
     hourlyvalue:number;
 
     @Column({nullable:false})
-    dailylyvalue:number;
+    dailyvalue:number;
 
     @Column({nullable:false, length:200})
     description:string;
@@ -68,6 +68,6 @@ export class Bike {
     rents: Rent[];
 
     @OneToOne(() => Adressbike)
-    @JoinColumn()
+    @JoinColumn({name: "idadressbike"})
     adressbike: Adressbike[];
 }
