@@ -1,7 +1,15 @@
 <h1 align="center">:file_cabinet: DevsDomain.md</h1>
 
-## :memo: Descrição
-Aplicação Web para locação de bicicletas
+## :memo: Desafio
+O compartilhamento de automóveis é uma modalidade que tem crescido motivado pelas
+plataformas de compartilhamento peer-to-peer, que conectam proprietários com locatários em
+busca do automóvel desejado. Alguns exemplos de plataformas de aluguel de carros são
+_https://www.getaround.com_ e _https://turo.com_ Nelas os proprietários podem listar seus carros,
+definir preços e disponibilidade, e os locatários podem reservar diretamente.
+
+Algumas pessoas gostariam de fazer um passeio de bicicleta na sua cidade ou durante uma viagem.
+Acontece que elas não possuem a bicicleta. O objetivo é desenvolver um aplicativo web peer-topeer para conectar proprietários e pessoas interessadas em alugar bicicletas. A aplicação deverá
+apenas fazer a intermediação entre as partes sem qualquer responsabilidade sobre pagamento.
 
 ### 🏁 Entregas de Sprints
 
@@ -14,12 +22,22 @@ Cada entrega foi realizada a partir da criação de uma **tag** Observe a relaç
 | 04 | 26/11/2023 | 🛑 Não iniciada| [Ver relatório]() |
 
 ## :books: Funcionalidades
-* <b>Funcionalidade </b>: Algumas pessoas gostariam de fazer um passeio de bicicleta na sua cidade ou durante uma viagem.
-Acontece que elas não possuem a bicicleta. O nosso objetivo é desenvolver um aplicativo web peer-to-peer
-para conectar proprietários e pessoas interessadas em alugar bicicletas.
+* <b>Funcionalidade </b>: 
 
 ## :wrench: Tecnologias utilizadas
-* Tecnologia;
+
+#### Backend
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white)
+
+#### Frontend
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+
+
+
 
 ## :rocket: Rodando o projeto
 Para rodar o repositório é necessário clonar o mesmo, dar o seguinte comando para iniciar o projeto:
