@@ -5,8 +5,11 @@ import user from './user';
 import bike from './bike';
 import rent from './rent';
 import photo from './photo';
+import cors from 'cors'
+
 
 const routes = Router();
+routes.use(cors());
 
 routes.use("/bike", bike);
 routes.use("/categoria", category);
