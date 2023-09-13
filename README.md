@@ -21,8 +21,6 @@ Cada entrega foi realizada a partir da criação de uma **tag** Observe a relaç
 | 03 | 05/11/2023 | 🛑 Não iniciada| [Ver relatório]() |
 | 04 | 26/11/2023 | 🛑 Não iniciada| [Ver relatório]() |
 
-## :books: Funcionalidades
-* <b>Funcionalidade </b>: 
 
 ## :wrench: Tecnologias utilizadas
 
@@ -39,16 +37,6 @@ Cada entrega foi realizada a partir da criação de uma **tag** Observe a relaç
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 
 
-## :rocket: Rodando o projeto
-Para rodar o repositório é necessário clonar o mesmo, dar o seguinte comando para iniciar o projeto:
-```
-<linha de comando>
-```
-
-## :soon: Implementação futura
-* O que será implementado na próxima sprint?
-
-
 <span id="equipe">
 
 ## :busts_in_silhouette: Equipe
@@ -62,7 +50,3 @@ Para rodar o repositório é necessário clonar o mesmo, dar o seguinte comando 
 |   Dev Team    | Fernando Davi     |        [![Linkedin Badge](https://img.shields.io/badge/Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/gabrieladsbarbosa) [![GitHub Badge](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=github&logoColor=white)](https://github.com/fnddavi)         |
 |   Dev Team    | Nicolas Lemos         | [![Linkedin Badge](https://img.shields.io/badge/Linkedin-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/igor-da-silva-pereira-119794159/) [![GitHub Badge](https://img.shields.io/badge/GitHub-111217?style=flat-square&logo=github&logoColor=white)](https://github.com/Lemos05) |
                                               
-
-
-## :dart: Status do projeto
-
