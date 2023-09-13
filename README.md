@@ -14,7 +14,7 @@ apenas fazer a intermediação entre as partes sem qualquer responsabilidade sob
 ### 🏁 Entregas de Sprints
 
 Cada entrega foi realizada a partir da criação de uma **tag** Observe a relação a seguir:
-| Sprint | Previsão de entrega | Status | Histórico |
+| Sprint | Previsão de entrega | Status | Release |
 |:--:|:----------:|:-------------------|:-------------------------------------------------:|
 | 01 | 24/09/2023 | 🚧 Em andamento | [Ver release](https://github.com/Dev-s-Domain/Bike4you/releases/tag/1.0) |
 | 02 | 15/10/2023 | 🛑 Não iniciada| [Ver release]() |
