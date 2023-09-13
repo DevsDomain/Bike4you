@@ -1,8 +1,7 @@
-import User from "./Components/User";
+import Bike from "./Components/Bike";
 
 
 function App() {
-
-  return User();
+  return Bike();
 }
 export default App;
