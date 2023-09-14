@@ -1,32 +1,65 @@
 /* components/Navbar.css */
 .navbar {
   color: #fff;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
   display: flex;
-  justify-content: space-around; /* Alinha à esquerda e à direita */
-  align-items: center;
-  padding: 10px 30px; /* Espaçamento interno para melhorar a aparência */
+  justify-content: space-around; 
+  padding: 1em; 
 }
 
-/* Estilos adicionais para os links da barra de navegação (exemplo) */
-.navbar ul {
+.list {
+  display: flex;
   list-style: none;
-  margin: 0px;
-  padding: 20px;
-  display: flex;
+  align-items: center;
 }
 
-.navbar li {
-  margin-right: 20px;
-  padding: 0px 50px;
+.item{
+  margin-right: 5em;
+  align-items: center;
 }
 
-.navbar a {
+.item a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.item a:hover {
+  color: #007bff9d;
+  text-decoration: none;
+}
+
+.dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #333;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-menu.open {
+  display: block;
+}
+
+.dropdown-menu li {
+  margin-right: 0; /* Remova a margem direita do item do menu dropdown */
+}
+
+.dropdown-menu a {
   text-decoration: none;
   color: #fff;
+  padding: 10px 20px;
+  display: block;
+}
+
+.dropdown-menu a:hover {
+  background-color: #555;
 }
 
 .search {
@@ -43,7 +76,7 @@
 }
 
 .search button {
-  background-color: #007bff; /* Cor de fundo do botão */
+  background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 3px;
