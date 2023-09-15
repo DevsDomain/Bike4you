@@ -7,7 +7,7 @@ function Category() {
 
 
   async function SalvarCategoria(){
-    axios.post('http://localhost:3026/marca',{name})
+    axios.post('http://localhost:3026/categoria',{name})
     .then(({data}) => console.log(data));
   }
 

@@ -20,8 +20,15 @@ function Bike() {
   const [dailyvalue, setDailyvalue] = useState("");
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
+  const [formError, setFormError] = useState(""); // Estado para mensagens de erro
+  const [formSuccess, setFormSuccess] = useState(""); // Estado para mensagens de sucesso
 
   async function SalvarBike() {
+    // Validação de formulário
+    if (!color || !size || !suspension || !material || !gender || !rim || !speedkit || !description || !hourlyvalue || !dailyvalue || !latitude || !longitude) {
+      setFormError("Por favor, preencha todos os campos obrigatórios.");
+      return;
+    }
     axios
       .post("http://localhost:3026/bike", {
         color,
@@ -37,7 +44,29 @@ function Bike() {
         latitude,
         longitude,
       })
-      .then(({ data }) => console.log(data));
+      .then(({ data }) => {
+        console.log(data);
+        // Limpe os campos do formulário após o envio bem-sucedido
+        setColor("");
+        setSize("");
+        setMaterial("");
+        setGender("");
+        setSuspension("");
+        setRim("");
+        setSpeedkit("");
+        setDescription("");
+        setHourlyvalue("");
+        setDailyvalue("");
+        setLatitude("");
+        setLongitude("");
+        setFormError("");
+        setFormSuccess("Bicicleta cadastrada com sucesso!");
+      })
+      .catch((error) => {
+        // Tratamento de erros
+        setFormError("Houve um erro ao enviar o formulário.");
+        console.error(error);
+      });
   }
 
   return (
@@ -62,21 +91,21 @@ function Bike() {
         <fieldset>
           <legend>Tem suspenção?</legend>
           <p>
-            <input
-              type="radio"
-              name="suspensão"
-              value="Sim"
-              id="sim"
-              onChange={radioHandler}
-            />
-            <label htmlFor="sim">Sim</label>
+            <label>
+              <input
+                type="radio"
+                name="suspensão"
+                value="true"
+                onChange={radioHandler}
+              />
+              Sim
+            </label>
           </p>
           <p>
             <input
               type="radio"
               name="suspensão"
               value="Não"
-              id="não"
               onChange={radioHandler}
             />
             <label htmlFor="não">Não</label>
