@@ -5,13 +5,16 @@ import { Button } from '../../components/button'
 import { ButtonText } from '../../components/buttonText'
 import { useState } from "react";
 import { api } from '../../service/api';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function LoginForm() {
     const [alias, setAlias] = useState("");
     const [mail, setMail] = useState("")
     const [phone, setPhone] = useState("")
-    const [idUsuario, setIdUsuario] = useState(0);
+    const navigate = useNavigate()
+
+
 
 
 
@@ -19,7 +22,9 @@ export default function LoginForm() {
         try {
             const res = await api.post("/usuario", { alias, mail, phone });
             alert("Usuário cadastrado com sucesso!");
-            setIdUsuario(res.data.id);
+            localStorage.setItem('idUsuario', (res.data.id));
+
+            navigate("/Cadastro")
             return "Ok";
         } catch (error: any) {
             if (error.response) {
@@ -62,6 +67,8 @@ export default function LoginForm() {
 
                 />
                 <Button title="Criar Conta" onClick={CriarUsuario} loading={false} />
+
+
 
                 <ButtonText title="Login" isactive="true" />
 
