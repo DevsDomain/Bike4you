@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import Navbar from './Components/Navbar';
+
 
 
 const root = ReactDOM.createRoot(
@@ -8,7 +8,6 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <div>
-    <Navbar />
     <App />
   </div>
 );
