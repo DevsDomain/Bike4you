@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import Bike from "./Components/Bike";
 import Navbar from "./Components/Navbar";
 import Photo from "./Components/Photo";
@@ -14,17 +13,5 @@ function App() {
       <Photo />
     </div>
   )
-=======
-import GlobalStyles  from './styles/global';
-
-function App() {
-  return (
-    <>
-    <GlobalStyles/>
-    </>
-  
-
-  );
->>>>>>> main
 }
 export default App;
