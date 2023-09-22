@@ -16,11 +16,9 @@ apenas fazer a intermediação entre as partes sem qualquer responsabilidade sob
 Cada entrega foi realizada a partir da criação de uma **tag** Observe a relação a seguir:
 | Sprint | Previsão de entrega | Status | Release |
 |:--:|:----------:|:-------------------|:-------------------------------------------------:|
-| 01 | 24/09/2023 | 🚧 Em andamento | [Ver release](https://github.com/Dev-s-Domain/Bike4you/releases/tag/1.0) |
-| 02 | 15/10/2023 | 🛑 Não iniciada| [Ver release]() |
-| 03 | 05/11/2023 | 🛑 Não iniciada| [Ver release]() |
-| 04 | 26/11/2023 | 🛑 Não iniciada| [Ver release]() |
-
+| 01 | 27/09/2023 | 🚧 Em andamento | [Ver release](https://github.com/Dev-s-Domain/Bike4you/releases/tag/1.0) |
+| 02 | 25/10/2023 | 🛑 Não iniciada| [Ver release]() |
+| 03 | 22/11/2023 | 🛑 Não iniciada| [Ver release]() |
 
 ## :wrench: Tecnologias utilizadas
 
