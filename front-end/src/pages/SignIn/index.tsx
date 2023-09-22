@@ -1,8 +1,8 @@
 import { FiUser, FiMail, FiLock, FiPhone } from 'react-icons/fi'
 import { Container, Form, Background } from "./styles";
-import { Input } from '../../components/input'
-import { Button } from '../../components/button'
-import { ButtonText } from '../../components/buttonText'
+import { Input } from '../../Components/input'
+import { Button } from '../../Components/button'
+import { ButtonText } from '../../Components/buttonText'
 import { useState } from "react";
 import { api } from '../../service/api';
 import { useNavigate } from 'react-router-dom';
