@@ -7,7 +7,7 @@ import Cadastro from "../pages/Cadastro";
 export function AppRoutes() {
     return (
         <Routes>
-            <Route path="/" element={<LogIn />} />
+            <Route path="/login" element={<LogIn />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/cadastro" element={<Cadastro />} />
 

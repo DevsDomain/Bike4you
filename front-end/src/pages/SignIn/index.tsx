@@ -82,7 +82,7 @@ export default function SignIn() {
                     onChange={e => setPassword(e.target.value)}
 
                 />
-                <Button title="Criar Conta" onClick={CriarUsuario} loading={false} />
+                <Button google={false} title="Criar Conta" onClick={CriarUsuario} loading={false} />
 
 
 
