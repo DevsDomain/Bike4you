@@ -7,7 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import { useGoogleLogin } from '@react-oauth/google';
 import { useEffect, useState } from 'react';
 import { googleApi } from '../../service/googleApi';
-import Logar, { isAuthByGoogle } from '../../controllers/login';
+import { useAuth } from '../../hooks/auth';
+
 
 export default function LogIn() {
     const [mail, setMail] = useState("")
@@ -15,6 +16,9 @@ export default function LogIn() {
     const [loading, setLoading] = useState(false)
     const [user, setUser] = useState('');
     const navigate = useNavigate()
+
+    const { isAuthByGoogle, Logar } = useAuth()
+
 
 
     const login = useGoogleLogin({
