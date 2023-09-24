@@ -3,6 +3,7 @@ import controller from "../controllers/BikeController";
 
 const routes = Router();
 
+
 routes.post('/', controller.create);
 routes.get('/', controller.list);
 routes.delete('/', controller.delete);

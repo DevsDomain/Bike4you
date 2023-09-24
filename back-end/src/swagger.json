@@ -1,0 +1,131 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Back-end",
+    "description": "Documentação back-end do site da empresa Bike4you.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3030/api-docs/",
+      "description": "API"
+    }
+  ],
+  "paths": {
+    "/Bike": {
+      "post": {
+        "summary": "Cadastro de bicicleta",
+        "description": "Essa rota será responsável pelo cadastro de uma nova bicicleta",
+        "tags": [
+          "Bike"
+        ],
+        "security": [{"bearerAuth": []}],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Bike"
+              },
+              "examples": {
+                "Bike": {
+                  "value": {
+                    "color": "Raw Carbon",
+                    "size": "17 (M)",
+                    "material": "Carbono",
+                    "gender": "Unissex",
+                    "description": "Aro DT Swiss XRC 1200 Spline 29, suspensão Fox Fatctoy Live Valve, freio hidráulico, câmbio traseiro SRAM XX Eagle AXS.",
+                    "speedkit": "12 velocidades",
+                    "rim": "Aro 29",
+                    "suspension": "Suspensão dianteira",
+                    "latitude": "-23.31486",
+                    "longitude": "-45.98022",
+                    "hourlyvalue": 20,
+                    "daulyvalue": 220
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Usuário desconhecido"
+          },
+          "401": {
+            "description": "Marca desconhecida"
+          },
+          "402": {
+            "description": "Categoria desconhecida"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                    "$ref": "#/components/schemas/Bike"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    
+  },
+  "components": {
+    "schemas": {
+      "Bike": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          },
+          "size": {
+            "type": "string"
+          },
+          "material": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "speedkit": {
+            "type": "string"
+          },
+          "rim": {
+            "type": "string"
+          },
+          "suspension": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "hourlyvalue": {
+            "type": "number"
+          },
+          "daulyvalue": {
+            "type": "number"
+          },
+          "latitude": {
+            "type": "string"
+          },
+          "longitude": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes":{
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

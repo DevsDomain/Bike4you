@@ -3,6 +3,8 @@ import routes from './routes';
 import dotenv from "dotenv";
 import swaggerUi from 'swagger-ui-express';
 import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerDocs from "./swagger.json";
+
 
 dotenv.config();
 
@@ -24,7 +26,7 @@ const swaggerOptions = {
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
 
 // Rota do Swagger
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec), swaggerUi.setup(swaggerDocs));
 
 // Defina suas rotas da API aqui
 
