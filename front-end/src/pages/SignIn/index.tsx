@@ -4,12 +4,12 @@ import { Input } from '../../components/input'
 import { Button } from '../../components/button'
 import { ButtonText } from '../../components/buttonText'
 import { useState } from "react";
-import { api } from '../../service/api';
 import { useNavigate } from 'react-router-dom';
+import CriarUsuario from '../../controllers/criarUsuario';
 
 
 export default function SignIn() {
-    const [alias, setAlias] = useState("");
+    const [userName, setuserName] = useState("");
     const [mail, setMail] = useState("")
     const [password, setPassword] = useState("")
     const [phone, setPhone] = useState("")
@@ -17,38 +17,19 @@ export default function SignIn() {
 
 
     function handleNav() {
-        navigate('/');
+        navigate('/login');
     }
 
 
-    async function CriarUsuario() {
-        if (alias !== '' && mail !== '' && phone !== '' && password !== '') {
-
-            await api.post("/usuario", { alias, mail, password, phone }).then((res) => {
-                if (res.data.error) {
-                    alert(res.data.error)
-                }
-                else {
-                    alert("Usuário cadastrado com sucesso!")
-                    localStorage.setItem('idUsuario', (res.data.id));
-                    localStorage.setItem('alias', (res.data.alias));
-                    localStorage.setItem('mail', (res.data.mail));
-                    localStorage.setItem('phone', (res.data.phone));
-
-                    navigate('/cadastro');
-                }
-
-            }).catch((error: any) => {
-                alert(error)
-
-            })
-
-        } else {
-            alert("Preencha todos os campos")
+    async function handleSignIn() {
+        const res = await CriarUsuario(userName, mail, password, phone)
+        if (res === 201) {
+            navigate('/cadastro')
         }
-
-
     }
+
+
+
     return (
         <Container>
             <Form>
@@ -60,7 +41,7 @@ export default function SignIn() {
                     placeholder="Nome"
                     type="text"
                     icon={FiUser}
-                    onChange={e => setAlias(e.target.value)}
+                    onChange={e => setuserName(e.target.value)}
                 />
                 <Input
                     placeholder="Phone-Number"
@@ -82,7 +63,7 @@ export default function SignIn() {
                     onChange={e => setPassword(e.target.value)}
 
                 />
-                <Button google={false} title="Criar Conta" onClick={CriarUsuario} loading={false} />
+                <Button google={false} title="Criar Conta" onClick={handleSignIn} loading={false} />
 
 
 

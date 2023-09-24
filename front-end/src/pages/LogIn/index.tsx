@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useGoogleLogin } from '@react-oauth/google';
 import { useEffect, useState } from 'react';
 import { googleApi } from '../../service/googleApi';
-import Logar from '../../controllers/loginComum';
+import Logar, { isAuthByGoogle } from '../../controllers/login';
 
 export default function LogIn() {
     const [mail, setMail] = useState("")
@@ -16,40 +16,50 @@ export default function LogIn() {
     const [user, setUser] = useState('');
     const navigate = useNavigate()
 
- 
+
     const login = useGoogleLogin({
         onSuccess: (codeResponse) => setUser(codeResponse.access_token),
         onError: (error) => console.log('Login Failed:', error)
     });
 
-    useEffect(
-        () => {
+    useEffect(() => {
+        const fetchData = async () => {
             if (user) {
-                googleApi
-                    .get(`=${user}`, {
+                try {
+                    const response = await googleApi.get(`=${user}`, {
                         headers: {
                             Authorization: `Bearer ${user}`,
                             Accept: 'application/json'
                         }
-                    })
-                    .then((res) => {
-                        localStorage.setItem('idUsuario', (res.data.id));
-                        localStorage.setItem('alias', (res.data.given_name));
-                        localStorage.setItem('mail', (res.data.email));
-                        navigate('/cadastro')
+                    });
 
-                    })
-                    .catch((err) => console.log(err))
+                    const { email, id, given_name } = response.data;
+                    const loggedIn = await isAuthByGoogle(email, id, given_name, setLoading)
+                    if (loggedIn === 201) {
+                        navigate('/cadastro')
+                    }
+                } catch (error) {
+                    console.error(error);
+                }
             }
-        },
-        [user]
-    );
+        };
+
+        fetchData();
+    }, [user]);
+
 
 
     function handleSignin() {
         navigate('/signin')
     }
 
+    async function handleLogin() {
+        const loggedIn = await Logar(mail, password, setLoading)
+        if (loggedIn === 201) {
+            navigate('/cadastro')
+
+        }
+    }
 
     return (
         <Container>
@@ -59,10 +69,10 @@ export default function LogIn() {
 
                 <h2>Login</h2>
 
-               
 
-                
-               <Button google={true} loading={false} title={"Entrar com Google"} onClick={login}></Button>
+
+
+                <Button google={true} loading={false} title={"Entrar com Google"} onClick={login}></Button>
 
 
 
@@ -80,7 +90,7 @@ export default function LogIn() {
                     onChange={e => setPassword(e.target.value)}
 
                 />
-                <Button google={false} title="Login" onClick={() => Logar(mail, password, setLoading)} loading={loading} />
+                <Button google={false} title="Login" onClick={handleLogin} loading={loading} />
                 <ButtonText title="Cadastrar" isactive="true" onClick={handleSignin} />
 
             </Form>
