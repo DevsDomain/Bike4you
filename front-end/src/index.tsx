@@ -5,11 +5,13 @@ import { Routes } from './routes';
 import reportWebVitals from './reportWebVitals';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
+const clientToken = process.env.REACT_APP_CLIENT_ID || 'AnotherAPITOKEN'
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <GoogleOAuthProvider clientId="951689311792-5hck2goql9kpg3vu5nhbmppm4fml81uh.apps.googleusercontent.com" >
+  <GoogleOAuthProvider clientId={clientToken} >
     <React.StrictMode>
       <GlobalStyles></GlobalStyles>
       <Routes></Routes>
@@ -17,7 +19,5 @@ root.render(
   </GoogleOAuthProvider>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
 reportWebVitals();
