@@ -24,7 +24,8 @@ export default function SignIn() {
     async function handleSignIn() {
         const res = await CriarUsuario(userName, mail, password, phone)
         if (res === 201) {
-            navigate('/cadastro')
+            alert("Usuário cadastrado com sucesso!")
+            navigate("/")
         }
     }
 
