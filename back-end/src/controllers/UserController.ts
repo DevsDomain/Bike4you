@@ -5,9 +5,9 @@ import { User } from '../entities/User';
 class UserController {
     public async create(req: Request, res: Response): Promise<Response> {
         try {
-            const { alias, mail, password, phone } = req.body;
-            const user = await AppDataSource.manager.save(User, { alias, mail, password, phone }).catch(e => {
-                if (/(alias)[\s\S]+(already exists)/.test(e.detail)) {
+            const { userName, mail, password, phone } = req.body;
+            const user = await AppDataSource.manager.save(User, { userName, mail, password, phone }).catch(e => {
+                if (/(userName)[\s\S]+(already exists)/.test(e.detail)) {
                     return { error: 'nome de usuário já existe' };
 
 
@@ -36,7 +36,7 @@ class UserController {
                     id: user.id,
                     mail: user.mail,
                     phone: user.phone,
-                    alias: user.alias
+                    userName: user.userName
                 })
             }
 
@@ -49,19 +49,19 @@ class UserController {
 
 
     public async update(req: Request, res: Response): Promise<Response> {
-        const { id, alias, mail, password, phone } = req.body;
+        const { id, userName, mail, password, phone } = req.body;
         //obtém o usuário na tabela users
         const user = await AppDataSource.manager.findOneBy(User, { id });
         if (!user) { //verifica se o usuário existe
             return res.json({ error: "Usuário inexistente", props: "user" });
         }
-        user.alias = alias;
+        user.userName = userName;
         user.mail = mail;
         user.phone = phone;
         const r = await AppDataSource.manager.save(User, user).catch(e => {
-            // testa se o alias é repetido
-            if (/(alias)[\s\S]+(already exists)/.test(e.detail)) {
-                return { error: 'Codinome já existe', props: "alias" };
+            // testa se o userName é repetido
+            if (/(userName)[\s\S]+(already exists)/.test(e.detail)) {
+                return { error: 'Codinome já existe', props: "userName" };
             }
 
             else if (/(mail)[\s\S]+(already exists)/.test(e.detail)) {
@@ -89,7 +89,7 @@ class UserController {
             return res.status(201).json({
                 id: user.id,
                 mail: user.mail,
-                alias: user.alias,
+                userName: user.userName,
                 phone: user.phone
             })
 

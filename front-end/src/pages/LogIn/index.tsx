@@ -3,16 +3,54 @@ import { Container, Form, Background } from "./styles";
 import { Input } from '../../components/input'
 import { Button } from '../../components/button'
 import { ButtonText } from '../../components/buttonText'
-import { useState } from "react";
-import { api } from '../../service/api';
 import { useNavigate } from 'react-router-dom';
-
+import { useGoogleLogin } from '@react-oauth/google';
+import { useEffect, useState } from 'react';
+import { googleApi } from '../../service/googleApi';
+import { useAuth } from '../../hooks/auth';
+/* import Logar from '../../controllers/login';
+import isAuthByGoogle from '../../controllers/googleLogin'; */
 
 export default function LogIn() {
     const [mail, setMail] = useState("")
     const [password, setPassword] = useState("")
     const [loading, setLoading] = useState(false)
+    const [user, setUser] = useState('');
     const navigate = useNavigate()
+
+const {Logar, isAuthByGoogle} = useAuth()
+
+
+    const login = useGoogleLogin({
+        onSuccess: (codeResponse) => setUser(codeResponse.access_token),
+        onError: (error) => console.log('Login Failed:', error)
+    });
+
+    useEffect(() => {
+        const fetchData = async () => {
+            if (user) {
+                try {
+                    const response = await googleApi.get(`=${user}`, {
+                        headers: {
+                            Authorization: `Bearer ${user}`,
+                            Accept: 'application/json'
+                        }
+                    });
+
+                    const { email, id, given_name } = response.data;
+                    console.log(email,id)
+                    const loggedIn = await isAuthByGoogle(email, id, given_name, setLoading)
+                    if (loggedIn === 201) {
+                        navigate('/')
+                    }
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+        };
+
+        fetchData();
+    }, [user]);
 
 
 
@@ -20,35 +58,14 @@ export default function LogIn() {
         navigate('/signin')
     }
 
-
-    async function Logar() {
-        if (mail !== "" && password !== "") {
-            await api.get('/usuario', {
-                params: {
-                    mail: mail,
-                    password: password,
-                }
-            }).then((res) => {
-                setLoading(true)
-                localStorage.setItem('idUsuario', (res.data.id));
-                localStorage.setItem('alias', (res.data.alias));
-                localStorage.setItem('mail', (res.data.mail));
-                localStorage.setItem('phone', (res.data.phone));
-
-                navigate('/cadastro');
-
-
-            }).catch((error: any) => {
-                alert(error.response.data.message)
-
-            })
+    async function handleLogin() {
+        const loggedIn = await Logar(mail, password, setLoading)
+        if (loggedIn === 201) {
+            navigate('/')
 
         }
-        else {
-            alert("Informe email e senha")
-        }
-
     }
+
     return (
         <Container>
             <Form>
@@ -56,6 +73,10 @@ export default function LogIn() {
                 <p>Aplicação para aluguel de Bikes</p>
 
                 <h2>Login</h2>
+
+                <Button google={true} loading={false} title={"Entrar com Google"} onClick={login}></Button>
+
+
 
                 <Input
                     placeholder="E-mail"
@@ -71,7 +92,7 @@ export default function LogIn() {
                     onChange={e => setPassword(e.target.value)}
 
                 />
-                <Button title="Login" onClick={Logar} loading={loading} />
+                <Button google={false} title="Login" onClick={handleLogin} loading={loading} />
                 <ButtonText title="Cadastrar" isactive="true" onClick={handleSignin} />
 
             </Form>

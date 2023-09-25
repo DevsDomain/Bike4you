@@ -1,10 +1,13 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-export const Container = styled.button`
+interface ContainerProps {
+  google?: boolean;
+}
+
+export const Container = styled.button<ContainerProps>`
   width: 100%;
   background-color: #5ca3be97;
   color: #ffffff;
-
   height: 56px;
   border: 0;
   padding: 0 16px;
@@ -17,4 +20,13 @@ export const Container = styled.button`
   &:disabled {
     opacity: 0.5;
   }
-`
+
+  /* Conditional CSS style */
+  ${({ google }) =>
+    google &&
+    `
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  `}
+`;

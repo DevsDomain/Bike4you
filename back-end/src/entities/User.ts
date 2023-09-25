@@ -6,13 +6,13 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ nullable: false, length: 30, unique: true })
-  alias: string;
+  @Column({ nullable: false, length: 50, unique: false })
+  userName: string;
 
   @Column({ nullable: false, length: 50, unique: true })
   mail: string;
 
-  @Column({ nullable: false, length: 20, unique: true })
+  @Column({ nullable: true, length: 20, unique: true })
   phone: string;
 
   @Column({ nullable: false, length: 50, unique: false })
