@@ -9,15 +9,13 @@ export default async function CriarUsuario(userName: string, mail: string, passw
                 alert(response.data.error);
                 return 401;
             } else {
-                localStorage.setItem('idUsuario', response.data.id);
-                localStorage.setItem('userName', response.data.userName);
-                localStorage.setItem('mail', response.data.mail);
                 return response.status;
             }
         } else {
             return 401;
         }
     } catch (error) {
+        
         console.log(error);
         return 401;
     }

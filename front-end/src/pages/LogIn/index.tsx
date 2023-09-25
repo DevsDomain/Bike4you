@@ -8,7 +8,8 @@ import { useGoogleLogin } from '@react-oauth/google';
 import { useEffect, useState } from 'react';
 import { googleApi } from '../../service/googleApi';
 import { useAuth } from '../../hooks/auth';
-
+/* import Logar from '../../controllers/login';
+import isAuthByGoogle from '../../controllers/googleLogin'; */
 
 export default function LogIn() {
     const [mail, setMail] = useState("")
@@ -17,8 +18,7 @@ export default function LogIn() {
     const [user, setUser] = useState('');
     const navigate = useNavigate()
 
-    const { isAuthByGoogle, Logar } = useAuth()
-
+const {Logar, isAuthByGoogle} = useAuth()
 
 
     const login = useGoogleLogin({
@@ -38,9 +38,10 @@ export default function LogIn() {
                     });
 
                     const { email, id, given_name } = response.data;
+                    console.log(email,id)
                     const loggedIn = await isAuthByGoogle(email, id, given_name, setLoading)
                     if (loggedIn === 201) {
-                        navigate('/cadastro')
+                        navigate('/')
                     }
                 } catch (error) {
                     console.error(error);
@@ -60,7 +61,7 @@ export default function LogIn() {
     async function handleLogin() {
         const loggedIn = await Logar(mail, password, setLoading)
         if (loggedIn === 201) {
-            navigate('/cadastro')
+            navigate('/')
 
         }
     }
@@ -72,9 +73,6 @@ export default function LogIn() {
                 <p>Aplicação para aluguel de Bikes</p>
 
                 <h2>Login</h2>
-
-
-
 
                 <Button google={true} loading={false} title={"Entrar com Google"} onClick={login}></Button>
 

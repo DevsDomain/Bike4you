@@ -2,27 +2,26 @@ import { createContext, useContext, useEffect, useState } from "react"
 import { api } from "../service/api";
 import CriarUsuario from "../controllers/criarUsuario";
 
-
-interface AuthContextType {
+interface AuthContextValue {
     user: string;
     Logar: (mail: string, password: string, setLoading: Function) => Promise<Response | number>;
-    isAuthByGoogle: (mail: string, password: string, given_name: string, setLoading: Function) => Promise<number | void>;
+    isAuthByGoogle: (mail: string, password: string, given_name: string, setLoading: Function) => Promise<number | void>,
+    handleLogOut: () => void;
 }
 
-
-export const AuthContext = createContext<AuthContextType>({
-    user: localStorage.getItem("idUsuario") || ""
-    ,
-    Logar: async (mail: string, password: string, setLoading: Function) => 401,
-    isAuthByGoogle: async (mail: string, password: string, given_name: string, setLoading: Function) => 401,
+export const AuthContext = createContext<AuthContextValue>({
+    user: "",
+    Logar: async (mail: string, password: string, setLoading: Function) => 201,
+    isAuthByGoogle: async (mail: string, password: string, given_name: string, setLoading: Function) => 201,
+    handleLogOut: () => ''
 });
 
 
-
-
-
 function AuthProvider({ children }) {
+
+
     const [user, setUser] = useState("")
+
 
     async function Logar(mail: string, password: string, setLoading: Function): Promise<Response | number> {
         try {
@@ -33,7 +32,6 @@ function AuthProvider({ children }) {
                         password: password,
                     }
                 });
-
                 setLoading(true);
                 setUser(response.data.id)
                 localStorage.setItem('idUsuario', response.data.id);
@@ -71,6 +69,15 @@ function AuthProvider({ children }) {
 
     }
 
+    function handleLogOut() {
+        api.defaults.headers.common['Authorization'] = `Bearer ''}`
+        localStorage.removeItem('idUsuario')
+        localStorage.removeItem('userName')
+        localStorage.removeItem('mail')
+        setUser("")
+
+
+    }
 
     useEffect(() => {
         const user = localStorage.getItem("idUsuario") || ""
@@ -82,8 +89,9 @@ function AuthProvider({ children }) {
 
     }, [])
 
+
     return (
-        <AuthContext.Provider value={{ Logar, isAuthByGoogle, user }}>
+        <AuthContext.Provider value={{ Logar, isAuthByGoogle, handleLogOut, user }}>
             {children}
         </AuthContext.Provider>
     )
