@@ -11,15 +11,23 @@
       "description": "API"
     }
   ],
+  "schemes": [
+    "http",
+    "https"
+  ],
   "paths": {
-    "/Bike": {
+    "/item/Bike": {
       "post": {
         "summary": "Cadastro de bicicleta",
         "description": "Essa rota será responsável pelo cadastro de uma nova bicicleta",
         "tags": [
           "Bike"
         ],
-        "security": [{"bearerAuth": []}],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -63,7 +71,37 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                    "$ref": "#/components/schemas/Bike"
+                  "$ref": "#/components/schemas/Bike"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/item/Brand": {
+      "get": {
+        "description": "Busca de uma marca de bicicleta pelo nome",
+        "summary": "Busca de um produto pelo nome",
+        "tags": [
+          "Brand"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Nome da marca para busca",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Brand"
                 }
               }
             }
@@ -71,7 +109,6 @@
         }
       }
     }
-    
   },
   "components": {
     "schemas": {
@@ -118,9 +155,17 @@
             "type": "string"
           }
         }
+      },
+      "Brand": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          }
+        }
       }
     },
-    "securitySchemes":{
+    "securitySchemes": {
       "bearerAuth": {
         "type": "http",
         "scheme": "bearer",

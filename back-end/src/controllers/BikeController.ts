@@ -18,13 +18,13 @@ class BikeController {
         //obtém a marca na tabela brands
         const brand = await AppDataSource.manager.findOneBy(Brand, { id: idbrand });
         if (!brand) {
-            return res.status(400).json({ error: "Marca desconhecida", props: "brand" });
+            return res.status(401).json({ error: "Marca desconhecida", props: "brand" });
         }
 
         //obtém a categoria na tabela categories
         const category = await AppDataSource.manager.findOneBy(Category, { id: idcategory });
         if (!category) {
-            return res.status(400).json({ error: "Categoria desconhecida", props: "category" });
+            return res.status(402).json({ error: "Categoria desconhecida", props: "category" });
         }
 
         const bike = await AppDataSource.manager.save(Bike, { user, brand, category, color, size, material, gender, speedkit, rim, suspension, description, hourlyvalue, dailyvalue, latitude, longitude });
