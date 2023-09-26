@@ -4,8 +4,8 @@ import CriarUsuario from "../controllers/criarUsuario";
 
 interface AuthContextValue {
     user: string;
-    Logar: (mail: string, password: string, setLoading: Function) => Promise<Response | number>;
-    isAuthByGoogle: (mail: string, password: string, given_name: string, setLoading: Function) => Promise<number | void>,
+    Logar: (mail: string, password: string, setLoading: Function, google?: boolean) => Promise<Response | number>;
+    isAuthByGoogle: (mail: string, password: string, given_name: string, setLoading: Function, google?: boolean) => Promise<number | void>,
     handleLogOut: () => void;
 }
 
@@ -23,7 +23,7 @@ function AuthProvider({ children }) {
     const [user, setUser] = useState("")
 
 
-    async function Logar(mail: string, password: string, setLoading: Function): Promise<Response | number> {
+    async function Logar(mail: string, password: string, setLoading: Function, google?: boolean): Promise<Response | number> {
         try {
             if (mail !== "" && password !== "") {
                 const response = await api.get('/usuario', {
@@ -46,7 +46,10 @@ function AuthProvider({ children }) {
                 return 401;
             }
         } catch (error: any) {
-            alert(error.response.data.message);
+            if (!google) {
+                alert(error.response.data.message);
+
+            }
             return 401;
         }
     }
@@ -54,7 +57,7 @@ function AuthProvider({ children }) {
 
     async function isAuthByGoogle(mail: string, password: string, given_name: string, setLoading: Function) {
 
-        const login = await Logar(mail, password, setLoading);
+        const login = await Logar(mail, password, setLoading, true);
 
         if (login === 201) {
             return 201
@@ -62,6 +65,7 @@ function AuthProvider({ children }) {
         else {
             const newUser = await CriarUsuario(given_name, mail, password)
             if (newUser === 201) {
+                await Logar(mail, password, setLoading, true);
                 return 201
             }
 
