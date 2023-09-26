@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Back-end",
-    "description": "Documentação back-end do site da empresa Bike4you.",
+    "title": "Bike4you",
+    "description": "Documentação da API da empresa Bike4you.",
     "version": "1.0.0"
   },
   "servers": [
