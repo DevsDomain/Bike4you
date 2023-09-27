@@ -3,13 +3,16 @@
 ## :memo: Desafio
 O compartilhamento de automóveis é uma modalidade que tem crescido motivado pelas
 plataformas de compartilhamento peer-to-peer, que conectam proprietários com locatários em
-busca do automóvel desejado. Alguns exemplos de plataformas de aluguel de carros são
-_https://www.getaround.com_ e _https://turo.com_ Nelas os proprietários podem listar seus carros,
+busca do automóvel desejado. Nelas os proprietários podem listar seus carros,
 definir preços e disponibilidade, e os locatários podem reservar diretamente.
 
 Algumas pessoas gostariam de fazer um passeio de bicicleta na sua cidade ou durante uma viagem.
-Acontece que elas não possuem a bicicleta. O objetivo é desenvolver um aplicativo web peer-topeer para conectar proprietários e pessoas interessadas em alugar bicicletas. A aplicação deverá
+O objetivo é desenvolver um aplicativo web peer-topeer para conectar proprietários e pessoas interessadas em alugar bicicletas. A aplicação deverá
 apenas fazer a intermediação entre as partes sem qualquer responsabilidade sobre pagamento.
+
+
+[Link Para vídeo de apresentação da Sprint1](https://youtu.be/nAAm8Gvnc-c)
+
 
 ### 🏁 Entregas de Sprints
 
