@@ -4,7 +4,7 @@ import controller from "../controllers/UserController";
 const routes = Router();
 
 routes.post('/', controller.create);
-routes.get('/', controller.list);
+routes.get('/', controller.findUser);
 routes.delete('/', controller.delete);
 routes.put('/', controller.update);
 
