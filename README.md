@@ -13,6 +13,8 @@ apenas fazer a intermediação entre as partes sem qualquer responsabilidade sob
 
 [Link Para vídeo de apresentação da Sprint1](https://youtu.be/nAAm8Gvnc-c)
 
+[Link Para o protótipo no FIGMA](https://www.figma.com/file/rgpW8LbEDsuY1wgv3uV3aM/Untitled?type=design&node-id=1%3A263&mode=design&t=TBTiGGqfx2OuLT6A-1)
+
 
 ### 🏁 Entregas de Sprints
 
