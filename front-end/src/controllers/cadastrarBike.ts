@@ -1,7 +1,7 @@
 import { api } from "../service/api";
 
 export default async function CadastrarBike(color: string, size: string,
-    material: string, description: string, dailyvalue: number, iduser: number): Promise<Response | number> {
+    material: string, description: string, dailyvalue: string, iduser: string): Promise<Response | number> {
     try {
 
         const response = await api.post("/bike", { color, size, material, description, dailyvalue, iduser });
