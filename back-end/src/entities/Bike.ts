@@ -5,41 +5,10 @@ import { Category } from "./Category";
 import { User } from "./User";
 import { Rent } from "./Rent";
 
-export type Gender = "masculino" | "feminino" | "unissex";
-export type Material = "aluminio" | "carbono" | "ferro";
-
 @Entity({ name: "bikes" })
 export class Bike {
     @PrimaryGeneratedColumn()
     id: number;
-
-    @Column({ nullable: true, length: 30 })
-    color: string;
-
-    @Column({ nullable: true, length: 10 })
-    size: string;
-
-    @Column({
-        nullable: true, type: "enum",
-        enum: ["aluminio", "carbono", "ferro"],
-    })
-    material: Material;
-
-    @Column({
-        nullable: true,
-        type: "enum",
-        enum: ["feminino", "masculino", "unissex"],
-    })
-    gender: Gender;
-
-    @Column({ nullable: true, length: 10 })
-    speedkit: string;
-
-    @Column({ nullable: true, type: "float" })
-    rim: number;
-
-    @Column({ nullable: true })
-    suspension: boolean;
 
     @Column({ nullable: true, length: 200 })
     description: string;
@@ -49,12 +18,6 @@ export class Bike {
 
     @Column({ nullable: true, type: "decimal", precision: 10, scale: 2 })
     dailyvalue: number;
-
-    @Column({ nullable: true, type: "float" })
-    latitude: number;
-
-    @Column({ nullable: true, type: "float" })
-    longitude: number;
 
     @ManyToOne(() => Brand, { nullable: true })
     @JoinColumn({ name: "idbrand" })

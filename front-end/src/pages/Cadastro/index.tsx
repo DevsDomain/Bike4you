@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import CadastrarBike from "../../controllers/cadastrarBike";
 
 import { Container, Form, Input } from "./styles";
+import { Button } from "../../components/button";
 
 export default function Cadastro() {
   const [idUsuario, setidUsuario] = useState("");
@@ -72,7 +73,7 @@ export default function Cadastro() {
 
           
         
-        <button onClick={() => Cadastrando()}> Cadastrar </button>
+        <Button google={false} onClick={Cadastrando} title={"Cadastrar"} loading={false}></Button>
       </Form>
     </Container>
   );
