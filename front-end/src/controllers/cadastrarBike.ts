@@ -1,10 +1,9 @@
 import { api } from "../service/api";
 
-export default async function CadastrarBike(color: string, size: string,
-    material: string, description: string, dailyvalue: string, iduser: string): Promise<Response | number> {
+export default async function CadastrarBike(category: string, brand:string, description: string, dailyvalue: string, hourlyvalue:string, iduser: string): Promise<Response | number> {
     try {
 
-        const response = await api.post("/bike", { color, size, material, description, dailyvalue, iduser });
+        const response = await api.post("/bike", { category, brand, description, dailyvalue, hourlyvalue, iduser });
         if (response.data.error) {
             alert(response.data.error);
             return 401;
