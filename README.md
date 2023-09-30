@@ -22,7 +22,7 @@ Cada entrega foi realizada a partir da criação de uma **tag** Observe a relaç
 | Sprint | Previsão de entrega | Status | Release | Kanban |
 |:--:|:----------:|:-------------------|:-------------------------------------------------:|:-------------------------------------------------:|
 | 01 | 27/09/2023 | :heavy_check_mark: Entregue | [Ver release](https://github.com/Dev-s-Domain/Bike4you/releases/tag/1.0.1) |[Sprint1](https://github.com/orgs/DevsDomain/projects/1/views/1)|
-| 02 | 25/10/2023 | 🚧 Em andamento| [Ver release]() |
+| 02 | 25/10/2023 | 🚧 Em andamento| [Ver release]() | [Sprint2](https://github.com/orgs/DevsDomain/projects/3)|
 | 03 | 22/11/2023 | 🛑 Não iniciada| [Ver release]() |
 
 ## :wrench: Tecnologias utilizadas
