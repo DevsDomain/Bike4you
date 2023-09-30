@@ -1,25 +1,28 @@
 import { api } from "../service/api";
+import CadastrarMarca from "./cadastrarMarca";
 
-export default async function CadastrarBike(category: string, brand: string, description: string, dailyvalue: string, hourlyvalue: string, iduser: string): Promise<Response | number> {
+export default async function CadastrarBike(brand: string | number, category: string | number, description: string, image: File | null, dailyvalue: string, hourlyvalue: string, iduser: string): Promise<Response | number> {
     try {
 
-        const idbrand = (await api.post("/marca", { name: brand })).data.id
-        if (!idbrand) {
-            return 401
-        }
+        const idbrand = await CadastrarMarca(brand)
 
         const idcategory = (await api.post("/categoria", { name: category })).data.id
         if (!idcategory) {
             return 401
         }
 
-        const response = await api.post("/bike", { iduser, idcategory, idbrand, description, hourlyvalue, dailyvalue });
-        if (response.data.error) {
-            alert(response.data.error);
+        const bike = await api.post("/bike", { iduser, idcategory, idbrand, description, hourlyvalue, dailyvalue });
+        if (bike.data.error) {
+            alert(bike.data.error);
             return 401;
         } else {
-            console.log(response.data)
-            return response.status;
+            const idbike = bike.data
+            const formData = new FormData();
+            formData.append("idbike", idbike);
+            formData.append("file", image || '')
+            await api.post("/foto", formData);
+
+            return 201;
 
         }
     } catch (error) {
@@ -27,4 +30,7 @@ export default async function CadastrarBike(category: string, brand: string, des
         console.log(error);
         return 401;
     }
+
+
+
 }

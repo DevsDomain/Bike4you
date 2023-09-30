@@ -36,7 +36,7 @@ class BikeController {
             dailyvalue,
             user
         });
-        return res.json(bike)
+        return res.json(bike.id)
     }
 
     public async update(req: Request, res: Response): Promise<Response> {
