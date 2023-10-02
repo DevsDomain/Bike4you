@@ -1,26 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import GlobalStyles from './styles/global';
-import { Routes } from './routes';
+import ReactDOM from 'react-dom';
+
 import reportWebVitals from './reportWebVitals';
-import { GoogleOAuthProvider } from '@react-oauth/google';
-import { AuthProvider } from './hooks/auth';
+import { App } from './app/App';
 
-const clientToken = process.env.REACT_APP_CLIENT_ID || 'AnotherAPITOKEN'
-
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
 );
-root.render(
-  <GoogleOAuthProvider clientId={clientToken} >
-    <React.StrictMode>
-      <GlobalStyles></GlobalStyles>
-      <AuthProvider>
-      <Routes></Routes>
-      </AuthProvider>
-    </React.StrictMode>
-  </GoogleOAuthProvider>
-);
-
 
 reportWebVitals();
