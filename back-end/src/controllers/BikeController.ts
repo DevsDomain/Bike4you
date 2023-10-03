@@ -7,7 +7,7 @@ import { Category } from "../entities/Category";
 
 class BikeController {
     public async create(req: Request, res: Response): Promise<Response> {
-        const { iduser, idcategory, idbrand, color, size, material, gender, speedkit, rim, suspension, description, hourlyvalue, dailyvalue, latitude, longitude } = req.body;
+        const { iduser, idcategory, idbrand, description, hourlyvalue, dailyvalue } = req.body;
 
         //obtém o usuário na tabela users
         const user = await AppDataSource.manager.findOneBy(User, { id: iduser });
@@ -27,8 +27,16 @@ class BikeController {
             return res.status(400).json({ error: "Categoria desconhecida", props: "category" });
         }
 
-        const bike = await AppDataSource.manager.save(Bike, { user, brand, category, color, size, material, gender, speedkit, rim, suspension, description, hourlyvalue, dailyvalue, latitude, longitude });
-        return res.json(bike);
+
+        const bike = await AppDataSource.manager.save(Bike, {
+            brand,
+            category,
+            description,
+            hourlyvalue,
+            dailyvalue,
+            user
+        });
+        return res.json(bike.id)
     }
 
     public async update(req: Request, res: Response): Promise<Response> {

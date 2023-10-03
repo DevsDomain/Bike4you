@@ -6,21 +6,25 @@ import { Brand } from '../entities/Brand';
 
 class PhotoController {
     public async create(req: Request, res: Response): Promise<Response> {
-        let { idbike } = req.body;
-        console.log()
-        if (!req.file) {
-            return res.status(400).send({ error: 'Foto não enviada', props: "photo" });
-        }
+        try {
+            let { idbike } = req.body;
+            if (!req.file) {
+                return res.status(400).send({ error: 'Foto não enviada', props: "photo" });
+            }
 
-        //obtém a bike na tabela bikes
-        const bike = await AppDataSource.manager.findOneBy(Bike, { id: idbike });
-        if (!bike) {
-            return res.status(400).json({ error: "Bicicleta desconhecida", props: "bike" });
-        }
+            //obtém a bike na tabela bikes
+            const bike = await AppDataSource.manager.findOne(Bike, { where: { id: idbike } });
+            if (!bike) {
+                return res.status(400).json({ error: "Bicicleta desconhecida", props: "bike" });
+            }
 
-        const photo = await AppDataSource.manager.save(Photo, { bike, filename: req.file.filename });
-        return res.json(photo);
+            const photo = await AppDataSource.manager.save(Photo, { bike, filename: req.file.filename });
+            return res.json(photo);
+        } catch (error: any) {
+            return error
+        }
     }
+
 
     public async list(_: Request, res: Response): Promise<Response> {
         const photos = await AppDataSource.manager.find(Photo);
@@ -34,6 +38,7 @@ class PhotoController {
         const { affected } = await AppDataSource.manager.delete(Photo, { id });
         return res.json({ affected });
     }
+
 
 }
 
