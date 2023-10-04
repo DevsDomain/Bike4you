@@ -2,5 +2,16 @@
   "dependencies": {
     "react-icons": "^4.11.0",
     "styled-components": "^6.0.8"
-  }
+  },
+  "name": "bike4you",
+  "description": "<h1 align=\"center\">:file_cabinet: DevsDomain.md</h1>",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

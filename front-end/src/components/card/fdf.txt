@@ -1,0 +1,10 @@
+index.tsx
+    front-end/src/index.tsx
+        <GoogleOAuthProvider clientId={clientToken} >
+            <React.StrictMode>
+                <GlobalStyles></GlobalStyles>
+                    <AuthProvider>
+                        <Routes></Routes>
+                    </AuthProvider>
+            </React.StrictMode>
+        </GoogleOAuthProvider>
