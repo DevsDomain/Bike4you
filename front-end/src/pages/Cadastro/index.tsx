@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import { FaSave } from 'react-icons/fa';
 import CadastrarBike from "../../controllers/cadastrarBike";
-
-import { Container, Form, Input } from "./styles";
-import { Button } from "../../components/button";
+import exemploimg from "../../assets/image2.png"
+import { Box, Container, Form, ImageContainer, Input, SelectContainer, TextArea} from "./styles";
+//import { Button } from "../../components/button";
 import buscarMarcas, { Brand } from "../../controllers/buscarMarcas";
 import BuscarCategoria, { Category } from "../../controllers/buscarCategoria";
 import CadastrarMarca from "../../controllers/cadastrarMarca";
@@ -91,74 +92,92 @@ export default function Cadastro() {
 
   return (
     <Container>
-      <Form id="form" encType="multipart/form-data">
-
+      <Box>
         <h3>Cadastrar Bike</h3>
-        <select value={brand} onChange={(e) => setBrand(Number(e.target.value))}>
-          <option value={1}>Selecione uma marca</option>
-          {brands.map(({ name, id }) => (
-            <option key={id} value={id}>
-              {name}
-            </option>
-          ))}
-          <option value={0} >Criar nova</option>
-        </select>
-        {brand === 0 && <>
+        <Form id="form" encType="multipart/form-data">
+          <ImageContainer>
+            <img src={exemploimg} alt="Exemplo" />
+            <Input
+              type="file"
+              accept="image/*"
+              name="uploadedImage"
+              id="image"
+              onChange={(e) => setImage(e.target.files?.[0] || null)}
+            />
+          </ImageContainer>
 
-
-          <Input placeholder={"Insira a Marca"} value={newBrand} onChange={(e) => setNewBrand(e.target.value)} />
-
-
-        </>}
-
-
-        <Input
-          placeholder={"Insira o valor por hora"}
-          value={hourlyvalue}
-          onChange={(e) => setHourlyvalue(e.target.value)}
-        />
-
-        <select value={category} onChange={(e) => setCategory(Number(e.target.value))}>
-          <option value={1}>Selecione uma Categoria</option>
-          {categories.map(({ name, id }) => (
-            <option key={id} value={id}>
-              {name}
-            </option>
-          ))}
-          <option value={0}>Criar nova</option>
-        </select>
-        {category === 0 && <>
-
-
-          <Input placeholder={"Insira a Categoria, exemplo: MTB"}
-            value={newCategory}
-            onChange={(e) => setNewCategory(e.target.value)}
+          <TextArea
+            placeholder="Insira a Descrição, como a cor, tamanho, aro etc."
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
 
-        </>}
+          <SelectContainer>
+            <select
+              value={brand}
+              onChange={(e) => setBrand(Number(e.target.value))}
+            >
+              <option value={1}>Selecione uma marca</option>
+              {brands.map(({ name, id }) => (
+                <option key={id} value={id}>
+                  {name}
+                </option>
+              ))}
+              <option value={0}>Criar nova</option>
+            </select>
+          </SelectContainer>
 
-        <Input
-          placeholder={"Insira o valor da diária"}
-          value={dailyvalue}
-          onChange={(e) => setDailyvalue(e.target.value)}
-        />
+          {brand === 0 && (
+            <Input
+              placeholder="Insira a Marca"
+              value={newBrand}
+              onChange={(e) => setNewBrand(e.target.value)}
+            />
+          )}
 
-        <Input type="file" accept="image/*" name="uploadedImage" id="image" onChange={(e) => setImage(e.target.files?.[0] || null)}></Input>
+          <SelectContainer>
+            <select
+              value={category}
+              onChange={(e) => setCategory(Number(e.target.value))}
+            >
+              <option value={1}>Selecione uma Categoria</option>
+              {categories.map(({ name, id }) => (
+                <option key={id} value={id}>
+                  {name}
+                </option>
+              ))}
+              <option value={0}>Criar nova</option>
+            </select>
+          </SelectContainer>
 
-        <textarea
-          placeholder={"Insira a Descrição, como a cor, tamanho, aro etc."}
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          {category === 0 && (
+            <Input
+              placeholder="Insira a Categoria, exemplo: MTB"
+              value={newCategory}
+              onChange={(e) => setNewCategory(e.target.value)}
+            />
+          )}
 
-          style={{ marginTop: '15px', backgroundColor: '#121257', border: 'none', width: '80%', minHeight: '75px', color: 'white' }}
+          <Input
+            placeholder="Insira o valor por hora"
+            value={hourlyvalue}
+            onChange={(e) => setHourlyvalue(e.target.value)}
+          />
 
+          <Input
+            placeholder="Insira o valor da diária"
+            value={dailyvalue}
+            onChange={(e) => setDailyvalue(e.target.value)}
+          />
 
-        />
-
-
-
-        <Button loading={false} title={"Cadastrar"} key={0} onClick={handleNewBike} ></Button>
-      </Form>
+          <FaSave
+            size={30} // Tamanho do ícone (pode ser ajustado)
+            color="#555657" // Cor do ícone (pode ser ajustada)
+            onClick={handleNewBike} // Ação ao clicar no ícone
+            style={{ cursor: "pointer" }} // Estilo do cursor
+          />
+        </Form>
+      </Box>
     </Container>
   );
 }
