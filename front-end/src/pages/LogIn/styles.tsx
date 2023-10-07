@@ -6,6 +6,7 @@ export const Container = styled.div`
   display: flex;
   align-items: stretch;
   background-color: 2F2F2F;
+  
 `
 
 export const Form = styled.form`
@@ -38,6 +39,6 @@ export const Form = styled.form`
 export const Background = styled.div`
   flex: 1;
   background: url(${backgroundImg}) no-repeat center center;
-  background-size: cover;
+  background-size: 100%;
   filter: opacity(0.7);
 `
