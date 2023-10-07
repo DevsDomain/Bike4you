@@ -34,33 +34,31 @@ class BikeController {
             description,
             hourlyvalue,
             dailyvalue,
-            user
+            user 
         });
         return res.json(bike.id)
     }
 
     public async update(req: Request, res: Response): Promise<Response> {
-        const { id, iduser, idcategory, idbrand, color, size, material, gender, speedkit, rim, suspension, description, hourlyvalue, dailyvalue, latitude, longitude } = req.body;
-
-        //obtém o usuário na tabela users
-        const user = await AppDataSource.manager.findOneBy(User, { id: iduser });
-        if (!user) {
-            return res.status(400).json({ error: "Usuário desconhecido", props: "user" });
-        }
+        const { id, idcategory, idbrand, description, hourlyvalue, dailyvalue } = req.body;
+        console.log("id da Bike: id:",id, idcategory, idbrand, "DESCRIÇÃO:",description, hourlyvalue, dailyvalue)
+ 
 
         //obtém a marca na tabela brands
         const brand = await AppDataSource.manager.findOneBy(Brand, { id: idbrand });
         if (!brand) {
             return res.status(400).json({ error: "Marca desconhecida", props: "brand" });
         }
+        console.log("BRAND", brand)
 
         //obtém a categoria na tabela categories
         const category = await AppDataSource.manager.findOneBy(Category, { id: idcategory });
         if (!category) {
             return res.status(400).json({ error: "Categoria desconhecida", props: "category" });
         }
+        console.log("CATEGORY", category)
 
-        const bike = await AppDataSource.manager.save(Bike, { id, user, brand, category, color, size, material, gender, speedkit, rim, suspension, description, hourlyvalue, dailyvalue, latitude, longitude });
+        const bike = await AppDataSource.manager.update(Bike, id, { brand, category, description, hourlyvalue, dailyvalue });
         return res.json(bike);
     }
 
