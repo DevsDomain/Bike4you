@@ -1,0 +1,1 @@
+export const userEndpoint = "http://localhost:3026/usuario"
