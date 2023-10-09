@@ -17,7 +17,7 @@ export default function SignIn() {
 
 
     function handleNav() {
-        navigate('/login');
+        navigate('/');
     }
 
 

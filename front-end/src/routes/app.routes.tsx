@@ -1,13 +1,15 @@
 import { Routes, Route } from "react-router-dom";
 import Cadastro from "../pages/Cadastro";
-import Tela_usuario from "../pages/Tela_usuario";
+import Home from "../pages/Home";
+import Gerenciamento from "../pages/Gerenciamento";
+
 
 export function AppRoutes() {
     return (
         <Routes>
-
-            <Route path="/" element={<Cadastro />} />
-            <Route path="/Tela_usuario" element={<Tela_usuario />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/cadastro" element={<Cadastro />} />
+        <Route path="/Gerenciamento" element={<Gerenciamento />} />
 
         </Routes>
     )

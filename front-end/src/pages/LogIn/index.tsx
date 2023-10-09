@@ -8,8 +8,7 @@ import { useGoogleLogin } from '@react-oauth/google';
 import { useEffect, useState } from 'react';
 import { googleApi } from '../../service/googleApi';
 import { useAuth } from '../../hooks/auth';
-/* import Logar from '../../controllers/login';
-import isAuthByGoogle from '../../controllers/googleLogin'; */
+
 
 export default function LogIn() {
     const [mail, setMail] = useState("")

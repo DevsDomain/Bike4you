@@ -22,5 +22,4 @@ root.render(
   </GoogleOAuthProvider>
 );
 
-
 reportWebVitals();
