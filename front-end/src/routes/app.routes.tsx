@@ -1,15 +1,17 @@
 import { Routes, Route } from "react-router-dom";
-import Cadastro from "../pages/Cadastro";
+import Usuario from "../pages/Usuario";
+import Gerenciar from "../pages/gerenciar";
 import Home from "../pages/Home";
-import Gerenciamento from "../pages/Gerenciamento";
+import NotFound from "../pages/404";
 
 
 export function AppRoutes() {
     return (
         <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="/Gerenciamento" element={<Gerenciamento />} />
+        <Route path="/gerenciamento" element={<Usuario />} />
+        <Route path="/gerenciar" element={<Gerenciar />} />
+        <Route path="*" element={<NotFound/>}/>
 
         </Routes>
     )

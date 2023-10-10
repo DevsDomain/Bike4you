@@ -15,7 +15,7 @@ export const Container = styled.div`
 
 export const Box = styled.div`
   max-width: 800px;
-  margin: 500px 60px 400px 60px;
+  margin: auto;
   border-radius: 10px;
   background-color: #B6B6B6;
   padding: 20px;
