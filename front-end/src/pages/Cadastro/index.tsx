@@ -8,6 +8,7 @@ import buscarMarcas, { Brand } from "../../controllers/buscarMarcas";
 import BuscarCategoria, { Category } from "../../controllers/buscarCategoria";
 import CadastrarMarca from "../../controllers/cadastrarMarca";
 import CadastrarCategoria from "../../controllers/cadastrarCategoria";
+import EditarBike from "../../controllers/editarBike";
 
 export default function Cadastro() {
   const [idUsuario, setidUsuario] = useState("");
@@ -56,14 +57,18 @@ export default function Cadastro() {
     const idbrand = brand === 0 ? await handleNewBrand(newBrand) : brand
     const idcategory = category === 0 ? await handleNewCategory(newCategory) : category
 
-    const bike = await CadastrarBike(
+    // TESTEEEEEEE APAGAR DEPOIS
+    // PASSAR o idBike a ser editada! 
+    let id = '63'
+    const bike = await EditarBike(
+      id,
       idbrand,
       idcategory,
       description,
       image,
       dailyvalue,
-      hourlyvalue,
-      idUsuario
+      hourlyvalue
+      
     )
     if (bike === 201) {
       alert("Bicicleta cadastrada com sucesso!")
