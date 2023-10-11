@@ -1,6 +1,9 @@
 import React, { useState, createContext } from "react";
 import { MeuEstilo } from "./styles";
 import Usuario from '../../assets/usuario.jpg';
+import { Link } from 'react-router-dom';
+import Cadastro from '../Cadastro';
+import styled from "styled-components";
 
 interface props {
   add: (origem: string) => void;
@@ -8,7 +11,7 @@ interface props {
   remove: (e: any, indice: number) => void;
 }
 
-const Gerenciamento: React.FC = () => {
+const Gerenciar: React.FC = () => {
   const [usuario, setUsuario] = useState("");
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
@@ -30,9 +33,17 @@ const Gerenciamento: React.FC = () => {
         </div>
       </div>
 
+      <div className="botoes-container">
+        <button className="botao" id="botao1">Usuário</button>
+        <Link to="../Cadastro">
+          <button className="botao" id="botao2">Cadastro</button>
+        </Link>
+        <button className="botao" id="botao3">Geral</button>
+      </div>
       <div className="caixa-de-formulario">
         <form>
           <div className="campos-container">
+
             <label className="nome-label" htmlFor="nome">NOME:</label>
             <input type="text" id="nome" name="nome" />
           </div>
@@ -40,31 +51,31 @@ const Gerenciamento: React.FC = () => {
             <label className="nome-label" htmlFor="email">EMAIL:</label>
             <input type="text" id="email" name="email" />
           </div>
-          <div className="campos-container">
-            <label className="nome-label" htmlFor="tel">TEL:</label>
-            <input type="text" id="tel" name="tel" />
-          </div>
-          <div className="campos-container cep-numero">
+          <div className="campos-container telefone-cep">
+
+            <label className="nome-label" htmlFor="telefone">TELEFONE:</label>
+            <input type="text" id="telefone" name="telefone" />
             <label className="nome-label" htmlFor="cep">CEP:</label>
             <input type="text" id="cep" name="cep" />
-            <label className="nome-label" htmlFor="numero">NÚMERO:</label>
-            <input type="text" id="numero" name="numero" />
-          </div>
 
-          <div className="container">
-            <div className="caixa">
-              <input type="endereco" placeholder="ENDEREÇO" />
-            </div>
-            <div className="caixa">
-              <input type="endereco" placeholder="OBSERVAÇÕES" />
-            </div>
+          </div>
+          <div className="campos-container pais-bairro">
+            <label className="nome-label" htmlFor="pais">PAÍS:</label>
+            <input type="text" id="pais" name="pais" />
+            <label className="nome-label" htmlFor="bairro">BAIRRO:</label>
+            <input type="text" id="bairro" name="bairro" />
+          </div>
+          <div className="campo-complemento">
+            <label className="nome-label" htmlFor="complemento">COMPLEMENTO:</label>
+            <input type="text" id="complemento" name="complemento" className="campo-complemento" />
           </div>
 
         </form>
       </div>
 
-    </MeuEstilo>
+
+    </MeuEstilo >
   );
 }
 
-export default Gerenciamento;
+export default Gerenciar;
