@@ -1,12 +1,12 @@
 
 import styled from "styled-components";
-import backgroundImg from '../../assets/background.jpg'
 export const MeuEstilo = styled.div`
 
 .imagem-container {
   margin-top: 20px; /* Margem no topo da imagem */
   margin-left: 70px; /* Margem à esquerda da imagem */
-  margin-bottom: 50px;
+  margin-bottom: 30px;
+  display: flex;
 }
 
 .img {
@@ -14,16 +14,19 @@ export const MeuEstilo = styled.div`
   height: auto; /* Para manter a proporção da imagem */
   border-radius: 10px;
   margin-right: 20px; /* Espaçamento entre a imagem e o texto */
+  display: flex;
 }
 
 .geral {
   display: flex;
   justify-content: flex-start; /* Alinha o conteúdo no início (esquerda) */
+  display: flex;
 }
 
 .conteudo {
   display: flex;
-  align-items: baseline; 
+  align-items: baseline;
+  display: flex; 
 }
 
 .img {
@@ -31,23 +34,26 @@ export const MeuEstilo = styled.div`
   height: auto; /* Para manter a proporção da imagem */
   border-radius: 10px;
   margin-right: 20px; /* Espaçamento entre a imagem e o texto */
+  display: flex;
 }
 
 h1 {
   font-size: 30px; /* Tamanho do texto */
   font-weight: bold; 
   font-family: Arial, Verdana, sans-serif; 
+  display: flex;
 }
 
 .caixa-de-formulario {
-  width: 80%; 
+  width: 71%; 
   max-width: 1200px; 
   padding: 30px;
   background-color: #696969;
   border-radius: 10px;
-  margin-left: 100px;
+  margin-left: 180px;
   display: flex; 
   flex-direction: column; 
+  box-shadow: 0 0 10px rgba(1, 1, 1, 1.2);
 }
 
 .botoes-container {
@@ -55,15 +61,16 @@ h1 {
   background-color: var(--nav-bg-color);
   color: white;
   justify-content: left;
-  margin-left: 90px;
+  margin-left: 170px;
   margin-top: 10px;
 }
 
 .botao {
+  display: flex;
   background-color: black;
   color: white;
   border: none;
-  padding: 15px 100px; 
+  padding: 10px 100px; 
   border-radius: 10px;
   margin-left: 10px;
   font-weight: bold
@@ -71,13 +78,49 @@ h1 {
   flex-direction: column; /* Altera a direção do flexbox para vertical */
   align-items: center; /* Alinha os itens verticalmente (no centro) */
   font-size: 25px;
+  box-shadow: 0 0 10px rgba(1, 1, 1, 1.2);
 }
-
 
 label.nome-label {
   text-align: left;
-  width: 110px;
+  width: 101px;
   margin-right: 10px;
+  display: flex;
+}
+
+label.cep-label {
+  text-align: left;
+  width: 30px;
+  margin-right: 10px;
+  display: flex;
+}
+
+label.email-label {
+  text-align: left;
+  width: 101px;
+  margin-right: 10px;
+  display: flex;
+}
+
+label.telefone-label {
+  text-align: left;
+  width: 95px;
+  margin-right: 10px;
+  display: flex;
+}
+
+label.bairro-label {
+  text-align: left;
+  width: 95px;
+  margin-right: 10px;
+  display: flex;
+}
+
+label.endereco-label {
+  text-align: left;
+  width: 100px;
+  margin-right: 10px;
+  display: flex;
 }
 
 input[type="text"] {
@@ -85,13 +128,15 @@ input[type="text"] {
   padding: 10px;
   border: 1px solid #ccc;
   height: 40px;
+  display: flex;
 }
 
 /* Estilos para os campos e rótulos */
 .campos-container {
   display: flex;
   align-items: center; 
-  margin-bottom: 20px; 
+  margin-bottom: 10px; 
+  display: flex;
 }
 
 
@@ -101,6 +146,8 @@ input[type="text"] {
   padding: 10px;
   border: 1px solid #ccc;
   height: 40px; 
+  display: flex;
+  box-shadow: 0 0 10px rgba(0, 0, 1, 1.2);
 }
 
 h2 {
@@ -108,14 +155,8 @@ h2 {
   margin-bottom: 20px;
 }
 
-.campos-container.telefone-cep {
-  flex: 1
-  width: 1000px;
-  height: 50px;
-}
-
 input#cep {
-  width: 25%;
+  width: 32%;
 }
 
 input#telefone {
@@ -123,44 +164,69 @@ input#telefone {
   margin-right: 20px;
 }
 
-.campos-container.pais-bairro {
-  flex: 1
-  width: 1000px;
-  height: 50px;
-}
 
-.campos-container.complemento {
-  flex: 1
-  width: 800px;
-  height: 50px;
-}
-
-input#pais {
-  width: 32%; 
-  margin-right: 20px;
+input#complemento {
+  width: 33%;   
+  margin-left: 10px;
 }
 
 input#bairro {
-  width: 25%;
+  width: 20%; 
+  margin-right: 20px;
 }
-
-.campo-complemento {
-  width: 99%; 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   
+input#endereco {
+  width: 70%; 
+  margin-right: 20px;
+}
+
+.botao-salvar {
+  /* Estilos para o botão à direita do campo "NOME" */
+  background-color: white;
+  color: #fff;
+  padding: 15px;
+  margin-left: 60px; /* Define a margem à esquerda para criar espaço vertical */
+  /* Outros estilos para o botão */
+  width: 10%; 
+  height: 60px;
+  align-items: center; 
+  display: flex;
+  margin-right: 1px;
+  display: flex;
+}
+
+.botao-salvar img {
+  /* Estilos para a imagem dentro do botão */
+  margin-right: 5px; /* Adiciona um espaço entre o texto e a imagem */
+  width: 80%; 
+  height: 40px;
+  align-items: center; 
+  display: flex;
+}
+
+.botao-editar {
+  /* Estilos para o botão à direita do campo "NOME" */
+  background-color: white;
+  color: #fff;
+  padding: 15px;
+  margin-left: 60px; /* Define a margem à esquerda para criar espaço vertical */
+  /* Outros estilos para o botão */
+  width: 10%; 
+  height: 60px;
+  align-items: center; 
+  display: flex;
+  margin-right: 1px;
+  display: flex;
+}
+
+.botao-editar img {
+  /* Estilos para a imagem dentro do botão */
+  margin-right: 5px; /* Adiciona um espaço entre o texto e a imagem */
+  width: 80%; 
+  height: 40px;
+  align-items: center; 
+  display: flex;
+}
+
+
 `
