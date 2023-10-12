@@ -65,6 +65,15 @@ h1 {
   margin-top: 10px;
 }
 
+.botoes-container-usuario {
+  display: flex;
+  background-color: dark blue;
+  color: white;
+  justify-content: left;
+  margin-left: 170px;
+  margin-top: 10px;
+}
+
 .botao {
   display: flex;
   background-color: black;
@@ -72,13 +81,31 @@ h1 {
   border: none;
   padding: 10px 100px; 
   border-radius: 10px;
-  margin-left: 10px;
+  margin-left: 0px;
   font-weight: bold
   display: flex;
   flex-direction: column; /* Altera a direção do flexbox para vertical */
   align-items: center; /* Alinha os itens verticalmente (no centro) */
   font-size: 25px;
-  box-shadow: 0 0 10px rgba(1, 1, 1, 1.2);
+  box-shadow: 0 0 10px #084d6e;
+  max-width: 1200px; 
+}
+
+.botao-usuario {
+  display: flex;
+  background-color: #084d6e;
+  color: white;
+  border: none;
+  padding: 10px 100px; 
+  border-radius: 10px;
+  margin-left: 15px;
+  font-weight: bold
+  display: flex;
+  flex-direction: column; /* Altera a direção do flexbox para vertical */
+  align-items: center; /* Alinha os itens verticalmente (no centro) */
+  font-size: 25px;
+  box-shadow: 0 0 10px black;
+  max-width: 1200px; 
 }
 
 label.nome-label {
@@ -90,7 +117,7 @@ label.nome-label {
 
 label.cep-label {
   text-align: left;
-  width: 30px;
+  width: 25px;
   margin-right: 10px;
   display: flex;
 }
@@ -104,14 +131,14 @@ label.email-label {
 
 label.telefone-label {
   text-align: left;
-  width: 95px;
+  width: 98px;
   margin-right: 10px;
   display: flex;
 }
 
 label.bairro-label {
   text-align: left;
-  width: 95px;
+  width: 98px;
   margin-right: 10px;
   display: flex;
 }
@@ -166,7 +193,7 @@ input#telefone {
 
 
 input#complemento {
-  width: 33%;   
+  width: 32.5%;   
   margin-left: 10px;
 }
 
@@ -226,6 +253,11 @@ input#endereco {
   height: 40px;
   align-items: center; 
   display: flex;
+}
+
+.botoes-formulario {
+  display: flex;
+  justify-content: space-between; /* Espaço igual entre os botões */
 }
 
 

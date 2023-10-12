@@ -45,12 +45,14 @@ const Gerenciar: React.FC = () => {
         </div>
       </div>
 
-      <div className="botoes-container">
-        <button className="botao" id="botao1">Usuário</button>
+      <div className="botoes-container-usuario">
+      <div className="botoes-formulario">
+        <button className="botao-usuario" id="botao1">Usuário</button>
         <Link to="../Cadastro">
           <button className="botao" id="botao2">Cadastrar Bike</button>
         </Link>
         <button className="botao" id="botao3">Geral</button>
+      </div>
       </div>
       <div className="caixa-de-formulario">
         <form>
