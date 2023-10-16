@@ -6,9 +6,9 @@ import NotFound from "../pages/404";
 export function AppRoutes() {
     return (
         <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/gerenciamento" element={<Cadastro />} />
-        <Route path="*" element={<NotFound/>}/>
+            <Route path="/" element={<Home />} />
+            <Route path="/gerenciamento" element={<Cadastro />} />
+            <Route path="*" element={<NotFound />} />
 
         </Routes>
     )

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaSave } from 'react-icons/fa';
 import CadastrarBike from "../../controllers/cadastrarBike";
-import exemploimg from "../../assets/image2.png"
+import exemploimg from "../../assets/bike2.jpg"
 import { Box, Container, Form, ImageContainer, Input, SelectContainer, TextArea} from "./styles";
 //import { Button } from "../../components/button";
 import buscarMarcas, { Brand } from "../../controllers/buscarMarcas";

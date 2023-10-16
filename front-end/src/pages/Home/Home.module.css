@@ -1,21 +1,29 @@
 .home_container {
     background-color: #2F2F2F;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    justify-content: center;
+    width: 40%;
     padding: 4em;
+    display: inline-block;
+    justify-content: space-between;
+
+  }
+
+  .home_carousel{
+  width: 30%;
+  height: 10%;
+  margin-top: 5%;
+  display: inline-block;
+  justify-content: space-between;
   }
   
   .home_container h1 {
+    font-family: 'Urbanist', sans-serif;
     font-size: 2.5em;
     margin-bottom: 0.5em;
     color: #ffffff;
   }
   
   .home_container h1 span {
-    color: #1232A4;
+    color: #ffbb33;
     padding: 0 0.2em;
    
   }
