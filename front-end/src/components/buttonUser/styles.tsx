@@ -5,21 +5,22 @@ interface ContainerProps {
 }
 
 export const Container = styled.button<ContainerProps>`
-  width: 100%;
-  background-color: #5ca3be97;
+  width: 15%;
+  background-color: #2b627c;
   color: #ffffff;
-  height: 56px;
-  border: 0;
-  padding: 0 16px;
-  margin-top: 16px;
-  margin-bottom: 20px;
-  border-radius: 10px;
+  height: 40px;
+  border: 35;
+  border-radius: 15px;
+  margin-left: 755px;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 20px;
+  box-shadow: 2px 2px 4px rgba(14, 3, 3, 0.993);
+  font-weight: bold;
+  font-family: arial;
 
 
   &:disabled {
-    opacity: 0.5;
+    opacity: 0;
   }
 
   /* Conditional CSS style */

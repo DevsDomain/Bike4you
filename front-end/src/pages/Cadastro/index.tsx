@@ -2,14 +2,13 @@ import { useEffect, useState } from "react";
 import { FaSave } from 'react-icons/fa';
 import CadastrarBike from "../../controllers/cadastrarBike";
 import exemploimg from "../../assets/image2.png"
-import { Box, Container, Form, ImageContainer, Input, SelectContainer, TextArea } from "./styles";
+import { Box, Container, Form, ImageContainer, Input, SelectContainer, TextArea} from "./styles";
 //import { Button } from "../../components/button";
 import buscarMarcas, { Brand } from "../../controllers/buscarMarcas";
 import BuscarCategoria, { Category } from "../../controllers/buscarCategoria";
 import CadastrarMarca from "../../controllers/cadastrarMarca";
 import CadastrarCategoria from "../../controllers/cadastrarCategoria";
 import EditarBike from "../../controllers/editarBike";
-
 
 export default function Cadastro() {
   const [idUsuario, setidUsuario] = useState("");
@@ -69,7 +68,7 @@ export default function Cadastro() {
       image,
       dailyvalue,
       hourlyvalue
-
+      
     )
     if (bike === 201) {
       alert("Bicicleta cadastrada com sucesso!")
@@ -111,9 +110,6 @@ export default function Cadastro() {
               onChange={(e) => setImage(e.target.files?.[0] || null)}
             />
           </ImageContainer>
-
-
-
 
           <TextArea
             placeholder="Insira a Descrição, como a cor, tamanho, aro etc."
@@ -185,11 +181,9 @@ export default function Cadastro() {
             onClick={handleNewBike} // Ação ao clicar no ícone
             style={{ cursor: "pointer" }} // Estilo do cursor
           />
-
         </Form>
       </Box>
     </Container>
-
   );
 }
 
