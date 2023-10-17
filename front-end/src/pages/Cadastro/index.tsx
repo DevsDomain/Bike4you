@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { FaSave } from 'react-icons/fa';
 import CadastrarBike from "../../controllers/cadastrarBike";
 import exemploimg from "../../assets/image2.png"
+
+
 import { Box, Container, Form, ImageContainer, Input, SelectContainer, TextArea} from "./styles";
+
+
 //import { Button } from "../../components/button";
 import buscarMarcas, { Brand } from "../../controllers/buscarMarcas";
 import BuscarCategoria, { Category } from "../../controllers/buscarCategoria";
@@ -51,7 +55,9 @@ export default function Cadastro() {
       console.log("Erro ao buscar categorias", error);
     }
 
+
   }
+
 
   async function handleNewBike() {
     const idbrand = brand === 0 ? await handleNewBrand(newBrand) : brand
@@ -69,6 +75,10 @@ export default function Cadastro() {
       dailyvalue,
       hourlyvalue
       
+
+
+ 
+
     )
     if (bike === 201) {
       alert("Bicicleta cadastrada com sucesso!")
@@ -110,6 +120,9 @@ export default function Cadastro() {
               onChange={(e) => setImage(e.target.files?.[0] || null)}
             />
           </ImageContainer>
+
+
+
 
           <TextArea
             placeholder="Insira a Descrição, como a cor, tamanho, aro etc."
