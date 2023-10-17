@@ -16,6 +16,7 @@ export function AuthRoutes() {
             <Route path="/bikes" element={<Unauthorized />} />
             <Route path="/gerenciamento" element={<Unauthorized />} />
 
+
             <Route path="*" element={<NotFound />} />
 
         </Routes>
