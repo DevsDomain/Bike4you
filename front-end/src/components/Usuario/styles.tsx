@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const MeuEstilo = styled.div`
 
 .caixa-de-formulario {
-  width: 71%; 
+  width: 70%; 
   max-width: 1200px; 
   padding: 20px;
   background-color: #696969;

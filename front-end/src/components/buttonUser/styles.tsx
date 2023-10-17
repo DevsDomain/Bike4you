@@ -11,7 +11,7 @@ export const Container = styled.button<ContainerProps>`
   height: 40px;
   border: 35;
   border-radius: 15px;
-  margin-left: 755px;
+  margin-left: 85%;
   font-weight: 400;
   font-size: 20px;
   box-shadow: 2px 2px 4px rgba(14, 3, 3, 0.993);

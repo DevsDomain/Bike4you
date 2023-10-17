@@ -54,7 +54,7 @@ export function Usuario() {
           </div>
           <div>
             <ButtonUser loading={false}
-              title={"Editar"}
+              title={"Salvar"}
               key={0}
               onClick={editaUser}
               className="button"

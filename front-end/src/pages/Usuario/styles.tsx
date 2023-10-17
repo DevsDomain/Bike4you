@@ -16,35 +16,19 @@ h1 {
   display: flex;
 }
 
-.botoes-container-usuario {
-  display: flex;
-  background-color: dark blue;
-  color: white;
-  justify-content: left;
-  margin-left: 170px;
-  margin-top: 10px;
-}
-
 .botao {
-  display: flex;
   background-color: black;
   color: white;
   border: none;
-  padding: 10px 100px; 
+  padding: 10px 90px; 
   border-radius: 10px;
-  margin-left: 0px;
   font-weight: bold
   display: flex;
-  flex-direction: column; /* Altera a direção do flexbox para vertical */
-  align-items: center; /* Alinha os itens verticalmente (no centro) */
+  flex-direction: row-reverse; 
   font-size: 25px;
   box-shadow: 0 0 10px #084d6e;
   max-width: 1200px; 
 }
 
-.botoes-formulario {
-  display: flex;
-  justify-content: space-between; /* Espaço igual entre os botões */
-}
 
 `
