@@ -1,33 +1,47 @@
 
 import styled from "styled-components";
+
+
 export const MeuEstilo = styled.div`
 
-.imagem-container {
-  margin-top: 20px; /* Margem no topo da imagem */
-  margin-left: 70px; /* Margem à esquerda da imagem */
-  margin-bottom: 30px;
-  display: flex;
-}
+#gerenciarText{
+  text-align: center;
+  width: 100vw;
+  margin: 1em auto;
 
-h1 {
-  font-size: 30px; /* Tamanho do texto */
+  font-size: 34px;
   font-weight: bold; 
   font-family: Arial, Verdana, sans-serif; 
-  display: flex;
 }
+.container {
+  width: 100vw;
+  margin: 1em auto;
+  display: flex;
+  
+
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+.menu{
+  width: 50vw;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1em;
+}
+
+
 
 .botao {
   background-color: black;
   color: white;
   border: none;
-  padding: 10px 90px; 
+  padding: 0.75em 1em; 
   border-radius: 10px;
-  font-weight: bold
-  display: flex;
-  flex-direction: row-reverse; 
-  font-size: 25px;
+  font-weight: bold;
+  font-size: 21px;
   box-shadow: 0 0 10px #084d6e;
-  max-width: 1200px; 
+
 }
 
 

@@ -3,12 +3,9 @@ import styled from "styled-components";
 export const MeuEstilo = styled.div`
 
 .caixa-de-formulario {
-  width: 70%; 
-  max-width: 1200px; 
-  padding: 20px;
+  padding: 1em;
   background-color: #696969;
   border-radius: 10px;
-  margin-left: 160px;
   display: flex; 
   line-height: 3;
   flex-direction: column; 
@@ -24,8 +21,7 @@ label.nome-label {
 
 label.cep-label {
   text-align: left;
-  width: 24px;
-  margin-right: 10px;
+  width: 50px;
   display: flex;
 }
 
@@ -59,9 +55,9 @@ label.endereco-label {
 
 label.complemento-label {
   text-align: left;
-  width: 113px;
-  margin-right: 10px;
+  width: 100px;
   display: flex;
+  justify-content: space-evenly;
 }
 
 .campos-container {
@@ -86,16 +82,16 @@ h2 {
 }
 
 input#cep {
-  width: 32%;
+  width: 40%;
 }
 
 input#telefone {
-  width: 32%; 
+  width: 20%; 
   margin-right: 20px;
 }
 
 input#complemento {
-  width: 33%;   
+  width: 20%;   
   margin-left: 10px;
 }
 
