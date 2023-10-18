@@ -4,6 +4,7 @@ import controller from "../controllers/UserController";
 const routes = Router();
 
 routes.post('/', controller.create);
+routes.post('/logar',controller.login)
 routes.get('/', controller.findUser);
 routes.delete('/', controller.delete);
 routes.put('/', controller.update);

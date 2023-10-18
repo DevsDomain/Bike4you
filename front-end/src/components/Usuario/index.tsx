@@ -1,31 +1,79 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MeuEstilo } from "./styles";
 import editarUsuario from "../../controllers/editarUsuario";
 import { ButtonUser } from '../../components/buttonUser';
+import { userEndpoint } from "../../service/user";
 
 
 export function Usuario() {
-  const [usuario, setUsuario] = useState("");
+  const [formUser, setFormUser] = useState({
+    userName: "",
+    mail: "",
+    phone: "",
+    cep: "",
+    numero_residencial: ""
+  })
   const [userName, setNome] = useState("");
   const [mail, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [cep, setCep] = useState("");
   const [bairro, setBairro] = useState("");
-  const [adress, setAdress] = useState("");
-  const [complemento, setComplemento] = useState("");
+  const [cidade, setCidade] = useState("");
+  const [numero_residencial, setNumero] = useState("");
+
+  const id = localStorage.getItem('idUsuario')
+
 
 
   const editaUser = async function () {
-    const editado = await editarUsuario({ id: 1, userName, mail, phone, cep, adress, bairro, complemento })
-    if(editado){
-      alert("Usuário editado com sucesso!")
-    }
-    else{
-      alert("Erro ao cadastrar usuário")
-    }
+    await editarUsuario({ id: id, userName, mail, phone, cep, numero_residencial })
+
   }
 
 
+  useEffect(() => {
+    async function buscarUser() {
+      const user = (await fetch(`${userEndpoint}?id=${id}`)).json()
+      return user
+
+    }
+
+    buscarUser().then(({ mail, userName, phone, cep, numero_residencial }) => {
+      setFormUser({ userName, mail, phone, cep, numero_residencial })
+      setNome(userName)
+      setEmail(mail)
+      setPhone(phone)
+      setCep(cep)
+      setNumero(numero_residencial)
+      console.log(mail, userName, phone, cep, numero_residencial)
+
+    })
+
+
+  }, [id])
+
+
+  useEffect(() => {
+    async function buscarCep() {
+      const cepData = (await fetch(`https://viacep.com.br/ws/${cep}/json`)).json()
+      return cepData
+
+    }
+    try {
+      if (cep.length === 8 && RegExp('^[0-9]*$').test(cep)) {
+
+
+        buscarCep().then((res) => {
+          setBairro(res.bairro);
+          setCidade(res.localidade);
+
+
+        })
+      }
+    } catch (error) {
+      alert("Cep não encontrado!")
+    }
+  }, [cep])
 
 
   return (
@@ -36,27 +84,27 @@ export function Usuario() {
             <label className="nome-label" htmlFor="nome">
               Nome:
             </label>
-            <input type="text" id="nome" name="nome" onChange={e => setNome(e.target.value)} />
+            <input type="text" id="nome" name="nome" placeholder={formUser.userName} onChange={e => setNome(e.target.value)} />
           </div>
           <div className="campos-container">
             <label className="email-label" htmlFor="email">Email:</label>
-            <input type="text" id="email" name="email" onChange={e => setEmail(e.target.value)} />
+            <input type="text" id="email" name="email" placeholder={formUser.mail} onChange={e => setEmail(e.target.value)} />
           </div>
           <div className="campos-container">
-            <label className="telefone-label" htmlFor="telefone">Telefone:</label>
-            <input type="text" id="telefone" name="telefone" onChange={e => setPhone(e.target.value)} />
+            <label className="telefone-label" htmlFor="telefone" placeholder={formUser.phone}>Telefone:</label>
+            <input type="text" id="telefone" name="telefone" placeholder={formUser.phone} onChange={e => setPhone(e.target.value)} />
             <label className="cep-label" htmlFor="cep">CEP:</label>
-            <input type="text" id="cep" name="cep" onChange={e => setCep(e.target.value)} />
+            <input type="text" id="cep" name="cep" placeholder={cep} onChange={e => setCep(e.target.value)} />
           </div>
           <div className="campos-container">
             <label className="endereco-label" htmlFor="endereco">Cidade:</label>
-            <input type="text" id="endereco" name="endereco" onChange={e => setAdress(e.target.value)} />
+            <input type="text" id="endereco" name="endereco" placeholder={cidade} disabled onChange={e => setCidade(e.target.value)} />
           </div>
           <div className="campos-container">
             <label className="bairro-label" htmlFor="bairro">Bairro:</label>
-            <input type="text" id="bairro" name="bairro" onChange={e => setBairro(e.target.value)} />
+            <input type="text" id="bairro" name="bairro" placeholder={bairro} disabled onChange={e => setBairro(e.target.value)} />
             <label className="complemento-label" htmlFor="complemento">Número:</label>
-            <input type="text" id="complemento" name="complemento" onChange={e => setComplemento(e.target.value)} />
+            <input type="text" id="complemento" name="complemento" placeholder={numero_residencial} required onChange={e => setNumero(e.target.value)} />
           </div>
           <div>
             <ButtonUser loading={false}

@@ -26,11 +26,10 @@ function AuthProvider({ children }) {
     async function Logar(mail: string, password: string, setLoading: Function, google?: boolean): Promise<Response | number> {
         try {
             if (mail !== "" && password !== "") {
-                const response = await api.get('/usuario', {
-                    params: {
-                        mail: mail,
-                        password: password,
-                    }
+                const response = await api.post('/usuario/logar', {
+                    mail: mail,
+                    password: password,
+
                 });
                 setLoading(true);
                 setUser(response.data.id)
