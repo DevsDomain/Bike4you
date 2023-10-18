@@ -78,8 +78,29 @@ class UserController {
 
     public async findUser(req: Request, res: Response): Promise<Response> {
         try {
-            const mail = String(req.query.mail);
-            const password = String(req.query.password)
+            let id = Number(req.query.id);
+
+            const user = await AppDataSource.manager.findOne(User, { where: { id } });
+
+            if (!user) {
+                return res.status(401).json({ message: "Usuário não encontrado!" })
+            }
+
+            return res.status(201).json({
+                id: user.id,
+                mail: user.mail,
+                userName: user.userName,
+                phone: user.phone
+            })
+
+
+        } catch (error) { return res.status(401).json({ message: "Login incorreto!" }) }
+    }
+
+
+    public async login(req: Request, res: Response): Promise<Response> {
+        try {
+            const { mail, password } = req.body
             const user = await AppDataSource.manager.findOne(User, { where: { mail: mail, password: password } });
 
             if (!user) {
@@ -96,6 +117,8 @@ class UserController {
 
         } catch (error) { return res.status(401).json({ message: "Login incorreto!" }) }
     }
+
+
 
     public async delete(req: Request, res: Response): Promise<Response> {
         const { id } = req.body;
