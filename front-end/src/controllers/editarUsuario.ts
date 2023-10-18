@@ -10,10 +10,21 @@ export default async function editarUsuario({ id, ...rest }): Promise<Response |
             },
             body: JSON.stringify({
                 id, userName: rest.userName || null,
-                mail: rest.mail || null, password: rest.password || null,
-                phone: rest.phone || null
+                mail: rest.mail || null,
+                password: rest.password || null,
+                phone: rest.phone || null,
+                cep: rest.cep || null,
+                numero_residencial: rest.numero_residencial || null
+
             })
         })
+        if (editUser.status === 201) {
+            alert("Usuário editado com sucesso!")
+        }
+        else {
+            alert("Erro ao editar usuário")
+
+        }
         return editUser.json()
     }
     catch (error) {

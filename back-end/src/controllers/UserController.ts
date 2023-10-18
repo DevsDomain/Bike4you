@@ -49,31 +49,29 @@ class UserController {
 
 
     public async update(req: Request, res: Response): Promise<Response> {
-        const { id, userName, mail, password, phone } = req.body;
-        //obtém o usuário na tabela users
+        let { id, userName, mail, password, phone, cep, numero_residencial } = req.body;
+
+
         const user = await AppDataSource.manager.findOneBy(User, { id });
         if (!user) { //verifica se o usuário existe
             return res.json({ error: "Usuário inexistente", props: "user" });
         }
-        user.userName = userName;
-        user.mail = mail;
-        user.phone = phone;
-        const r = await AppDataSource.manager.save(User, user).catch(e => {
-            // testa se o userName é repetido
-            if (/(userName)[\s\S]+(already exists)/.test(e.detail)) {
-                return { error: 'Codinome já existe', props: "userName" };
-            }
 
-            else if (/(mail)[\s\S]+(already exists)/.test(e.detail)) {
-                return { error: 'E-mail já existe', props: "mail" };
-            }
 
-            else if (/(phone)[\s\S]+(already exists)/.test(e.detail)) {
-                return { error: 'Telefone já existe', props: "phone" };
-            }
-            return { error: e.message, props: "" };
-        });
-        return res.json(r);
+        userName === null ? userName = user.userName : userName;
+        mail === null ? mail = user.mail : mail;
+        phone === null ? phone = user.phone : phone
+        password === null ? password = user.password : password
+        cep === null ? cep = user.cep : cep
+        numero_residencial === null ? numero_residencial = user.numero_residencial : numero_residencial
+
+        try {
+            await AppDataSource.manager.update(User, id, { userName, mail, password, phone, cep, numero_residencial })
+            return res.status(201).json({ userName, mail, phone, cep, numero_residencial })
+
+        } catch (error) {
+            return res.status(401).json({ error })
+        }
     }
 
     public async findUser(req: Request, res: Response): Promise<Response> {
@@ -90,7 +88,9 @@ class UserController {
                 id: user.id,
                 mail: user.mail,
                 userName: user.userName,
-                phone: user.phone
+                phone: user.phone,
+                cep: user.cep,
+                numero_residencial: user.numero_residencial
             })
 
 

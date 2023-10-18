@@ -10,28 +10,24 @@ export function Usuario() {
     userName: "",
     mail: "",
     phone: "",
+    cep: "",
+    numero_residencial: ""
   })
   const [userName, setNome] = useState("");
   const [mail, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [cep, setCep] = useState("12228080");
+  const [cep, setCep] = useState("");
   const [bairro, setBairro] = useState("");
   const [cidade, setCidade] = useState("");
-  const [complemento, setComplemento] = useState("");
+  const [numero_residencial, setNumero] = useState("");
 
   const id = localStorage.getItem('idUsuario')
 
 
 
   const editaUser = async function () {
-    const editado = await editarUsuario({ id: id, userName, mail, phone, cep, cidade, bairro, complemento })
-    if (editado !== 401) {
-      alert("Usuário editado com sucesso!")
+    await editarUsuario({ id: id, userName, mail, phone, cep, numero_residencial })
 
-    }
-    else {
-      alert("Erro ao cadastrar usuário")
-    }
   }
 
 
@@ -42,11 +38,15 @@ export function Usuario() {
 
     }
 
-    buscarUser().then(({ id, mail, userName, phone }) => {
-      setFormUser({ userName, mail, phone })
+    buscarUser().then(({ mail, userName, phone, cep, numero_residencial }) => {
+      setFormUser({ userName, mail, phone, cep, numero_residencial })
       setNome(userName)
       setEmail(mail)
       setPhone(phone)
+      setCep(cep)
+      setNumero(numero_residencial)
+      console.log(mail, userName, phone, cep, numero_residencial)
+
     })
 
 
@@ -59,9 +59,9 @@ export function Usuario() {
       return cepData
 
     }
-    console.log(cep.length)
-    if (cep.length === 8 && RegExp('^[0-9]*$').test(cep)) {
-      try {
+    try {
+      if (cep.length === 8 && RegExp('^[0-9]*$').test(cep)) {
+
 
         buscarCep().then((res) => {
           setBairro(res.bairro);
@@ -69,14 +69,11 @@ export function Usuario() {
 
 
         })
-      } catch (error) {
-        alert("Cep não encontrado!")
       }
+    } catch (error) {
+      alert("Cep não encontrado!")
     }
   }, [cep])
-
-
-
 
 
   return (
@@ -107,7 +104,7 @@ export function Usuario() {
             <label className="bairro-label" htmlFor="bairro">Bairro:</label>
             <input type="text" id="bairro" name="bairro" placeholder={bairro} disabled onChange={e => setBairro(e.target.value)} />
             <label className="complemento-label" htmlFor="complemento">Número:</label>
-            <input type="text" id="complemento" name="complemento" required onChange={e => setComplemento(e.target.value)} />
+            <input type="text" id="complemento" name="complemento" placeholder={numero_residencial} required onChange={e => setNumero(e.target.value)} />
           </div>
           <div>
             <ButtonUser loading={false}

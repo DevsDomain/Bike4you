@@ -18,7 +18,13 @@ export class User {
   @Column({ nullable: false, length: 50, unique: false })
   password: string;
 
-  
+  @Column({ nullable: true, length: 8, unique: false })
+  cep: string
+
+  @Column({ nullable: true, length: 5, unique: false })
+  numero_residencial: string
+
+
 
   @OneToMany(() => Rent, (rent) => rent.bike)
   rents: Rent[];
