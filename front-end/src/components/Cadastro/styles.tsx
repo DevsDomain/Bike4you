@@ -1,12 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background-color: #2F2F2F;
-  
+
   h3{
     text-align: center;
   }
@@ -14,15 +10,11 @@ export const Container = styled.div`
 `;
 
 export const Box = styled.div`
-  max-width: 800px;
-  margin: auto;
   border-radius: 10px;
   background-color: #B6B6B6;
   padding: 20px;
 
-  @media (max-width: 768px) {
-    margin: 100px 20px;
-  }
+
 `;
 
 export const Form = styled.form`
@@ -110,4 +102,3 @@ export const Button = styled.button`
     background-color: #0056b3;
   }
 `;
-
