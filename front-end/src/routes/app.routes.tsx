@@ -3,8 +3,6 @@ import Usuario from "../pages/Usuario";
 import Home from "../pages/Home";
 import NotFound from "../pages/404";
 import Cadastro from "../pages/Cadastro";
-import Home from "../pages/Home";
-import NotFound from "../pages/404";
 
 
 export function AppRoutes() {
