@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Usuario from "../pages/Usuario";
 import Home from "../pages/Home";
 import NotFound from "../pages/404";
-import Cadastro from "../pages/Cadastro";
+import Cadastro from "../components/Cadastro";
 
 
 export function AppRoutes() {
