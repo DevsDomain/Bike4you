@@ -1,7 +1,7 @@
 import { MeuEstilo } from "./styles";
 import { useState } from 'react'
 import { Usuario } from "../../components/Usuario";
-import Cadastro from "../Cadastro";
+import Cadastro from "../../components/Cadastro";
 import { useAuth } from "../../hooks/auth";
 
 function Gerenciar() {

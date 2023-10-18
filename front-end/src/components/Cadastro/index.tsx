@@ -2,17 +2,13 @@ import { useEffect, useState } from "react";
 import { FaSave } from 'react-icons/fa';
 import CadastrarBike from "../../controllers/cadastrarBike";
 import exemploimg from "../../assets/image2.png"
-
-
 import { Box, Container, Form, ImageContainer, Input, SelectContainer, TextArea} from "./styles";
-
-
 //import { Button } from "../../components/button";
 import buscarMarcas, { Brand } from "../../controllers/buscarMarcas";
 import BuscarCategoria, { Category } from "../../controllers/buscarCategoria";
 import CadastrarMarca from "../../controllers/cadastrarMarca";
 import CadastrarCategoria from "../../controllers/cadastrarCategoria";
-import EditarBike from "../../controllers/editarBike";
+
 
 export default function Cadastro() {
   const [idUsuario, setidUsuario] = useState("");
@@ -55,30 +51,23 @@ export default function Cadastro() {
       console.log("Erro ao buscar categorias", error);
     }
 
-
   }
-
 
   async function handleNewBike() {
     const idbrand = brand === 0 ? await handleNewBrand(newBrand) : brand
     const idcategory = category === 0 ? await handleNewCategory(newCategory) : category
 
-    // TESTEEEEEEE APAGAR DEPOIS
-    // PASSAR o idBike a ser editada! 
-    let id = '63'
-    const bike = await EditarBike(
-      id,
+ 
+    const bike = await CadastrarBike(
+ 
       idbrand,
       idcategory,
       description,
       image,
       dailyvalue,
-      hourlyvalue
+      hourlyvalue,
+      idUsuario
       
-
-
- 
-
     )
     if (bike === 201) {
       alert("Bicicleta cadastrada com sucesso!")
@@ -120,9 +109,6 @@ export default function Cadastro() {
               onChange={(e) => setImage(e.target.files?.[0] || null)}
             />
           </ImageContainer>
-
-
-
 
           <TextArea
             placeholder="Insira a Descrição, como a cor, tamanho, aro etc."
@@ -199,4 +185,3 @@ export default function Cadastro() {
     </Container>
   );
 }
-
