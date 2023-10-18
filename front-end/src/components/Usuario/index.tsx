@@ -14,9 +14,9 @@ export function Usuario() {
   const [userName, setNome] = useState("");
   const [mail, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [cep, setCep] = useState("");
+  const [cep, setCep] = useState("12228080");
   const [bairro, setBairro] = useState("");
-  const [adress, setAdress] = useState("");
+  const [cidade, setCidade] = useState("");
   const [complemento, setComplemento] = useState("");
 
   const id = localStorage.getItem('idUsuario')
@@ -24,7 +24,7 @@ export function Usuario() {
 
 
   const editaUser = async function () {
-    const editado = await editarUsuario({ id: id, userName, mail, phone, cep, adress, bairro, complemento })
+    const editado = await editarUsuario({ id: id, userName, mail, phone, cep, cidade, bairro, complemento })
     if (editado !== 401) {
       alert("Usuário editado com sucesso!")
 
@@ -36,13 +36,11 @@ export function Usuario() {
 
 
   useEffect(() => {
-
     async function buscarUser() {
       const user = (await fetch(`${userEndpoint}?id=${id}`)).json()
       return user
 
     }
-
 
     buscarUser().then(({ id, mail, userName, phone }) => {
       setFormUser({ userName, mail, phone })
@@ -53,6 +51,29 @@ export function Usuario() {
 
 
   }, [id])
+
+
+  useEffect(() => {
+    async function buscarCep() {
+      const cepData = (await fetch(`https://viacep.com.br/ws/${cep}/json`)).json()
+      return cepData
+
+    }
+    console.log(cep.length)
+    if (cep.length === 8 && RegExp('^[0-9]*$').test(cep)) {
+      try {
+
+        buscarCep().then((res) => {
+          setBairro(res.bairro);
+          setCidade(res.localidade);
+
+
+        })
+      } catch (error) {
+        alert("Cep não encontrado!")
+      }
+    }
+  }, [cep])
 
 
 
@@ -76,17 +97,17 @@ export function Usuario() {
             <label className="telefone-label" htmlFor="telefone" placeholder={formUser.phone}>Telefone:</label>
             <input type="text" id="telefone" name="telefone" placeholder={formUser.phone} onChange={e => setPhone(e.target.value)} />
             <label className="cep-label" htmlFor="cep">CEP:</label>
-            <input type="text" id="cep" name="cep" onChange={e => setCep(e.target.value)} />
+            <input type="text" id="cep" name="cep" placeholder={cep} onChange={e => setCep(e.target.value)} />
           </div>
           <div className="campos-container">
             <label className="endereco-label" htmlFor="endereco">Cidade:</label>
-            <input type="text" id="endereco" name="endereco" onChange={e => setAdress(e.target.value)} />
+            <input type="text" id="endereco" name="endereco" placeholder={cidade} disabled onChange={e => setCidade(e.target.value)} />
           </div>
           <div className="campos-container">
             <label className="bairro-label" htmlFor="bairro">Bairro:</label>
-            <input type="text" id="bairro" name="bairro" onChange={e => setBairro(e.target.value)} />
+            <input type="text" id="bairro" name="bairro" placeholder={bairro} disabled onChange={e => setBairro(e.target.value)} />
             <label className="complemento-label" htmlFor="complemento">Número:</label>
-            <input type="text" id="complemento" name="complemento" onChange={e => setComplemento(e.target.value)} />
+            <input type="text" id="complemento" name="complemento" required onChange={e => setComplemento(e.target.value)} />
           </div>
           <div>
             <ButtonUser loading={false}
