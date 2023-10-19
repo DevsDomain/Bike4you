@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   background-color: #2F2F2F;
-
+  overflow: visible;
   h3{
     text-align: center;
   }
@@ -12,7 +12,8 @@ export const Container = styled.div`
 export const Box = styled.div`
   border-radius: 10px;
   background-color: #B6B6B6;
-  padding: 20px;
+  padding: 1em;
+  line-height: 3;
 
 
 `;
@@ -25,6 +26,7 @@ export const Form = styled.form`
   text-align: stretch; /* Alinhar o texto à esquerda */
 
   margin-top: 20px;
+  margin-right: 30px;
 `;
 
 export const ImageContainer = styled.div`
@@ -45,10 +47,12 @@ export const Input = styled.input`
   height: 30px;
   width: 100%;
   margin-top: 12px;
-  padding: 12px;
+  padding: 24px;
+  margin-right: 5em;
   color: #000000;
   background: #ffffff;
   border: 0;
+  align-items: center;
   border-color: transparent;
 
   &::placeholder {
