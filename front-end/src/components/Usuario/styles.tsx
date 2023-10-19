@@ -4,110 +4,104 @@ export const MeuEstilo = styled.div`
 
 .caixa-de-formulario {
   padding: 1em;
-  background-color: #696969;
-  border-radius: 10px;
+  background-color: #B6B6B6;
+  border-radius: 12px;
   display: flex; 
   line-height: 3;
   flex-direction: column; 
-  box-shadow: 5 5 10px rgba(1, 1, 1, 1.2);
+  color: black
 }
 
 label.nome-label {
   text-align: left;
-  width: 101px;
-  margin-right: 10px;
+  width: 80px;
   display: flex;
+  font-family: helvetica;
 }
 
 label.cep-label {
   text-align: left;
   width: 50px;
   display: flex;
+  font-family: helvetica;
 }
 
 label.email-label {
   text-align: left;
-  width: 101px;
-  margin-right: 10px;
+  width: 80px;
   display: flex;
+  font-family: helvetica;
 }
 
 label.telefone-label {
   text-align: left;
-  width: 96px;
-  margin-right: 14px;
+  width: 80px;
   display: flex;
+  font-family: helvetica;
 }
 
 label.bairro-label {
   text-align: left;
-  width: 101px;
-  margin-right: 10px;
+  width: 80px;
   display: flex;
+  font-family: helvetica;
 }
 
-label.endereco-label {
+label.cidade-label {
   text-align: left;
-  width: 101px;
-  margin-right: 10px;
+  width: 80px;
   display: flex;
+  font-family: helvetica;
 }
 
-label.complemento-label {
+label.numero-label {
   text-align: left;
-  width: 100px;
+  width: 30px;
   display: flex;
   justify-content: space-evenly;
+  font-family: helvetica;
 }
 
 .campos-container {
   align-items: center; 
-  margin-bottom: 5px; 
   display: flex;
+  margin-bottom: 5px;
+
 }
 
 /* Estilos para o campo de entrada de texto */
 input[type="text"] {
-  width: 70%; 
+  width: 75%; 
   padding: 10px;
-  border: 1px solid #ccc;
   height: 40px; 
   display: flex;
-  box-shadow: 0 0 10px rgba(0, 0, 1, 1.2);
-}
-
-h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
+  background-color: #fffffffd;
+  border: 1px solid #cac7c7;
+  border-radius: 5px;
 }
 
 input#cep {
-  width: 40%;
+  width: 22%;
 }
 
 input#telefone {
-  width: 20%; 
+  width: 40%; 
   margin-right: 20px;
 }
 
-input#complemento {
+input#numero {
   width: 20%;   
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 input#bairro {
-  width: 20%; 
+  width: 42%; 
   margin-right: 20px;
 }
   
-input#endereco {
-  width: 70%; 
+input#cidade {
+  width: 75%; 
   margin-right: 20px;
 }
 
-.botoes-formulario {
-  display: flex;
-  justify-content: space-between; /* Espaço igual entre os botões */
-}
-
-`
+ `

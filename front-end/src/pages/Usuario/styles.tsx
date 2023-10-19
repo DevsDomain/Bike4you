@@ -9,6 +9,7 @@ export const MeuEstilo = styled.div`
   width: 100vw;
   margin: 1em auto;
 
+
   font-size: 34px;
   font-weight: bold; 
   font-family: Arial, Verdana, sans-serif; 
@@ -17,6 +18,7 @@ export const MeuEstilo = styled.div`
   width: 100vw;
   margin: 1em auto;
   display: flex;
+
   
 
   align-items: center;
@@ -24,23 +26,23 @@ export const MeuEstilo = styled.div`
   flex-direction: column;
 }
 .menu{
-  width: 50vw;
+  width: 60vw;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   margin-bottom: 1em;
+  
 }
 
 
 
 .botao {
-  background-color: black;
+  background-color: #0f0f0fca;
   color: white;
-  border: none;
-  padding: 0.75em 1em; 
+  padding: 0.73em 3em; 
   border-radius: 10px;
   font-weight: bold;
   font-size: 21px;
-  box-shadow: 0 0 10px #084d6e;
+  box-shadow: 0 0 10px #4e4e52;
 
 }
 
