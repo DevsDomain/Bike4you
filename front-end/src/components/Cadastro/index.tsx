@@ -97,7 +97,6 @@ export default function Cadastro() {
   return (
     <Container>
       <Box>
-        <h3>Cadastrar Bike</h3>
         <Form id="form" encType="multipart/form-data">
           <ImageContainer>
             <img src={exemploimg} alt="Exemplo" />
