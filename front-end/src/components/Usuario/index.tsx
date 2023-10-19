@@ -91,11 +91,11 @@ export function Usuario() {
           </div>
           <div className="campos-container">
             <label className="cidade-label" htmlFor="cidade">Cidade:</label>
-            <input type="text" id="cidade" name="cidade" placeholder={cidade} disabled onChange={e => setCidade(e.target.value)} />
+            <input type="text2" id="cidade" name="cidade" placeholder={cidade} disabled onChange={e => setCidade(e.target.value)} />
           </div>
           <div className="campos-container">
             <label className="bairro-label" htmlFor="bairro">Bairro:</label>
-            <input type="text" id="bairro" name="bairro" placeholder={bairro} disabled onChange={e => setBairro(e.target.value)} />
+            <input type="text2" id="bairro" name="bairro" placeholder={bairro} disabled onChange={e => setBairro(e.target.value)} />
             <label className="numero-label" htmlFor="numero">Número:</label>
             <input type="text" id="numero" name="numero" placeholder={numero_residencial} required onChange={e => setNumero(e.target.value)} />
           </div>

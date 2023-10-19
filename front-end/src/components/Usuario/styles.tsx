@@ -9,7 +9,6 @@ export const MeuEstilo = styled.div`
   display: flex; 
   line-height: 3;
   flex-direction: column; 
-  color: black
 }
 
 label.nome-label {
@@ -17,6 +16,7 @@ label.nome-label {
   width: 80px;
   display: flex;
   font-family: helvetica;
+  color: black
 }
 
 label.cep-label {
@@ -24,6 +24,7 @@ label.cep-label {
   width: 50px;
   display: flex;
   font-family: helvetica;
+  color: black
 }
 
 label.email-label {
@@ -31,6 +32,7 @@ label.email-label {
   width: 80px;
   display: flex;
   font-family: helvetica;
+  color: black
 }
 
 label.telefone-label {
@@ -38,6 +40,7 @@ label.telefone-label {
   width: 80px;
   display: flex;
   font-family: helvetica;
+  color: black
 }
 
 label.bairro-label {
@@ -45,6 +48,7 @@ label.bairro-label {
   width: 80px;
   display: flex;
   font-family: helvetica;
+  color:  #393a3f;
 }
 
 label.cidade-label {
@@ -52,6 +56,7 @@ label.cidade-label {
   width: 80px;
   display: flex;
   font-family: helvetica;
+  color: #393a3f;
 }
 
 label.numero-label {
@@ -60,6 +65,7 @@ label.numero-label {
   display: flex;
   justify-content: space-evenly;
   font-family: helvetica;
+  color: black
 }
 
 .campos-container {
@@ -75,8 +81,19 @@ input[type="text"] {
   padding: 10px;
   height: 40px; 
   display: flex;
-  background-color: #fffffffd;
+  background-color: #FFFF;
   border: 1px solid #cac7c7;
+  border-radius: 5px;
+}
+
+/* Estilos para o campo de entrada de texto */
+input[type="text2"] {
+  width: 75%; 
+  padding: 10px;
+  height: 40px; 
+  display: flex;
+  background-color: #dddeeb;
+  border: 1px solid #d0d2e7;
   border-radius: 5px;
 }
 
@@ -97,6 +114,7 @@ input#numero {
 input#bairro {
   width: 42%; 
   margin-right: 20px;
+  color: red;
 }
   
 input#cidade {
