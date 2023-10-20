@@ -3,7 +3,7 @@ import { AppRoutes } from './app.routes';
 import { AuthRoutes } from './auth.routes';
 import { useAuth } from '../hooks/auth';
 import Navbar from '../components/Navbar/Navbar';
-
+import Footer from '../components/Footer/Footer'
 
 export function Routes() {
     const { user } = useAuth();
@@ -13,6 +13,7 @@ export function Routes() {
             <Navbar />
 
             {user ? <AppRoutes /> : <AuthRoutes />}
+            <Footer />
         </BrowserRouter >
     )
 }
