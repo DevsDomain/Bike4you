@@ -1,7 +1,7 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class Default1696875815235 implements MigrationInterface {
-    name = 'Default1696875815235'
+export class Default1697683322226 implements MigrationInterface {
+    name = 'Default1697683322226'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`CREATE TABLE "adressbikes" ("id" SERIAL NOT NULL, "cep" character varying(15) NOT NULL, "number" integer NOT NULL, CONSTRAINT "PK_5eb74dd50368c0859597aec805d" PRIMARY KEY ("id"))`);
@@ -11,7 +11,7 @@ export class Default1696875815235 implements MigrationInterface {
         await queryRunner.query(`CREATE TYPE "public"."rents_ownervaluation_enum" AS ENUM('1', '2', '3', '4', '5')`);
         await queryRunner.query(`CREATE TYPE "public"."rents_clientvaluation_enum" AS ENUM('1', '2', '3', '4', '5')`);
         await queryRunner.query(`CREATE TABLE "rents" ("id" SERIAL NOT NULL, "date" date NOT NULL, "ownervaluation" "public"."rents_ownervaluation_enum" NOT NULL, "clientvaluation" "public"."rents_clientvaluation_enum", "idbike" integer NOT NULL, "idowner" integer NOT NULL, "idclient" integer NOT NULL, CONSTRAINT "PK_43a9961f1448a8d75f9b25156ea" PRIMARY KEY ("id"))`);
-        await queryRunner.query(`CREATE TABLE "users" ("id" SERIAL NOT NULL, "userName" character varying(50) NOT NULL, "mail" character varying(50) NOT NULL, "phone" character varying(20), "password" character varying(50) NOT NULL, CONSTRAINT "UQ_2e5b50f4b7c081eceea476ad128" UNIQUE ("mail"), CONSTRAINT "UQ_a000cca60bcf04454e727699490" UNIQUE ("phone"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))`);
+        await queryRunner.query(`CREATE TABLE "users" ("id" SERIAL NOT NULL, "userName" character varying(50) NOT NULL, "mail" character varying(50) NOT NULL, "phone" character varying(20), "password" character varying(50) NOT NULL, "cep" character varying(8), "numero_residencial" character varying(5), CONSTRAINT "UQ_2e5b50f4b7c081eceea476ad128" UNIQUE ("mail"), CONSTRAINT "UQ_a000cca60bcf04454e727699490" UNIQUE ("phone"), CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "bikes" ("id" SERIAL NOT NULL, "description" character varying(200), "hourlyvalue" numeric(10,2), "dailyvalue" numeric(10,2), "idbrand" integer, "idcategory" integer, "iduser" integer, CONSTRAINT "PK_5237c1fcb162998a0d31e640814" PRIMARY KEY ("id"))`);
         await queryRunner.query(`ALTER TABLE "photos" ADD CONSTRAINT "FK_c8600b91d8a0fae46ff891e257a" FOREIGN KEY ("idbike") REFERENCES "bikes"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);
         await queryRunner.query(`ALTER TABLE "rents" ADD CONSTRAINT "FK_d52f379295e0bf7b349860737c3" FOREIGN KEY ("idbike") REFERENCES "bikes"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);

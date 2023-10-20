@@ -6,17 +6,18 @@ interface ContainerProps {
 
 export const Container = styled.button<ContainerProps>`
   width: 15%;
-  background-color: #2b627c;
+  background-color: #303131;
   color: #ffffff;
   height: 40px;
-  border: 35;
-  border-radius: 15px;
-  margin-left: 85%;
+  border: 20;
+  border-radius: 10px;
+  margin-left: 75%;
+  margin-bottom: 0%;
   font-weight: 400;
   font-size: 20px;
-  box-shadow: 2px 2px 4px rgba(14, 3, 3, 0.993);
+  box-shadow: 2px 2px 4px rgb(114, 117, 126);
   font-weight: bold;
-  font-family: arial;
+  font-family: helvetica;
 
 
   &:disabled {
