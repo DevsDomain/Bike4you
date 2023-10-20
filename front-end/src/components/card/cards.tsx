@@ -1,67 +1,55 @@
-//import { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { StyledCard } from './cards-modules';
 import Bike from '../../assets/bike1.jpg';
-//import axios from "axios";
+import { bikeEndpoint } from '../../service/bike';
+import { useEffect, useState } from "react";
 
+const filepath = "http://localhost:3026/foto/public/"
 
-
+interface BikeInterface {
+  id: number,
+  hourlyvalue: string,
+  category: string,
+  brand: string,
+  photos: { filename: string }
+}
 
 function CardBike() {
-/* 
-  const [idUsuario, setidUsuario] = useState("");
-
-const url = `https://localhost:3026/${bikes}`;
-const obterBike = () => {
-  axios
-  .get(url)
-  //o conteúdo da resposta da requisição será colocada no objeto data,
-  //por este motivo fez-se a desestruturação
-  .then( r => {
-    console.log(r);
-    return r;
-  })
-  .then(({ data }) => {
-    setResposta(JSON.stringify(data));
-    setLogadouro(JSON.stringify(data.logradouro));
-  });
-};
-}; 
+  const [bikes, setBikes] = useState<Array<BikeInterface>>([]);
 
   useEffect(() => {
-    setidUsuario(JSON.parse(localStorage.getItem("idUsuario") || ""));
-  
-    if (idUsuario) {
-      setidUsuario(idUsuario);
+    async function BuscarBikes() {
+      const response = await fetch(bikeEndpoint);
+      const data = await response.json();
+      const formattedBikes = data.map(({ id, hourlyvalue, brand, category, photos }) => ({
+        id,
+        hourlyvalue,
+        brand: brand.name,
+        category: category.name,
+        photos: photos
+      }));
+      setBikes(formattedBikes);
     }
-  }, [idUsuario]);
 
+    BuscarBikes();
+  }, []);
 
-*/
   return (
-    <StyledCard>
-      {/* Texto no canto superior direito */}
-      <div className="corner-text-top-right">CATEGORIA:</div>
-
-      {/* Texto no canto superior esquerdo */}
-      <div className="corner-text-top-left">MARCA:</div>
-
-      {/* Imagem no centro */}
-      <img className="center-image"  src={Bike} style={{width: '200px', height: '200px'}} alt="Foto Bike" />
-
-      {/* Texto no canto inferior esquerdo */}
-      <div className="corner-text-bottom-left">STATUS:</div>
-
-      {/* Texto no canto inferior direito */}
-      <div className="corner-text-bottom-right">R$ / h</div>
-
-
-
-      {/* Botão no final do Card */}
-      <Button variant="contained" color="primary" className="bottom-button">
-        RESERVAR
-      </Button>
-    </StyledCard>
+    <>
+      {bikes.map((bike, key) => (
+        <StyledCard key={key}>
+          <p></p>
+          <div className="corner-text-top-right" key={bike.category + key}>CATEGORIA: {bike.category}</div>
+          <div className="corner-text-top-left" key={bike.brand + key}>MARCA: {bike.brand}</div>
+          <img className="center-image" key={bike.photos[0].filename} src={filepath + bike.photos[0].filename} style={{ width: '200px', height: '200px' }} alt="Foto Bike" />
+          <div className="corner-text-bottom-left">STATUS: Disponível</div>
+          <div className="corner-text-bottom-right" key={bike.hourlyvalue + key}>R$ {bike.hourlyvalue} / h</div>
+          <Button key={bike.id} variant="contained" color="primary" className="bottom-button">
+            RESERVAR
+          </Button>
+        </StyledCard>
+      ))}
+    </>
   );
 }
 
