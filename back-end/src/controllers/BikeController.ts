@@ -64,12 +64,14 @@ class BikeController {
 
     public async list(_: Request, res: Response): Promise<Response> {
         const bikes = await AppDataSource.manager.find(Bike, {
+            
             relations: {
                 user: true,
                 brand: true,
                 category: true,
                 photos: true
-            }
+            },
+            take:3
         });
         return res.json(bikes);
     }
