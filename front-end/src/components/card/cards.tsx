@@ -38,6 +38,7 @@ function CardBike() {
     <>
       {bikes.map((bike, key) => (
         <StyledCard key={key}>
+          <div >
           <p></p>
           <div className="corner-text-top-right" key={bike.category + key}>CATEGORIA: {bike.category}</div>
           <div className="corner-text-top-left" key={bike.brand + key}>MARCA: {bike.brand}</div>
@@ -47,6 +48,7 @@ function CardBike() {
           <Button key={bike.id} variant="contained" color="primary" className="bottom-button">
             RESERVAR
           </Button>
+          </div>
         </StyledCard>
       ))}
     </>

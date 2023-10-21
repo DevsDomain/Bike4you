@@ -26,7 +26,7 @@ export default function Home() {
           <Carousel />
         </div>
         <div className={styles.home_card}>
-     
+     <CardBike/>
         </div>
      
  

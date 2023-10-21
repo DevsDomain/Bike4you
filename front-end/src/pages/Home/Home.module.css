@@ -29,9 +29,13 @@
  
   .home_card{
     width: 50vw;
-    height: 50vh;  
+    height: 50vh;
     background-color: #2F2F2F;
-    display: grid;
+    display: flex;
+    align-content: stretch;
+    justify-content: space-between;
+    align-items: baseline;
+    justify-items: stretch;
     
   }
  
