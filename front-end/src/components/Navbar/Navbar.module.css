@@ -25,15 +25,15 @@
 }
 
 .item a:hover {
-  color: #1232A4;
+  color: #ffbb33;
   text-decoration: none;
 }
 .item a:active{
-  color: #1232A4;
+  color: #ffbb33;
 }
 
 .item a:focus{
-  color: #1232A4;
+  color: #ffbb33;
 }
 a:visited { text-decoration: none; color:white; }
 a:hover { text-decoration: none; color:#1232A4; }

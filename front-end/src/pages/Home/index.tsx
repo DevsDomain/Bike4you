@@ -1,15 +1,38 @@
+import { register } from 'swiper/element/bundle'
 import styles from '../Home/Home.module.css'
-import Bike4you from '../../assets/bike4you_home.jpg'
-function Home() {
+import bike4you from "../../assets/bike4you_home.jpg"
+import  {Carousel}  from '../../components/Carousel/Carousel'
+import CardBike from '../../components/card/cards'
+ 
+ 
+register();
+ 
+export default function Home() {
   return (
-    <div className={styles.home_container}>
-      <h1>
-        Bem-vindo ao <span>Bike4You</span>
-      </h1>
-      <p>Alugue agora mesmo a sua bicicleta!</p>
-      <img src={Bike4you} alt="bike4you" />
+ 
+    <>  
+    <div className={styles.container}>
+      <div className={styles.home_container}>
+        <img src={bike4you} alt="bike4you"></img>
+        <h1> Plataforma <span>Peer-to-Peer</span>
+        </h1>
+        <p>O Bike 4 You é uma revolucionária plataforma de aluguel de bicicletas que une apaixonados por ciclismo e entusiastas de aventuras ao ar livre. Nossa comunidade conecta locatários em busca de uma experiência de pedal incrível a locadores que desejam compartilhar suas bicicletas de qualidade com outros entusiastas.
+        </p>
+      </div>
+ 
+      <div className={styles.carousel}>
+      <div className={styles.home_carousel}>
+                <div>
+          <Carousel />
+        </div>
+        <div className={styles.home_card}>
+     
+        </div>
+     
+ 
     </div>
+    </div>
+    </div>
+    </>
   );
 }
-
-export default Home;
