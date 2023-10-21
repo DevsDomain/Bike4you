@@ -1,10 +1,10 @@
 .container{
-  background-color: aqua;
+  background-color: #2F2F2F;
   display: flex;
   width: 100vw;
 }
 .home_container {
-    background-color: #ce2929;
+    background-color: #2F2F2F;
     width: 50vw;
     height: 100vh;
     padding: 4em;
@@ -14,7 +14,7 @@
   }
  
   .carousel{
-    background-color: rgb(255, 0, 212);
+    background-color: #2F2F2F;
     display: flex;
     width: 50vw;
     height: 100vh;
@@ -24,13 +24,13 @@
   .home_carousel{
     width: 50vw;
     height: 50VH;
-    background-color: #3437ca;   
+    background-color: #2F2F2F;   
   }
  
   .home_card{
     width: 50vw;
     height: 50vh;  
-    background-color: #33ff77;
+    background-color: #2F2F2F;
     display: grid;
     
   }
@@ -62,7 +62,7 @@
  
  
  
-  .imgcarousel{
+  .img{
   display: block; /* Para remover o espaço extra por padrão em torno da imagem */
   margin: auto; /* Centraliza horizontalmente */
 
