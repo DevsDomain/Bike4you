@@ -18,11 +18,12 @@
     display: flex;
     width: 50vw;
     height: 100vh;
+    
  
   }
  
   .home_carousel{
-    width: 50vw;
+    width: 40vw;
     height: 50VH;
     background-color: #2F2F2F;   
   }
