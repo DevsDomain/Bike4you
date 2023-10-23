@@ -2,6 +2,8 @@ import AppDataSource from "../data-source";
 import { Request, Response } from 'express';
 import { User } from '../entities/User';
 
+const cache_login = {}
+
 class UserController {
     public async create(req: Request, res: Response): Promise<Response> {
         try {
@@ -97,25 +99,29 @@ class UserController {
         } catch (error) { return res.status(401).json({ message: "Login incorreto!" }) }
     }
 
-
     public async login(req: Request, res: Response): Promise<Response> {
         try {
             const { mail, password } = req.body
-            const user = await AppDataSource.manager.findOne(User, { where: { mail: mail, password: password } });
 
-            if (!user) {
-                return res.status(401).json({ message: "Usuário não encontrado!" })
+            if (cache_login[mail] != undefined) {
+                return res.status(201).json(cache_login[mail])
+            }
+            else {
+                const user = await AppDataSource.manager.findOne(User, { where: { mail: mail, password: password } });
+                if (!user) {
+                    return res.status(401).json({ message: "Usuário não encontrado!" })
+                }
+
+                cache_login[mail] = { id: user.id, mail, userName: user.userName }
             }
 
-            return res.status(201).json({
-                id: user.id,
-                mail: user.mail,
-                userName: user.userName,
-                phone: user.phone
-            })
+            return res.status(201).json(cache_login[mail])
 
 
-        } catch (error) { return res.status(401).json({ message: "Login incorreto!" }) }
+        } catch (error) {
+            console.log(error)
+            return res.status(401).json({ message: "Login incorreto!" })
+        }
     }
 
 
