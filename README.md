@@ -19,11 +19,15 @@ apenas fazer a intermediação entre as partes sem qualquer responsabilidade sob
 ### 🏁 Entregas de Sprints
 
 Cada entrega foi realizada a partir da criação de uma **tag** Observe a relação a seguir:
-| Sprint | Previsão de entrega | Status | Release | Kanban |
-|:--:|:----------:|:-------------------|:-------------------------------------------------:|:-------------------------------------------------:|
-| 01 | 27/09/2023 | :heavy_check_mark: Entregue | [Ver release](https://github.com/Dev-s-Domain/Bike4you/releases/tag/1.0.1) |[Sprint1](https://github.com/orgs/DevsDomain/projects/1/views/1)|
-| 02 | 25/10/2023 | 🚧 Em andamento| [Ver release]() | [Sprint2](https://github.com/orgs/DevsDomain/projects/3)|
+| Sprint | Previsão de entrega | Status | Release | Kanban | BurnDown |
+|:--:|:----------:|:-------------------|:-------------------------------------------------:|:-------------------------------------------------:|:-------------------------------------------------:|
+| 01 | 27/09/2023 | :heavy_check_mark: Entregue | [Ver release](https://github.com/Dev-s-Domain/Bike4you/releases/tag/1.0.1) |[Sprint1](https://github.com/orgs/DevsDomain/projects/1/views/1)|[Ver BurnDown#1](https://github.com/DevsDomain/Bike4you/blob/main/Documentos/BurnDown-1Sprint.png)|
+| 02 | 25/10/2023 | :heavy_check_mark: Entregue | [Ver release]() | [Sprint2](https://github.com/orgs/DevsDomain/projects/3)|[Ver BurnDown#2](https://github.com/DevsDomain/Bike4you/blob/main/Documentos/BurnDown-2Sprint.png)|
 | 03 | 22/11/2023 | 🛑 Não iniciada| [Ver release]() |
+
+🚧 Em andamento /🛑 Não iniciada/:heavy_check_mark: Entregue 
+
+
 
 ## :wrench: Tecnologias utilizadas
 
