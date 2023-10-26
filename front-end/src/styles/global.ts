@@ -15,7 +15,7 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Roboto Slab', serif;
     font-size: 16px;
     outline: none;
-    overflow: auto;
+    overflow: hidden;
 
   }
 

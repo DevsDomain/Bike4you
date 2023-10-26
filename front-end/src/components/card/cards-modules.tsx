@@ -52,15 +52,11 @@ const StyledCard = styled.div`
   }
 
 
-  /* Estilos para a imagem no centro */
-  .center-image {
-    top: 25%; left: center;
-    width: 100px;
-    height: 100px;
-    display: center;
-    justify-content: space-between;
-    margin: 0 auto;
-  }
+.image-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-around
+}
 
   /* Estilos para o botão no final do Card */
   .bottom-button {
@@ -80,4 +76,4 @@ const StyledCard = styled.div`
 }
 `;
 
-export {StyledCard}
+export { StyledCard }

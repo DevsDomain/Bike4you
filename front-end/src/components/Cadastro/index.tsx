@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { FaSave } from 'react-icons/fa';
 import CadastrarBike from "../../controllers/cadastrarBike";
 import exemploimg from "../../assets/image2.png"
-import { Box, Container, Form, ImageContainer, Input, SelectContainer, TextArea} from "./styles";
+import { Box, Container, Form, ImageContainer, Input, SelectContainer, TextArea } from "./styles";
 //import { Button } from "../../components/button";
 import buscarMarcas, { Brand } from "../../controllers/buscarMarcas";
 import BuscarCategoria, { Category } from "../../controllers/buscarCategoria";
@@ -13,9 +13,9 @@ import CadastrarCategoria from "../../controllers/cadastrarCategoria";
 export default function Cadastro() {
   const [idUsuario, setidUsuario] = useState("");
 
-  const [category, setCategory] = useState<number>(1);
+  const [category, setCategory] = useState<number>(998);
   const [newCategory, setNewCategory] = useState("")
-  const [brand, setBrand] = useState<number>(1);
+  const [brand, setBrand] = useState<number>(998);
   const [newBrand, setNewBrand] = useState("")
   const [description, setDescription] = useState("");
   const [hourlyvalue, setHourlyvalue] = useState("");
@@ -54,12 +54,12 @@ export default function Cadastro() {
   }
 
   async function handleNewBike() {
-    const idbrand = brand === 0 ? await handleNewBrand(newBrand) : brand
-    const idcategory = category === 0 ? await handleNewCategory(newCategory) : category
+    const idbrand = brand === 999 ? await handleNewBrand(newBrand) : brand
+    const idcategory = category === 999 ? await handleNewCategory(newCategory) : category
 
- 
+
     const bike = await CadastrarBike(
- 
+
       idbrand,
       idcategory,
       description,
@@ -67,7 +67,7 @@ export default function Cadastro() {
       dailyvalue,
       hourlyvalue,
       idUsuario
-      
+
     )
     if (bike === 201) {
       alert("Bicicleta cadastrada com sucesso!")
@@ -120,17 +120,17 @@ export default function Cadastro() {
               value={brand}
               onChange={(e) => setBrand(Number(e.target.value))}
             >
-              <option value={1}>Selecione uma marca</option>
+              <option value={998}>Selecione uma marca</option>
               {brands.map(({ name, id }) => (
                 <option key={id} value={id}>
                   {name}
                 </option>
               ))}
-              <option value={0}>Criar nova</option>
+              <option value={999}>Criar nova</option>
             </select>
           </SelectContainer>
 
-          {brand === 0 && (
+          {brand === 999 && (
             <Input
               placeholder="Insira a Marca"
               value={newBrand}
@@ -143,17 +143,17 @@ export default function Cadastro() {
               value={category}
               onChange={(e) => setCategory(Number(e.target.value))}
             >
-              <option value={1}>Selecione uma Categoria</option>
+              <option value={998}>Selecione uma Categoria</option>
               {categories.map(({ name, id }) => (
                 <option key={id} value={id}>
                   {name}
                 </option>
               ))}
-              <option value={0}>Criar nova</option>
+              <option value={999}>Criar nova</option>
             </select>
           </SelectContainer>
 
-          {category === 0 && (
+          {category === 999 && (
             <Input
               placeholder="Insira a Categoria, exemplo: MTB"
               value={newCategory}
