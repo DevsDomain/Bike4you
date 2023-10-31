@@ -5,6 +5,9 @@ import { Category } from "./Category";
 import { User } from "./User";
 import { Rent } from "./Rent";
 
+export type Status = 'Disponivel' | 'Alugada' | 'Pendente'
+
+
 @Entity({ name: "bikes" })
 export class Bike {
     @PrimaryGeneratedColumn()
@@ -18,6 +21,9 @@ export class Bike {
 
     @Column({ nullable: true, type: "decimal", precision: 10, scale: 2 })
     dailyvalue: number;
+
+    @Column({ nullable: false, type: 'enum', enum: ['Disponivel', 'Alugada', 'Pendente'], default: 'Disponivel' })
+    status: Status
 
     @ManyToOne(() => Brand, { nullable: true })
     @JoinColumn({ name: "idbrand" })
