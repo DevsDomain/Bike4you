@@ -78,6 +78,24 @@ class BikeController {
         });
         return res.json(bikes);
     }
+    public async detalhe(req: Request, res: Response): Promise<Response> {
+        const id  = Number(req.query.id);
+        console.log(id);
+        const bikes = await AppDataSource.manager.findOne(Bike, {
+
+            relations: {
+                user: true,
+                brand: true,
+                category: true,
+                photos: true
+            },
+            where: {
+                id: id
+            }
+
+        });
+        return res.json(bikes);
+    }
 
     public async delete(req: Request, res: Response): Promise<Response> {
         const { id } = req.body;
