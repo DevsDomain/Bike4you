@@ -3,6 +3,7 @@ import { StyledCard } from './cards-modules';
 import Bike from '../../assets/bike1.jpg';
 import { bikeEndpoint } from '../../service/bike';
 import { useEffect, useState } from "react";
+import { BasicRating } from '../rating/ratings';
 
 const filepath = "http://localhost:3026/foto/public/"
 
@@ -42,6 +43,7 @@ function CardBike() {
         <StyledCard key={key}>
           <div >
           <p></p>
+          
           <div className="corner-text-top-right" key={bike.category + key}>CATEGORIA: {bike.category}</div>
           <div className="corner-text-top-left" key={bike.brand + key}>MARCA: {bike.brand}</div>
           <div className='image-container'>
@@ -49,9 +51,11 @@ function CardBike() {
           </div>
           <div className="corner-text-bottom-left">STATUS: Disponível</div>
           <div className="corner-text-bottom-right" key={bike.hourlyvalue + key}>R$ {bike.hourlyvalue} / h</div>
+          <BasicRating></BasicRating>
           <Button key={bike.id} variant="contained" color="primary" className="bottom-button">
             RESERVAR
           </Button>
+          
           </div>
         </StyledCard>
       ))}
