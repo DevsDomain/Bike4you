@@ -175,7 +175,7 @@ export default function Cadastro() {
 
           <FaSave
             size={30} // Tamanho do ícone (pode ser ajustado)
-            color="#555657" // Cor do ícone (pode ser ajustada)
+            color="#202020" // Cor do ícone (pode ser ajustada)
             onClick={handleNewBike} // Ação ao clicar no ícone
             style={{ cursor: "pointer" }} // Estilo do cursor
           />

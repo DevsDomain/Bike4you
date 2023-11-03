@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const MeuEstilo = styled.div`
 
 .caixa-de-formulario {
-  padding: 1em;
+  padding: 3em;
   background-color: #B6B6B6;
   border-radius: 12px;
   display: flex; 
