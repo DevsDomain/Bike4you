@@ -107,10 +107,18 @@ export default function Cadastro() {
               id="image"
               onChange={(e) => setImage(e.target.files?.[0] || null)}
             />
+              <FaSave
+            size={60} // Tamanho do ícone (pode ser ajustado)
+            color="#555657" // Cor do ícone (pode ser ajustada)
+            onClick={handleNewBike} // Ação ao clicar no ícone
+            style={{ cursor: "pointer" }} // Estilo do cursor
+          />
           </ImageContainer>
 
+        
+
           <TextArea
-            placeholder="Insira a Descrição, como a cor, tamanho, aro etc."
+            placeholder="Insira aqui uma Descrição: (Ex: cor, tamanho, aro, etc.)"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
@@ -162,23 +170,18 @@ export default function Cadastro() {
           )}
 
           <Input
-            placeholder="Insira o valor por hora"
+            placeholder="Insira o valor por hora (somente números): Ex.: 15"
             value={hourlyvalue}
             onChange={(e) => setHourlyvalue(e.target.value)}
           />
 
           <Input
-            placeholder="Insira o valor da diária"
+            placeholder="Insira o valor da diária (somente números): Ex.: 40"
             value={dailyvalue}
             onChange={(e) => setDailyvalue(e.target.value)}
           />
 
-          <FaSave
-            size={30} // Tamanho do ícone (pode ser ajustado)
-            color="#202020" // Cor do ícone (pode ser ajustada)
-            onClick={handleNewBike} // Ação ao clicar no ícone
-            style={{ cursor: "pointer" }} // Estilo do cursor
-          />
+
         </Form>
       </Box>
     </Container>

@@ -4,6 +4,9 @@ import { faHome, faBicycle, faCog, faUser } from "@fortawesome/free-solid-svg-ic
 import styles from './Navbar.module.css'
 import { useState, useEffect } from "react";
 import { useAuth } from "../../hooks/auth";
+import { BiCycling } from "react-icons/bi";
+
+
 function Navbar() {
 
   const [userName, setUser] = useState<string | null>(null)
@@ -30,7 +33,7 @@ function Navbar() {
         </li>
         <li className={styles.item}>
           <Link to="/bikes">
-            <FontAwesomeIcon icon={faBicycle} /> Bikes
+            <BiCycling /> Buscar Bikes
           </Link>
         </li>
         <li className={styles.item}>

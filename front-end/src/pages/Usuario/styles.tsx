@@ -7,7 +7,7 @@ export const MeuEstilo = styled.div`
 #gerenciarText{
   text-align: center;
   width: 100vw;
-  margin: 0.8em auto;
+  margin: 0.4em auto;
   font-size: 35px;
   font-weight: bold; 
   font-family: Arial, Verdana, sans-serif; 
@@ -20,11 +20,9 @@ export const MeuEstilo = styled.div`
   flex-direction: column;
 }
 .menu{
-  width: 60vw;
+  width: 60%;
   display: flex;
   justify-content: center;
-  margin-bottom: 1em;
-  
 }
 
 .botao {
@@ -35,7 +33,10 @@ export const MeuEstilo = styled.div`
   font-weight: bold;
   font-size: 21px;
   box-shadow: 0 0 10px #4e4e52;
-
+  transition: background-color 0.2s;
+  &:active {
+    background-color: #007bff; /* Defina a cor desejada para quando o botão está ativo */
+  }
 }
 
 

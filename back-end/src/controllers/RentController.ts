@@ -55,6 +55,42 @@ class RentController {
         return res.json(rents);
     }
 
+    public async rating(req: Request, res: Response): Promise<Response> {
+        const idBike = Number(req.query.idBike)
+        try {
+
+            const query = await AppDataSource.manager.find(Rent, {
+                relations: {
+                    bike: true,
+                    client: true,
+                },
+                where: {
+                    bike: {
+                        id: idBike
+                    }
+                }
+            })
+
+            const valutations: number[] = []
+
+            query.map((rate) => {
+                valutations.push(Number(rate.clientvaluation))
+            })
+
+            const rating = valutations.reduce((total, val) => total + val, 0) / valutations.length || 0
+
+
+
+            return res.status(201).json({ "bikeRate": Number(rating.toFixed(2)) })
+            
+        } catch (error) {
+            console.log("CATCH ERRO")
+            return res.status(401).json({ message: "Erro ao buscar avaliações" })
+        }
+
+
+    }
+
     public async delete(req: Request, res: Response): Promise<Response> {
         const { id } = req.body;
         // o método delete retorna o objeto {"raw": [],"affected": 1}

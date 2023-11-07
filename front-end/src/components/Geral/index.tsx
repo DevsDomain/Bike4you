@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { MeuEstilo } from "./styles";
 import { bikeEndpoint } from "../../service/bike";
+import { MeuEstilo } from "./styles";
+
 
 export function Geral() {
 
