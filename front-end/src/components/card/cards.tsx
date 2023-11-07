@@ -14,12 +14,12 @@ interface BikeInterface {
   photos: { filename: string }
 }
 
-function CardBike() {
+function CardBike({take}) {
   const [bikes, setBikes] = useState<Array<BikeInterface>>([]);
 
   useEffect(() => {
     async function BuscarBikes() {
-      const response = await fetch(bikeEndpoint);
+      const response = await fetch(bikeEndpoint+`?cards=${take}`);
       const data = await response.json();
       console.log(data)
       const formattedBikes = data.map(({ id, hourlyvalue, brand, category, photos }) => ({

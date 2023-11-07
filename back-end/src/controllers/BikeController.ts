@@ -62,7 +62,8 @@ class BikeController {
         return res.json(bike);
     }
 
-    public async list(_: Request, res: Response): Promise<Response> {
+    public async list(req: Request, res: Response): Promise<Response> {
+        const cards = Number(req.query.cards)
         const bikes = await AppDataSource.manager.find(Bike, {
 
             relations: {
@@ -74,12 +75,12 @@ class BikeController {
             order: {
                 'id': 'desc'
             },
-            take: 3
+            take: Number(cards) 
         });
         return res.json(bikes);
     }
 
-    public async geral(req: Request, res: Response): Promise<Response> {
+     public async geral(req: Request, res: Response): Promise<Response> {
         const idUser = Number(req.query.idUser)
 
 
