@@ -36,19 +36,18 @@ export default function Detalhes() {
     });
   }, []);
   return (
-    <Card sx={{ width: 400 }}>
+    <Card sx={{ width: 600 }}>
       <div>
         <Typography level="title-lg">
-          {" "}
-          {bikes.brand ? bikes.brand.name : "Marca não disponível"}
+          Marca: {bikes.brand ? bikes.brand.name : "Marca não disponível"}
         </Typography>
         <Typography level="title-lg">
-          {" "}
+          Categoria:{" "}
           {bikes.category ? bikes.category.name : "Marca não disponível"}
         </Typography>
       </div>
       {bikes.photos && bikes.photos.length > 0 && (
-        <AspectRatio minHeight="120px" maxHeight="300px">
+        <AspectRatio minHeight="120px" maxHeight="500px">
           <img
             src={filepath + bikes.photos[0].filename}
             loading="lazy"
@@ -58,10 +57,12 @@ export default function Detalhes() {
       )}
       <CardContent orientation="horizontal">
         <div>
-          <Typography level="body-xs">Descrição:</Typography>
           <Typography fontSize="lg" fontWeight="lg">
-            {bikes.description}
+            Descrição:
           </Typography>
+          <Card sx={{ width: 400 }}>
+            <Typography level="body-md">{bikes.description}</Typography>
+          </Card>
           <Typography level="body-xs">Valor por Hora:</Typography>
           <Typography fontSize="lg" fontWeight="lg">
             {bikes.hourlyvalue}
