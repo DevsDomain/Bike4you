@@ -14,7 +14,7 @@ const GlobalStyles = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     font-family: 'Roboto Slab', serif;
     font-size: 16px;
-  
+    overflow-x: hidden;
 
   }
 
