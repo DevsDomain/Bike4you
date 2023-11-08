@@ -1,18 +1,18 @@
-import { Button } from 'react-bootstrap';
-import { StyledCard } from './cards-modules';
-import Bike from '../../assets/bike1.jpg';
-import { bikeEndpoint } from '../../service/bike';
+import { Button } from "react-bootstrap";
+import { StyledCard } from "./cards-modules";
+//import Bike from '../../assets/bike1.jpg';
+import { bikeEndpoint } from "../../service/bike";
 import { useEffect, useState } from "react";
 import { BasicRating } from '../rating/ratings';
 
-const filepath = "http://localhost:3026/foto/public/"
+const filepath = "http://localhost:3026/foto/public/";
 
 interface BikeInterface {
-  id: number,
-  hourlyvalue: string,
-  category: string,
-  brand: string,
-  photos: { filename: string }
+  id: number;
+  hourlyvalue: string;
+  category: string;
+  brand: string;
+  photos: { filename: string };
 }
 
 function CardBike({take}) {
@@ -22,20 +22,22 @@ function CardBike({take}) {
     async function BuscarBikes() {
       const response = await fetch(bikeEndpoint+`?cards=${take}`);
       const data = await response.json();
-      console.log(data)
-      const formattedBikes = data.map(({ id, hourlyvalue, brand, category, photos }) => ({
-        id,
-        hourlyvalue,
-        brand: brand.name,
-        category: category.name,
-        photos: photos
-      }));
+      console.log(data);
+      const formattedBikes = data.map(
+        ({ id, hourlyvalue, brand, category, photos }) => ({
+          id,
+          hourlyvalue,
+          brand: brand.name,
+          category: category.name,
+          photos: photos,
+        })
+      );
       setBikes(formattedBikes);
-      console.log(bikes)
+      console.log(bikes);
     }
 
     BuscarBikes();
-  }, [bikes]);
+  }, []);
 
   return (
     <>
