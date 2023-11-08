@@ -35,7 +35,7 @@ function CardBike({take}) {
     }
 
     BuscarBikes();
-  }, [bikes]);
+  }, []);
 
   return (
     <>
@@ -51,7 +51,7 @@ function CardBike({take}) {
           <div className="corner-text-bottom-left">STATUS: Disponível</div>
           <div className="corner-text-bottom-right" key={bike.hourlyvalue + key}>R$ {bike.hourlyvalue} / h</div>
           <BasicRating id={bike.id}/>
-          <Button key={bike.id} variant="contained" color="primary" className="bottom-button">
+          <Button key={bike.id} variant="contained"  color="primary" className="bottom-button" >
             RESERVAR
           </Button>
           </div>
