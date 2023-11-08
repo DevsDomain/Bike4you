@@ -31,11 +31,13 @@ export const MeuEstilo = styled.div`
         padding: 12px;
         text-align: center;
         width: 135px;
+        border-radius: 4px;
       }
 
       td {
         background-color: #fcf8f8;
         font-weight: bold;
+        color: black;
       }
 
     }

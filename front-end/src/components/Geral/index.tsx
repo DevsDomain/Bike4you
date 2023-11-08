@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import BuscarBikes from "../../pages/Buscar Bikes/BuscarBikes";
 import { bikeEndpoint } from "../../service/bike";
+import { BikeProps } from "../../types";
 import { MeuEstilo } from "./styles";
 
 
 export function Geral() {
-
+  const [bikes, setBikes] = useState([] as BikeProps[]);
   const [code_bike, setCode_bike] = useState("");
   const [status, setStatus] = useState("");
   const [description, setDescription] = useState("");
@@ -17,19 +19,17 @@ export function Geral() {
 
 
   useEffect(() => {
-    async function relatorio() {
-      const geral = (await fetch(bikeEndpoint + `/geral?idUser=${id}`)).json()
-      return geral
+    function relatorio() {
+      /*const r = await (await fetch(bikeEndpoint + `/geral?idUser=${id}`)).json();
+      console.log("geral", r)
+      setBikes(r);*/
+
+      fetch(bikeEndpoint + `/geral?idUser=${id}`)
+        .then(r => r.json())
+        .then(r => setBikes(r))
     }
 
-    relatorio().then(({ cod_bike, description, media, status }) => {
-      // PASSAR VALORES PARA AS VARIÁVEIS AQUI:
-      // EXEMPLO:
-      setCode_bike(cod_bike)
-      setStatus(status)
-      setDescription(description)
-      setMedia(media)
-    })
+    relatorio();
 
   }, [id])
 
@@ -53,48 +53,15 @@ export function Geral() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
+            {
+              bikes.map(bike =>
+                <tr>
+                  <td>{bike.cod_bike}</td>
+                  <td>{bike.status}</td>
+                  <td>{bike.description}</td>
+                  <td>{bike.media}</td>
+                </tr>)
+            }
           </tbody>
         </table>
       </div>
