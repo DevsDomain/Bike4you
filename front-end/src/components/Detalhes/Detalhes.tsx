@@ -1,143 +1,146 @@
-import * as React from 'react';
-import AspectRatio from '@mui/joy/AspectRatio';
-import Box from '@mui/joy/Box';
-import Button from '@mui/joy/Button';
-import Card from '@mui/joy/Card';
-import CardContent from '@mui/joy/CardContent';
-import Typography from '@mui/joy/Typography';
-import Sheet from '@mui/joy/Sheet';
-import { useEffect, useState } from 'react';
-import { detalheEndpoint } from '../../service/detalhe';
+import React, { useEffect, useState } from "react";
+import { detalheEndpoint } from "../../service/detalhe";
+import AspectRatio from "@mui/joy/AspectRatio";
+import Button from "@mui/joy/Button";
+import Card from "@mui/joy/Card";
+import CardContent from "@mui/joy/CardContent";
+import IconButton from "@mui/joy/IconButton";
+import Typography from "@mui/joy/Typography";
+import BookmarkAdd from "@mui/icons-material/BookmarkAddOutlined";
 
-const filepath = "http://localhost:3026/foto/public/"
+const filepath = "http://localhost:3026/foto/public/";
 
 interface BikeInterface {
-  id: number,
-  hourlyvalue: string,
-  dailyvalue: string,
-  category: string,
-  brand: string,
-  description: string,
-  photos: { filename: string }
+  id: number;
+  hourlyvalue: string;
+  dailyvalue: string;
+  category: { name: string };
+  brand: { name: string };
+  description: string;
+  photos: { filename: string }[];
 }
 
 export default function Detalhes() {
-    const [bikes, setBikes] = useState({}as BikeInterface);
+  const [bikes, setBikes] = useState({} as BikeInterface);
 
-    useEffect(() => {
-      async function BuscarBikes() {
-        const response = await fetch(detalheEndpoint);
-        const data = await response.json();
-        setBikes(data);
-        console.log(bikes);
-      }
-  
-      BuscarBikes();
-    }, []);
+  useEffect(() => {
+    async function BuscarBike() {
+      const response = await fetch(detalheEndpoint);
+      const data = await response.json();
+      return data;
+    }
+
+    BuscarBike().then((res) => {
+      setBikes(res);
+      console.log("res:", res);
+    });
+  }, []);
   return (
-    <Box
-      sx={{
-        width: '100%',
-        position: 'relative',
-        overflow: { xs: 'auto', sm: 'initial' },
-      }}
-    >
-      <Box
-        sx={{
-          '&::before': {
-            top: '4px',
-            content: '""',
-            display: 'block',
-            position: 'absolute',
-            right: '0.5rem',
-            color: 'text.tertiary',
-            fontSize: 'sm',
-            fontWeight: 'lg',
-          },
-          '&::after': {
-            top: '4px',
-            content: '""',
-            display: 'block',
-            position: 'absolute',
-            left: '0.5rem',
-            color: 'text.tertiary',
-            fontSize: 'sm',
-            fontWeight: 'lg',
-          },
-        }}
-      />
-      <>
-
-     {/*  <Card
-        orientation="horizontal"
-        sx={{
-          width: '100%',
-          flexWrap: 'wrap',
-          [`& > *`]: {
-            '--stack-point': '500px',
-            minWidth:
-              'clamp(0px, (calc(var(--stack-point) - 2 * var(--Card-padding) - 2 * var(--variant-borderWidth, 0px)) + 1px - 100%) * 999, 100%)',
-          },
-          // make the card resizable for demo
-          overflow: 'auto',
-          resize: 'horizontal',
-        }}
-      >
-        <AspectRatio flex ratio="1" maxHeight={182} sx={{ minWidth: 182 }}>
+    <Card sx={{ width: 400 }}>
+      <div>
+        <Typography level="title-lg">
+          {" "}
+          {bikes.brand ? bikes.brand.name : "Marca não disponível"}
+        </Typography>
+        <Typography level="title-lg">
+          {" "}
+          {bikes.category ? bikes.category.name : "Marca não disponível"}
+        </Typography>
+      </div>
+      {bikes.photos && bikes.photos.length > 0 && (
+        <AspectRatio minHeight="120px" maxHeight="300px">
           <img
-            src={filepath + bike.photos[0].filename}
+            src={filepath + bikes.photos[0].filename}
+            loading="lazy"
             alt=""
           />
         </AspectRatio>
-        <CardContent>
-          <Typography fontSize="xl" fontWeight="lg">
-            {bike.brand}
+      )}
+      <CardContent orientation="horizontal">
+        <div>
+          <Typography level="body-xs">Descrição:</Typography>
+          <Typography fontSize="lg" fontWeight="lg">
+            {bikes.description}
           </Typography>
-          <Typography level="body-sm" fontWeight="lg" textColor="text.tertiary">
-          {bike.category}
+          <Typography level="body-xs">Valor por Hora:</Typography>
+          <Typography fontSize="lg" fontWeight="lg">
+            {bikes.hourlyvalue}
           </Typography>
-          <Sheet
-            sx={{
-              bgcolor: 'background.level1',
-              borderRadius: 'sm',
-              p: 1.5,
-              my: 1.5,
-              display: 'flex',
-              gap: 2,
-              '& > div': { flex: 1 },
-            }}
-          >
-            <div>
-              <Typography level="body-xs" fontWeight="lg">
-                Descrição
-              </Typography>
-              <Typography fontWeight="lg">{bike.description}</Typography>
-            </div>
-            <div>
-              <Typography level="body-xs" fontWeight="lg">
-                Valor por Hora
-              </Typography>
-              <Typography fontWeight="lg">{bike.hourlyvalue}</Typography>
-            </div>
-            <div>
-              <Typography level="body-xs" fontWeight="lg">
-                Valor por Dia
-              </Typography>
-              <Typography fontWeight="lg">{bike.dailyvalue}</Typography>
-            </div>
-          </Sheet>
-          <Box sx={{ display: 'flex', gap: 1.5, '& > button': { flex: 1 } }}>
-            <Button variant="outlined" color="neutral">
-              Chat
-            </Button>
-            <Button variant="solid" color="primary">
-              Follow
-            </Button>
-          </Box>
-        </CardContent>
-      </Card> */}
-
-      </>
-    </Box>
+          <Typography level="body-xs">Valor por Dia:</Typography>
+          <Typography fontSize="lg" fontWeight="lg">
+            {bikes.dailyvalue}
+          </Typography>
+        </div>
+        <Button
+          variant="solid"
+          size="md"
+          color="primary"
+          aria-label="Explore Bike"
+          sx={{ ml: "auto", alignSelf: "center", fontWeight: 600 }}
+        >
+          Reservar
+        </Button>
+      </CardContent>
+    </Card>
   );
+}
+{
+  /*<>
+      <Card sx={{ width: 320, maxWidth: "100%", boxShadow: "lg" }}>
+      <CardOverflow>
+        <AspectRatio sx={{ minWidth: 200 }}>
+          {bikes.photos && bikes.photos.length > 0 ? (
+            <img src={filepath + bikes.photos[0].filename} alt="" />
+          ) : null}
+        </AspectRatio>
+      </CardOverflow>
+      <CardContent>
+        <Typography level="body-xs">
+          Categoria:{" "}
+          {bikes.category ? bikes.category.name : "Categoria não disponível"}
+        </Typography>
+        <Typography fontWeight="md" color="neutral" textColor="text.primary">
+          Marca: {bikes.brand ? bikes.brand.name : "Marca não disponível"}
+        </Typography>
+
+        <Typography
+          level="title-lg"
+          sx={{ mt: 1, fontWeight: "xl" }}
+          endDecorator={
+            <Chip component="span" size="sm" variant="soft" color="success">
+              Valor por Dia: {bikes.dailyvalue}
+            </Chip>
+          }
+        >
+          Valor por Hora: {bikes.hourlyvalue}
+        </Typography>
+        <Typography level="body-sm">Descrição: {bikes.description}</Typography>
+      </CardContent>
+      <CardOverflow>
+        <Button variant="solid" color="danger" size="lg">
+          Add to cart
+        </Button>
+      </CardOverflow>
+    </Card>
+      <ul>
+        {bikes.photos && bikes.photos.length > 0 ? (
+
+            <img src={filepath + bikes.photos[0].filename} alt="" />
+
+        ) : null}
+        <li>
+          Marca: {bikes.brand ? bikes.brand.name : "Marca não disponível"}
+        </li>{" "}
+        <li>
+          Categoria:{" "}
+          {bikes.category ? bikes.category.name : "Categoria não disponível"}
+        </li>{" "}
+        <li>Descrição: {bikes.description}</li>
+        <li>Valor por Hora: {bikes.hourlyvalue}</li>
+        <li>Valor por Dia: {bikes.dailyvalue}</li>
+      </ul>
+    </>
+  );
+}
+*/
 }
