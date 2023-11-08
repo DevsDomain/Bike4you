@@ -1,21 +1,20 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background-color: #2F2F2F;
   overflow: visible;
   h3{
-    text-align: center;
+    text-align: left;
   }
-
 `;
 
 export const Box = styled.div`
-  border-radius: 10px;
+  border-radius: 12px;
   background-color: #B6B6B6;
-  padding: 1em;
-  line-height: 3;
-
-
+  padding: 0.5em;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
 `;
 
 export const Form = styled.form`
@@ -24,55 +23,57 @@ export const Form = styled.form`
   justify-content: center;
   align-items: flex-start; /* Alinhar à esquerda */
   text-align: stretch; /* Alinhar o texto à esquerda */
-
-  margin-top: 20px;
-  margin-right: 30px;
+  margin-right: 50px;
+  margin-left: 50px;
 `;
 
 export const ImageContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 20px;
 
   img {
-    max-width: 150px; /* Largura máxima da imagem de exemplo */
+    max-width: 120px; /* Largura máxima da imagem de exemplo */
     height: auto;
-    margin-right: 20px;
-    border-radius: 10px;
+    margin-right: 40px;
+    border-radius: 5px;
+    display: flex;
   }
 `;
 
 export const Input = styled.input`
-  height: 30px;
+  height: 30%;
   width: 100%;
-  margin-top: 12px;
-  padding: 24px;
-  margin-right: 5em;
-  color: #000000;
+  margin-top: 5px;
+  padding: 18px;
+  color: #5c5c5e;
   background: #ffffff;
-  border: 0;
-  align-items: center;
+  border-radius: 10px;
   border-color: transparent;
+  display: flex;
 
   &::placeholder {
-    color: #000000; /* Cor do placeholder branca */
+    color: #5c5c5e; /* Cor do placeholder branca */
+    display: flex;
   }
 `;
 
 export const TextArea = styled.textarea`
   width: 100%;
-  margin-top: 12px;
   padding: 12px;
-  color: #000000;
+  color: #5c5c5e;
   background: #ffffff;
   border: 0;
   border-color: transparent;
+  border-top: 2px;
   border-radius: 10px; /* Arredondar bordas */
-  min-height: 150px; /* Altura mínima do campo de descrição */
+  min-height: 5px; /* Altura mínima do campo de descrição */
+  display: flex;
 
   &::placeholder {
-    color: #000000;
+    color: #5c5c5e;
+    display: flex;
+
   }
 `;
 
@@ -82,27 +83,26 @@ export const SelectContainer = styled.div`
   margin-top: 12px;
 
   select {
-    height: 30px;
-    width: 100%;
-    margin-top: 8px;
-    padding: 8px;
+    height: 100%;
+    width: 115%;
+    padding: 4%;
     color: #000000;
-    background: #ffffff;
+    background: #ffffff
+    align: center;
     border: 0;
     border-color: transparent;
-    border-radius: 5px;
+    border-radius: 10px;
+    display: flex;
   }
 `;
 
 export const Button = styled.button`
-  margin-top: 16px;
-  padding: 12px 24px;
-  background-color: #007bff;
-  color: #fff;
+  display: flex;
   border: none;
   cursor: pointer;
 
   &:hover {
-    background-color: #0056b3;
+    background-color:#5c5c5e;
+    display: flex;
   }
 `;

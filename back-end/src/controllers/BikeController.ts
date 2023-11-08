@@ -1,5 +1,5 @@
 import AppDataSource from "../data-source";
-import { Request, Response } from 'express';
+import { Request, Response, json } from 'express';
 import { User } from '../entities/User';
 import { Bike } from '../entities/Bike';
 import { Brand } from "../entities/Brand";
@@ -62,7 +62,8 @@ class BikeController {
         return res.json(bike);
     }
 
-    public async list(_: Request, res: Response): Promise<Response> {
+    public async list(req: Request, res: Response): Promise<Response> {
+        const cards = Number(req.query.cards)
         const bikes = await AppDataSource.manager.find(Bike, {
 
             relations: {
@@ -74,7 +75,7 @@ class BikeController {
             order: {
                 'id': 'desc'
             },
-            take: 3
+            take: Number(cards) 
         });
         return res.json(bikes);
     }
@@ -96,6 +97,55 @@ class BikeController {
         });
         return res.json(bikes);
     }
+
+
+     public async geral(req: Request, res: Response): Promise<Response> {
+
+        const idUser = Number(req.query.idUser)
+
+
+        try {
+            const user = await AppDataSource.manager.findOne(User, { where: { id: idUser } })
+            if (!user) { return res.status(404).json({ message: "Usuário não encontrado!" }) }
+
+            const relatorio = await AppDataSource.manager.find(Bike, {
+                relations: {
+                    user: true,
+                    rents: true,
+                },
+                where: {
+                    user: user
+                }
+
+            })
+
+            if (!relatorio || relatorio.length === 0) {
+                res.status(404).json({ message: "Nenhuma bike encontrada!" })
+            }
+            const bikes = relatorio.map((bike) => {
+                const rents = bike.rents.map(rent => Number(rent.clientvaluation))
+                const averageValuation = rents.reduce((total, val) => total + val, 0) / rents.length || 0
+
+                return {
+                    cod_bike: bike.id,
+                    description: bike.description,
+                    status: bike.status,
+                    media: Number(averageValuation.toFixed(2))
+                }
+            })
+
+            res.status(201).json(bikes)
+
+        } catch (error) {
+            console.log("ERRO CATCH")
+            res.status(401).json({ message: "ERRO!" })
+        }
+
+
+
+
+    }
+
 
     public async delete(req: Request, res: Response): Promise<Response> {
         const { id } = req.body;

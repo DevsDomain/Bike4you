@@ -14,7 +14,7 @@ routes.use(cors());
 routes.use("/bike", bike);
 routes.use("/categoria", category);
 routes.use("/foto", photo);
-routes.use("/locacao", rent);
+routes.use("/rent", rent);
 routes.use("/marca", brand);
 routes.use("/usuario", user);
 

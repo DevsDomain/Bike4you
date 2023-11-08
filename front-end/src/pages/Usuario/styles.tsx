@@ -7,43 +7,36 @@ export const MeuEstilo = styled.div`
 #gerenciarText{
   text-align: center;
   width: 100vw;
-  margin: 1em auto;
-
-
-  font-size: 34px;
+  margin: 0.4em auto;
+  font-size: 35px;
   font-weight: bold; 
   font-family: Arial, Verdana, sans-serif; 
 }
 .container {
   width: 100vw;
-  margin: 1em auto;
   display: flex;
-
-  
-
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
 }
 .menu{
-  width: 60vw;
+  width: 60%;
   display: flex;
   justify-content: center;
-  margin-bottom: 1em;
-  
 }
-
-
 
 .botao {
   background-color: #0f0f0fca;
   color: white;
-  padding: 0.73em 3em; 
+  padding: 0.70em 2.5em; 
   border-radius: 10px;
   font-weight: bold;
   font-size: 21px;
   box-shadow: 0 0 10px #4e4e52;
-
+  transition: background-color 0.2s;
+  &:active {
+    background-color: #007bff; /* Defina a cor desejada para quando o botão está ativo */
+  }
 }
 
 
