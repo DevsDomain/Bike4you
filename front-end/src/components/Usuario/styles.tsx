@@ -3,11 +3,11 @@ import styled from "styled-components";
 export const MeuEstilo = styled.div`
 
 .caixa-de-formulario {
-  padding: 1em;
+  padding: 3.5em;
   background-color: #B6B6B6;
   border-radius: 12px;
   display: flex; 
-  line-height: 3;
+  line-height: 3.0;
   flex-direction: column; 
 }
 

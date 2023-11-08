@@ -80,7 +80,9 @@ class BikeController {
         return res.json(bikes);
     }
 
+
      public async geral(req: Request, res: Response): Promise<Response> {
+
         const idUser = Number(req.query.idUser)
 
 
