@@ -3,6 +3,7 @@ import { StyledCard } from './cards-modules';
 import Bike from '../../assets/bike1.jpg';
 import { bikeEndpoint } from '../../service/bike';
 import { useEffect, useState } from "react";
+import { BasicRating } from '../rating/ratings';
 
 const filepath = "http://localhost:3026/foto/public/"
 
@@ -49,6 +50,7 @@ function CardBike({take}) {
           </div>
           <div className="corner-text-bottom-left">STATUS: Disponível</div>
           <div className="corner-text-bottom-right" key={bike.hourlyvalue + key}>R$ {bike.hourlyvalue} / h</div>
+          <BasicRating id={bike.id}/>
           <Button key={bike.id} variant="contained" color="primary" className="bottom-button">
             RESERVAR
           </Button>
