@@ -39,27 +39,52 @@ class BikeController {
         return res.json(bike.id)
     }
 
+    public async updateStatus(req: Request, res: Response): Promise<Response> {
+        try {
+            console.log("BATEU")
+            let { id, status } = req.body;
+            console.log(status)
+
+            const bike = await AppDataSource.manager.update(Bike, id, { status: status });
+            const updated = await AppDataSource.manager.findOneBy(Bike, id);
+
+            return res.status(201).json({ message: updated.status });
+        } catch (error) { console.log("ERRO AO EDITAR BIKE"), res.status(401).json({ message: "ERRO AO EDITAR" }) }
+
+    }
     public async update(req: Request, res: Response): Promise<Response> {
-        const { id, idcategory, idbrand, description, hourlyvalue, dailyvalue } = req.body;
-        console.log("id da Bike: id:", id, idcategory, idbrand, "DESCRIÇÃO:", description, hourlyvalue, dailyvalue)
+        try {
+
+            console.log("BATEU")
+            let { id, idcategory, idbrand, description, hourlyvalue, dailyvalue, status } = req.body;
+            const bikeOld = await AppDataSource.manager.findOneBy(Bike, id);
+
+            idcategory = idcategory ? idcategory : bikeOld.category.id
+            idbrand = idbrand ? idbrand : bikeOld.brand.id
+            description = description ? description : bikeOld.description;
+            hourlyvalue = hourlyvalue ? hourlyvalue : bikeOld.hourlyvalue;
+            dailyvalue = dailyvalue ? dailyvalue : bikeOld.dailyvalue;
+            status = status ? status : bikeOld.status;
 
 
-        //obtém a marca na tabela brands
-        const brand = await AppDataSource.manager.findOneBy(Brand, { id: idbrand });
-        if (!brand) {
-            return res.status(400).json({ error: "Marca desconhecida", props: "brand" });
-        }
-        console.log("BRAND", brand)
+            //obtém a marca na tabela brands
+            const brand = await AppDataSource.manager.findOneBy(Brand, { id: idbrand });
+            if (!brand) {
+                return res.status(400).json({ error: "Marca desconhecida", props: "brand" });
+            }
+            console.log("BRAND", brand)
 
-        //obtém a categoria na tabela categories
-        const category = await AppDataSource.manager.findOneBy(Category, { id: idcategory });
-        if (!category) {
-            return res.status(400).json({ error: "Categoria desconhecida", props: "category" });
-        }
-        console.log("CATEGORY", category)
+            //obtém a categoria na tabela categories
+            const category = await AppDataSource.manager.findOneBy(Category, { id: idcategory });
+            if (!category) {
+                return res.status(400).json({ error: "Categoria desconhecida", props: "category" });
+            }
+            console.log("CATEGORY", category)
 
-        const bike = await AppDataSource.manager.update(Bike, id, { brand, category, description, hourlyvalue, dailyvalue });
-        return res.json(bike);
+            const bike = await AppDataSource.manager.update(Bike, id, { brand, category, description, hourlyvalue, dailyvalue, status });
+            return res.json(bike);
+        } catch (error) { console.log("ERRO AO EDITAR BIKE"), res.status(401).json({ message: "ERRO AO EDITAR" }) }
+
     }
 
     public async list(req: Request, res: Response): Promise<Response> {
@@ -75,12 +100,12 @@ class BikeController {
             order: {
                 'id': 'desc'
             },
-            take: Number(cards) 
+            take: Number(cards)
         });
         return res.json(bikes);
     }
     public async detalhe(req: Request, res: Response): Promise<Response> {
-        const id  = Number(req.query.id);
+        const id = Number(req.query.id);
         console.log(id);
         const bikes = await AppDataSource.manager.findOne(Bike, {
 
@@ -99,7 +124,7 @@ class BikeController {
     }
 
 
-     public async geral(req: Request, res: Response): Promise<Response> {
+    public async geral(req: Request, res: Response): Promise<Response> {
 
         const idUser = Number(req.query.idUser)
 
