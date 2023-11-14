@@ -4,6 +4,7 @@ import { bikeEndpoint } from "../../service/bike";
 import { useEffect, useState } from "react";
 import { BasicRating } from '../rating/ratings';
 import { MyNode, List } from "./list";
+import ContactDialogs from "../modalDialog/modal";
 
 const filepath = "http://localhost:3026/foto/public/";
 
@@ -79,7 +80,7 @@ function CardBike({ take }) {
             </div>
             <BasicRating id={bike.id} />
             <Button key={bike.id} variant="contained" color="primary" className="bottom-button">
-              RESERVAR
+              <ContactDialogs/>
             </Button>
           </div>
         </StyledCard>

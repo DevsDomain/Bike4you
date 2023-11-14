@@ -34,7 +34,7 @@ export default function ContactDialogs() {
   return (
     <React.Fragment>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Ver contato
+      Reservar!
       </Button>
       <BootstrapDialog
         onClose={handleClose}
