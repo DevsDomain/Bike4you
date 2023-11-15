@@ -18,7 +18,7 @@ interface BikeInterface {
 
 function CardBike({ take }) {
   const [bikes, setBikes] = useState<BikeInterface[]>([]);
-  const bikeList = new List<BikeInterface>(); 
+  const bikeList = new List<BikeInterface>();
 
   useEffect(() => {
     async function BuscarBikes() {
@@ -46,10 +46,10 @@ function CardBike({ take }) {
         current = current.next;
       }
 
-      setBikes(bikeArray); 
-      console.log(bikeArray); 
-    }
+      setBikes(bikeArray);
+      console.log(bikeArray);
 
+    }
     BuscarBikes();
   }, [take]);
 
@@ -80,7 +80,7 @@ function CardBike({ take }) {
             </div>
             <BasicRating id={bike.id} />
             <Button key={bike.id} variant="contained" color="primary" className="bottom-button">
-              <ContactDialogs/>
+              <ContactDialogs idBike={bike.id} />
             </Button>
           </div>
         </StyledCard>

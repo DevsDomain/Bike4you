@@ -1,16 +1,18 @@
-import * as React from 'react';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
-import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
-import avatar from '../../assets/avatar.png'
+import { useEffect, useState } from 'react';
+import { bikeEndpoint } from '../../service/bike';
+
+interface Owner {
+  nome: string
+  email: string
+  phone: string
+}
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -21,8 +23,26 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-export default function ContactDialogs() {
-  const [open, setOpen] = React.useState(false);
+export default function ContactDialogs({ idBike }) {
+  const [open, setOpen] = useState(false);
+  const [data, setData] = useState<Owner>({
+    nome: '',
+    email: '',
+    phone: ''
+  });
+
+  useEffect(() => {
+    async function OwnerData() {
+      const query = await fetch(`http://localhost:3026/rent/modal?idBike=${idBike}`);
+      query.json().then((res) => {
+        setData(res);
+      })
+    }
+    OwnerData()
+  }, [])
+
+
+  console.log(data)
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -32,9 +52,9 @@ export default function ContactDialogs() {
   };
 
   return (
-    <React.Fragment>
+    <>
       <Button variant="outlined" onClick={handleClickOpen}>
-      Reservar!
+        Reservar!
       </Button>
       <BootstrapDialog
         onClose={handleClose}
@@ -42,21 +62,18 @@ export default function ContactDialogs() {
         open={open}
       >
 
-        
+
 
         <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-          NOME DO LOCADOR
+          Nome do locador: {data.nome}
         </DialogTitle>
-        
+
         <DialogContent dividers>
           <Typography gutterBottom>
-            1o dado - 
+            Telefone: {data.phone}
           </Typography>
           <Typography gutterBottom>
-            2o dado - 
-          </Typography>
-          <Typography gutterBottom>
-            3o dado - 
+            E-mail: {data.email}
           </Typography>
         </DialogContent>
         <DialogActions>
@@ -65,6 +82,6 @@ export default function ContactDialogs() {
           </Button>
         </DialogActions>
       </BootstrapDialog>
-    </React.Fragment>
+    </>
   );
 }

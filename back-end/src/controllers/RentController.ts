@@ -55,6 +55,29 @@ class RentController {
         return res.json(rents);
     }
 
+    public async modal(req: Request, res: Response): Promise<Response> {
+        const idBike = Number(req.query.idBike)
+        console.log(idBike)
+        try {
+            const query = await AppDataSource.manager.findOne(Rent, {
+                relations: {
+                    bike: true,
+                    owner: true
+                },
+                where: {
+                    bike: {
+                        id: idBike
+                    }
+                }
+            })
+            
+            const owner = {nome:query.owner.userName, email:query.owner.mail,phone:query.owner.phone}
+            return res.status(201).json(owner)
+        } catch (error) { return res.status(401).json({ message: "ERROR MODAL CATCH" }) }
+
+
+    }
+
     public async rating(req: Request, res: Response): Promise<Response> {
         const idBike = Number(req.query.idBike)
         try {
@@ -82,7 +105,7 @@ class RentController {
 
 
             return res.status(201).json({ "bikeRate": Number(rating.toFixed(2)) })
-            
+
         } catch (error) {
             console.log("CATCH ERRO")
             return res.status(401).json({ message: "Erro ao buscar avaliações" })
