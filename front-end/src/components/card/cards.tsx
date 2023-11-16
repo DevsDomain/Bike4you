@@ -13,6 +13,7 @@ interface BikeInterface {
   hourlyvalue: string;
   category: string;
   brand: string;
+  status: string
   photos: { filename: string };
 }
 
@@ -26,9 +27,10 @@ function CardBike({ take }) {
       const data = await response.json();
       console.log(data);
       const formattedBikes = data.map(
-        ({ id, hourlyvalue, brand, category, photos }) => ({
+        ({ id, hourlyvalue, brand, category, photos, status }) => ({
           id,
           hourlyvalue,
+          status: status,
           brand: brand.name,
           category: category.name,
           photos: photos,
@@ -74,7 +76,7 @@ function CardBike({ take }) {
                 alt="Foto Bike"
               />
             </div>
-            <div className="corner-text-bottom-left">STATUS: Disponível</div>
+            <div className="corner-text-bottom-left">STATUS: {bike.status}</div>
             <div className="corner-text-bottom-right" key={bike.hourlyvalue + key}>
               R$ {bike.hourlyvalue} / h
             </div>
