@@ -10,6 +10,8 @@ routes.delete('/', controller.delete);
 routes.put('/', controller.update);
 routes.put('/status', controller.updateStatus) 
 routes.get('/geral', controller.geral);
+routes.get('/modal', controller.modal)
+
 
 //aceita qualquer método HTTP ou URL
 routes.use((_: Request, res: Response) => res.json({ error: "Requisição desconhecida" }));

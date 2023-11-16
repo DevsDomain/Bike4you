@@ -4,6 +4,7 @@ import { bikeEndpoint } from "../../service/bike";
 import { useEffect, useState } from "react";
 import { BasicRating } from '../rating/ratings';
 import { MyNode, List } from "./list";
+import ContactDialogs from "../modalDialog/modal";
 
 const filepath = "http://localhost:3026/foto/public/";
 
@@ -17,7 +18,7 @@ interface BikeInterface {
 
 function CardBike({ take }) {
   const [bikes, setBikes] = useState<BikeInterface[]>([]);
-  const bikeList = new List<BikeInterface>(); 
+  const bikeList = new List<BikeInterface>();
 
   useEffect(() => {
     async function BuscarBikes() {
@@ -45,10 +46,10 @@ function CardBike({ take }) {
         current = current.next;
       }
 
-      setBikes(bikeArray); 
-      console.log(bikeArray); 
-    }
+      setBikes(bikeArray);
+      console.log(bikeArray);
 
+    }
     BuscarBikes();
   }, [take]);
 
@@ -79,7 +80,7 @@ function CardBike({ take }) {
             </div>
             <BasicRating id={bike.id} />
             <Button key={bike.id} variant="contained" color="primary" className="bottom-button">
-              RESERVAR
+              <ContactDialogs idBike={bike.id} />
             </Button>
           </div>
         </StyledCard>

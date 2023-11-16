@@ -9,6 +9,7 @@ routes.delete('/', controller.delete);
 routes.put('/', controller.update);
 routes.get('/rate', controller.rating)
 
+
 //aceita qualquer método HTTP ou URL
 routes.use((_: Request, res: Response) => res.json({ error: "Requisição desconhecida" }));
 

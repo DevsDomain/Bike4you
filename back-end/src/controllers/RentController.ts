@@ -55,6 +55,7 @@ class RentController {
         return res.json(rents);
     }
 
+
     public async rating(req: Request, res: Response): Promise<Response> {
         const idBike = Number(req.query.idBike)
         try {
@@ -82,7 +83,7 @@ class RentController {
 
 
             return res.status(201).json({ "bikeRate": Number(rating.toFixed(2)) })
-            
+
         } catch (error) {
             console.log("CATCH ERRO")
             return res.status(401).json({ message: "Erro ao buscar avaliações" })
