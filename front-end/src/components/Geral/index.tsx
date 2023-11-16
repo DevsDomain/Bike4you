@@ -6,22 +6,26 @@ import Disponibilidade from "../Disponibilidade_bike";
 
 
 export function Geral() {
-  const [bikes, setBikes] = useState([] as BikeProps[]);
+  const [bikes, setBikes] = useState<BikeProps[]>([]) || null;
 
   const id = localStorage.getItem('idUsuario')
 
+
   useEffect(() => {
-    function relatorio() {
-
-
-      fetch(bikeEndpoint + `/geral?idUser=${id}`)
-        .then(r => r.json())
-        .then(r => setBikes(r))
+    async function relatorio() {
+      try {
+        const geral = (await fetch(bikeEndpoint + `/geral?id=${id}`)).json()
+        return geral
+      } catch (error) {return null }
     }
 
-    relatorio();
+    relatorio().then((bike: BikeProps) => {
+      if (bike) {
+        setBikes([{ cod_bike: bike.cod_bike, description: bike.description, media: bike.media, status: bike.status }])
+      }
+    })
 
-  }, [])
+  }, [id])
 
 
   return (
@@ -38,6 +42,7 @@ export function Geral() {
           </thead>
           <tbody>
             {
+              bikes &&
               bikes.map((bike, index) =>
                 <tr key={index}>
                   <td key={bike.cod_bike}>{bike.cod_bike}</td>

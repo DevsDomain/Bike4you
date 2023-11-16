@@ -106,7 +106,7 @@ class BikeController {
     }
     public async detalhe(req: Request, res: Response): Promise<Response> {
         const id = Number(req.query.id);
-        console.log(id);
+        console.log("LOG DO ID DO USUÁRIO",id);
         const bikes = await AppDataSource.manager.findOne(Bike, {
 
             relations: {
@@ -132,6 +132,7 @@ class BikeController {
         try {
             const user = await AppDataSource.manager.findOne(User, { where: { id: idUser } })
             if (!user) { return res.status(404).json({ message: "Usuário não encontrado!" }) }
+
 
             const relatorio = await AppDataSource.manager.find(Bike, {
                 relations: {
@@ -163,8 +164,7 @@ class BikeController {
 
         } catch (error) {
             console.log("ERRO CATCH")
-            res.status(401).json({ message: "ERRO!" })
-        }
+          }
 
 
 
@@ -172,7 +172,6 @@ class BikeController {
     }
     public async modal(req: Request, res: Response): Promise<Response> {
         const idBike = Number(req.query.idBike)
-        console.log(idBike)
         try {
             const query = await AppDataSource.manager.findOne(Bike, {
                 relations: {
@@ -187,7 +186,7 @@ class BikeController {
             return res.status(201).json(owner)
         } catch (error) { return res.status(401).json({ message: "ERROR MODAL CATCH" }) }
 
-
+        
     }
 
 
