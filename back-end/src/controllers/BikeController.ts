@@ -170,6 +170,25 @@ class BikeController {
 
 
     }
+    public async modal(req: Request, res: Response): Promise<Response> {
+        const idBike = Number(req.query.idBike)
+        console.log(idBike)
+        try {
+            const query = await AppDataSource.manager.findOne(Bike, {
+                relations: {
+                    user: true
+
+                },
+                where: {
+                    id: idBike
+                }
+            })
+            const owner = { nome: query.user.userName, email: query.user.mail, phone: query.user.phone }
+            return res.status(201).json(owner)
+        } catch (error) { return res.status(401).json({ message: "ERROR MODAL CATCH" }) }
+
+
+    }
 
 
     public async delete(req: Request, res: Response): Promise<Response> {

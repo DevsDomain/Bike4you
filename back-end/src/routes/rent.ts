@@ -8,7 +8,6 @@ routes.get('/', controller.list);
 routes.delete('/', controller.delete);
 routes.put('/', controller.update);
 routes.get('/rate', controller.rating)
-routes.get('/modal', controller.modal)
 
 
 //aceita qualquer método HTTP ou URL

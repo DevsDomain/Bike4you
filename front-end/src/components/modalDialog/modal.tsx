@@ -33,7 +33,7 @@ export default function ContactDialogs({ idBike }) {
 
   useEffect(() => {
     async function OwnerData() {
-      const query = await fetch(`http://localhost:3026/rent/modal?idBike=${idBike}`);
+      const query = await fetch(bikeEndpoint+`/modal?idBike=${idBike}`);
       query.json().then((res) => {
         setData(res);
       })
