@@ -105,8 +105,9 @@ class BikeController {
         return res.json(bikes);
     }
     public async detalhe(req: Request, res: Response): Promise<Response> {
+        console.log("ID ANTES DE CONVERTER PARA NUMBER NO DETALHE",req.query.id  )
         const id = Number(req.query.id);
-        console.log(id);
+        console.log("ID NA FUNÇÃO DETALHE:", id);
         const bikes = await AppDataSource.manager.findOne(Bike, {
 
             relations: {
@@ -127,6 +128,7 @@ class BikeController {
     public async geral(req: Request, res: Response): Promise<Response> {
 
         const idUser = Number(req.query.idUser)
+        console.log("idUser na função GERAL:", idUser)
 
 
         try {
@@ -145,7 +147,7 @@ class BikeController {
             })
 
             if (!relatorio || relatorio.length === 0) {
-                res.status(404).json({ message: "Nenhuma bike encontrada!" })
+                return res.status(404).json({ message: "Nenhuma bike encontrada!" })
             }
             const bikes = relatorio.map((bike) => {
                 const rents = bike.rents.map(rent => Number(rent.clientvaluation))
@@ -163,7 +165,6 @@ class BikeController {
 
         } catch (error) {
             console.log("ERRO CATCH")
-            res.status(401).json({ message: "ERRO!" })
         }
 
 
