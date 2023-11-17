@@ -30,7 +30,7 @@ class RentController {
         const owner = await AppDataSource.manager.findOneBy(User, { id: idowner });
         if (!owner) {
             return res.status(400).json({ error: "Proprietário desconhecido", props: "owner" });
-        }
+         }
 
         //obtém o usuário na tabela users
         const client = await AppDataSource.manager.findOneBy(User, { id: idclient });
@@ -54,7 +54,7 @@ class RentController {
         });
         return res.json(rents);
     }
-
+ 
 
     public async rating(req: Request, res: Response): Promise<Response> {
         const idBike = Number(req.query.idBike)
