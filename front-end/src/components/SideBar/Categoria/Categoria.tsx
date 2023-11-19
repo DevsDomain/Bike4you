@@ -1,39 +1,42 @@
+import InputBikes from "../../InputBikes/InputBikes";
 import "./Categoria.css";
 
-export default function Categoria() {
+
+export default function Categoria({ handleChange }) {
   return (
     <div>
       <h2 className="sidebar-title">Categoria</h2>
 
       <div>
         <label className="sidebar-label-container">
-          <input type="radio" name="test" />
+        <input onChange={handleChange} type="radio" value="" name="test" />
           <span className="checmark"></span>Todas
         </label>
-        <label className="sidebar-label-container">
-          <input type="radio" name="test" />
-          <span className="checmark"></span>Estrada
-        </label>
-        <label className="sidebar-label-container">
-          <input type="radio" name="test" />
-          <span className="checmark"></span>Infantil
-        </label>
-        <label className="sidebar-label-container">
-          <input type="radio" name="test" />
-          <span className="checmark"></span>Lazer
-        </label>
-        <label className="sidebar-label-container">
-          <input type="radio" name="test" />
-          <span className="checmark"></span>MountainBike
-        </label>
-        <label className="sidebar-label-container">
-          <input type="radio" name="test" />
-          <span className="checmark"></span>Urbana
-        </label>
-        <label className="sidebar-label-container">
-          <input type="radio" name="test" />
-          <span className="checmark"></span>Speed
-        </label>
+
+        <InputBikes
+          handleChange={handleChange}
+          value="Estrada"
+          title="Estrada"
+          name="test"
+        />
+        <InputBikes
+          handleChange={handleChange}
+          value="Infantil"
+          title="Infantil"
+          name="test"
+        />
+        <InputBikes
+          handleChange={handleChange}
+          value="Lazer"
+          title="Lazer"
+          name="test"
+        />
+        <InputBikes
+          handleChange={handleChange}
+          value="MountainBike"
+          title="MountainBike"
+          name="test"
+        />
       </div>
     </div>
   );

@@ -1,28 +1,26 @@
-import {FiHeart} from 'react-icons/fi';
-import {AiOutlineShoppingCart} from 'react-icons/ai'
+import { FiHeart } from "react-icons/fi";
 import "./Navegacao.css";
 
-export default function Navegacao() {
-    return (
-      <nav>
-        <div className="nav-container">
-            <input 
-            type="text"
-            className="seach-input" 
-            placeholder="Pesquise aqui sua Bike"
-            />
-        </div>
+const Navegacao = ({ handleInputChange, query }) => {
+  return (
+    <nav>
+      <div className="nav-container">
+        <input
+          className="seach-input"
+          type="text"
+          onChange={handleInputChange}
+          value={query}
+          placeholder="Pesquise aqui sua Bike"
+        />
+      </div>
 
-        <div className="profile-container">
-            <a href="#">  
-            <FiHeart className="nav-icons"/>
-            </a>
+      <div className="profile-container">
+        <a href="#">
+          <FiHeart className="nav-icons" />
+        </a>
+      </div>
+    </nav>
+  );
+};
 
-            <a href="#">  
-            <AiOutlineShoppingCart className="nav-icons"/>
-            </a>
-         
-        </div>
-      </nav>
-    );
-}
+export default Navegacao;
