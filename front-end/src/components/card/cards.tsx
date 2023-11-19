@@ -57,7 +57,7 @@ function CardBike({ take }) {
 
   return (
     <>
-      {bikes.map((bike, key) => (
+      {bikes.slice(0,3).map((bike, key) => (
         <StyledCard key={key}>
           <div>
             <p></p>
@@ -81,7 +81,7 @@ function CardBike({ take }) {
               R$ {bike.hourlyvalue} / h
             </div>
             <BasicRating id={bike.id} />
-            <Button key={bike.id} variant="contained" color="primary" className="bottom-button">
+            <Button key={bike.id} variant="outline-primary" className="bottom-button">
               <ContactDialogs idBike={bike.id} />
             </Button>
           </div>
