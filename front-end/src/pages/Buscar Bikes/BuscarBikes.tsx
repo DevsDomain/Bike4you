@@ -3,9 +3,11 @@ import Navegacao from "../../components/Navegacao/Navegacao";
 import Produto from "../../components/Produtos/Produtos";
 import Recomendado from "../../components/Recomendado/Recomendado";
 import Sidebar from "../../components/SideBar/Sidebar";
-import CardBike from "../../components/card/cards";
 import { bikeEndpoint } from "../../service/bike";
+import CardBike from "../../components/card/cards";
+import CardFiltro from "../../components/card copy/cards";
 
+export default function BuscarBikes() {
 
 interface BikeInterface {
   id: number;
@@ -16,22 +18,33 @@ interface BikeInterface {
   photos: { filename: string };
 }
 
-
-export default function BuscarBikes() {
-  const [selectedBikes, setSelectedBikes] = useState<BikeInterface[]>([]);  
+  const [bikes, setBikes] = useState<BikeInterface[]>([]);
   
-
   useEffect(() => {
-    async function BuscarBikes() {
-      const response = await fetch(bikeEndpoint + `?cards=$`);
+    async function Buscar_Bikes() {
+      const response = await fetch(bikeEndpoint + `?cards=20`);
       const data = await response.json();
       console.log(data);
+      const formattedBikes = data.map(
+        ({ id, hourlyvalue, brand, category, photos, status }) => ({
+          id,
+          hourlyvalue,
+          status: status,
+          brand: brand.name,
+          category: category.name,
+          photos: photos,
+        })
+      );
       
+      setBikes(formattedBikes);
+      console.log(formattedBikes);
 
     }
-    BuscarBikes();
+    Buscar_Bikes();
   }, []);
 
+  // ----------- Input Filter -----------
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   // ----------- Input Filter -----------
   const [query, setQuery] = useState("");
@@ -46,44 +59,50 @@ export default function BuscarBikes() {
 
   // ----------- Radio Filtering -----------
   const handleChange = (event) => {
-    setSelectedBikes(event.target.value);
+    setSelectedCategory(event.target.value);
   };
 
   // ------------ Button Filtering -----------
   const handleClick = (event) => {
-    setSelectedBikes(event.target.value);
+    setSelectedCategory(event.target.value);
   };
 
   function filteredData(bikes, selected, query) {
-    let filteredBikes = bikes;
+    let filteredbikes = bikes;
 
     // Filtering Input Items
     if (query) {
-      filteredBikes = filteredItems;
+      filteredbikes = filteredItems;
     }
 
     // Applying selected filter
     if (selected) {
-      filteredBikes = filteredBikes.filter(
-        ({ brand, category, status}) =>
-          brand === selected ||
+      filteredbikes = filteredbikes.filter(
+        ({status, brand, category,id,
+          hourlyvalue,
+          photos}) =>
           category === selected ||
-          status === selected                   
+          status === selected ||
+          brand === selected ||
+          id === selected ||
+          hourlyvalue === selected ||
+          photos === selected
+          
+         
       );
     }
 
-    return filteredBikes.map(
-      ({ brand, category, photos, status}) => (
-        <CardBike
-          key={Math.random()}
-          brand={brand.name}
-          category={category.name}                    
-        />
+    return filteredbikes.map(
+      ({ status, brand, category,id,hourlyvalue,photos },index) => (
+        <CardFiltro brand={brand} category={category}
+        status={status} key={index} id={id} hourlyvalue={hourlyvalue} photos={photos}/>
+
+        
       )
     );
   }
 
-  const result = filteredData(bikes, selectedBikes, query);
+  const result = filteredData(bikes, selectedCategory, query);
 
   return (
     <>
