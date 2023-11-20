@@ -1,0 +1,1 @@
+export const editarEndpoint = "http://localhost:3026/bike/editar"

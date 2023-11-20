@@ -3,6 +3,7 @@ import { bikeEndpoint } from "../../service/bike";
 import { BikeProps } from "../../types";
 import { MeuEstilo } from "./styles";
 import Disponibilidade from "../Disponibilidade_bike";
+import EditarBike from "../EditarBike/EditarBike";
 
 
 export function Geral() {
@@ -35,6 +36,7 @@ export function Geral() {
               <th>Status</th>
               <th>Descrição</th>
               <th>Media</th>
+              <th>Editar</th>
             </tr>
           </thead>
           <tbody>
@@ -46,6 +48,7 @@ export function Geral() {
                     <td key={bike.status}><Disponibilidade idBike={bike.cod_bike} />  </td>
                     <td key={bike.description}>{bike.description}</td>
                     <td key={bike.media}>{bike.media}</td>
+                    <td key={bike.cod_bike}><EditarBike idBike={bike.cod_bike} /> </td>
 
                   </tr>)
 
