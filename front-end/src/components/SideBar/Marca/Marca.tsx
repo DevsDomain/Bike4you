@@ -1,29 +1,40 @@
+import InputBikes from "../../InputBikes/InputBikes";
 import "./Marca.css";
 
-export default function Marca(){
-return(
+export default function Marca({ handleChange }) {
+  return (
     <div>
-        <h2 className="sidebar-title price-title">Marca</h2>
-         <label className="sidebar-label-container marca-title">
-          <input type="radio" name="test2" />
-          <span className="checmark"></span>Todas
-        </label>
-        <label className="sidebar-label-container">
-          <input type="radio" name="test2" />
-          <span className="checmark"></span>Caloi
-        </label>
-        <label className="sidebar-label-container">
-          <input type="radio" name="test2" />
-          <span className="checmark"></span>Sense
-        </label>
-        <label className="sidebar-label-container">
-          <input type="radio" name="test2" />
-          <span className="checmark"></span>Oggi
-        </label>
-        <label className="sidebar-label-container">
-          <input type="radio" name="test2" />
-          <span className="checmark"></span>SoulCycles
-        </label>
+      <h2 className="sidebar-title marca-title">Marca</h2>
+
+      <label className="sidebar-label-container">
+        <input onChange={handleChange} type="radio" value="" name="test2" />
+        <span className="checkmark"></span>Todas
+      </label>
+
+      <InputBikes
+        handleChange={handleChange}
+        value="Caloi"
+        title="Caloi"
+        name="test2"
+      />
+      <InputBikes
+        handleChange={handleChange}
+        value="Sense"
+        title="Sense"
+        name="test2"
+      />
+      <InputBikes
+        handleChange={handleChange}
+        value="Rino"
+        title="Rino"
+        name="test2"
+      />
+      <InputBikes
+        handleChange={handleChange}
+        value="Shimano"
+        title="Shimano"
+        name="test2"
+      />
     </div>
-)
+  );
 }

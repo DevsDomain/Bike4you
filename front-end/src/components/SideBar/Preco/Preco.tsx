@@ -1,29 +1,47 @@
+import InputBikes from "../../InputBikes/InputBikes";
 import "./Preco.css";
 
-export default function Preco(){
-return(
-    <div className="ml">
-        <h2 className="sidebar-title price-title">Preço</h2>
+const Preco = ({ handleChange }) => {
+  return (
+    <>
+      <div className="ml">
+        <h2 className="sidebar-title price-title">Price</h2>
+
         <label className="sidebar-label-container">
-          <input type="radio" name="test2" />
-          <span className="checmark"></span>Todas
+          <input onChange={handleChange} type="radio" value="" name="test6" />
+          <span className="checkmark"></span>All
         </label>
-        <label className="sidebar-label-container">
-          <input type="radio" name="test2" />
-          <span className="checmark"></span>R$0-R$50
-        </label>
-        <label className="sidebar-label-container">
-          <input type="radio" name="test2" />
-          <span className="checmark"></span>R$51-R$100
-        </label>
-        <label className="sidebar-label-container">
-          <input type="radio" name="test2" />
-          <span className="checmark"></span>R$101-R$150
-        </label>
-        <label className="sidebar-label-container">
-          <input type="radio" name="test2" />
-          <span className="checmark"></span>Mais de R$151
-        </label>
-        </div>
-)
-}
+
+        <InputBikes
+          handleChange={handleChange}
+          value={50}
+          title="$0 - 50"
+          name="test6"
+        />
+
+        <InputBikes
+          handleChange={handleChange}
+          value={20}
+          title="$50 - $100"
+          name="test6"
+        />
+
+        <InputBikes
+          handleChange={handleChange}
+          value={150}
+          title="$100 - $150"
+          name="test6"
+        />
+
+        <InputBikes
+          handleChange={handleChange}
+          value={200}
+          title="Over $150"
+          name="test2"
+        />
+      </div>
+    </>
+  );
+};
+
+export default Preco;

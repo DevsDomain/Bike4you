@@ -1,11 +1,12 @@
 import "./Produtos.css";
-import CardBike from '../card/cards'
+import CardBike from "../card/cards";
 
-export default function Produtos(){
-return(
+const Produtos = ({ result }) => {
+  return (
     <section className="card-container">
-      <CardBike take={20}/>      
-
+      {result}      
     </section>
-)
-}
+  );
+};
+
+export default Produtos;
