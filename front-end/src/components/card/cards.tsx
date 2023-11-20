@@ -48,7 +48,7 @@ function CardBike({ take }) {
         current = current.next;
       }
 
-      setBikes(bikeArray);
+      setBikes(bikeArray.slice(0,take));
       console.log(bikeArray);
 
     }
@@ -81,7 +81,7 @@ function CardBike({ take }) {
               R$ {bike.hourlyvalue} / h
             </div>
             <BasicRating id={bike.id} />
-            <Button key={bike.id} variant="contained" color="primary" className="bottom-button">
+            <Button key={bike.id} variant="outline-primary" className="bottom-button">
               <ContactDialogs idBike={bike.id} />
             </Button>
           </div>

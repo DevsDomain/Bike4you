@@ -1,30 +1,25 @@
 import styled from 'styled-components';
 
 const StyledCard = styled.div`
-  width: 300px;
+  width: 350px;
   height: 400px;
-  margin: 1em;
-  border: 1em;
   padding: 5px;
   border-radius: 12px;
-  box-shadow: 5px 5px 10px #22222270;
+  box-shadow: 5px 5px 10px #111010;
   background-color: #4f5052;
-  display: flex ;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
-  gap: 1em;
-
-  
+  margin-right: 15px;
+  margin-top: 21px;
+  margin-bottom: 26px;
 
   /* Estilos para o texto nos cantos do card */
   .corner-text-top-left{
 
-    top: 10px; left: 5%;
+    top: 10px; left: 15%;
     font-size: 16px;
     font-family: sans-serif;
     color: whitesmoke;
     padding: 6px;
+    margin-left: 10px;
   }
 
   .corner-text-top-right{
@@ -33,6 +28,7 @@ const StyledCard = styled.div`
     font-family: sans-serif;
     color: whitesmoke;
     padding: 6px;
+    margin-left: 10px;
   }
 
   .corner-text-bottom-right{
@@ -40,7 +36,8 @@ const StyledCard = styled.div`
     font-size: 16px;
     font-family: sans-serif;
     color: whitesmoke;
-    padding: 6px;
+    padding: 5px;
+    margin-left: 10px;
   }
 
   .corner-text-bottom-left{
@@ -48,31 +45,22 @@ const StyledCard = styled.div`
     font-size: 16px;
     font-family: sans-serif;
     color: whitesmoke;
-    padding: 8px;
+    padding: 6px;
+    margin-left: 10px;
   }
 
 
 .image-container{
   width: 100%;
   display: flex;
-  justify-content: space-around
+  justify-content: center;
 }
 
   /* Estilos para o botão no final do Card */
   .bottom-button {
-    background-color: mediumblue;
-    color: white;
-    font-size: 19px;
-    font-family: Calibri;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 120px;
-    height: 15px;
-    padding: 16px;
+    margin-left: 15px;
+    background-color: #cad0db;
     border-radius: 12px;
-    top: 55%;
-
 }
 `;
 

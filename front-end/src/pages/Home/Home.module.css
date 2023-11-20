@@ -1,44 +1,40 @@
 .container{
   background-color: #2F2F2F;
+  width: 99vw;
+  height: 65vh;
   display: flex;
-  width: 100vw;
 }
+
 .home_container {
     background-color: #2F2F2F;
-    width: 45vw;
-    height: 100vh;
+    width: 50vw;
+    height: 70vh;
     padding: 4em;
     align-content: center;
     display: grid;
-  
   }
  
   .carousel{
     background-color: #2F2F2F;
     display: flex;
     width: 50vw;
-    height: 100vh;
-    
- 
+    height: 30vw;
   }
  
   .home_carousel{
-    width: 40vw;
+    width: 50vw;
     height: 50VH;
     background-color: #2F2F2F;   
   }
  
   .home_card{
-    width: 50vw;
-    height: 50vh;
+    width: 100vw;
+    height: 67vh;
     background-color: #2F2F2F;
-    display: flex;
-    align-content: stretch;
-    justify-content: space-between;
-    align-items: baseline;
-    justify-items: stretch;
-    
+    display: flex; /* Alteração para flex */
+    margin-left: 10em;
   }
+
  
   .home_container h1 {
     font-family: 'Urbanist', sans-serif;
@@ -46,30 +42,27 @@
     margin-bottom: 0.5em;
     color: #ffffff;
   }
+
  
+
   .home_container h1 span {
     color: #ffbb33;
     padding: 0 0.2em;
     text-align: center;
-   
   }
+
  
   .home_container p {
-    margin-bottom: 1.5em;
-    color: #ffffff;
-    margin: auto;
+    color:  #ffffff;
+    align-content: center;
   }
+
  
   .home_container img {
     width: 350px;
-    margin: 2em 0;
+    padding: 1em;
+    align-content: center;
+    margin-bottom: 0 em;
+    margin-left: 4em;
   }
- 
- 
- 
-  .img{
-  display: block; /* Para remover o espaço extra por padrão em torno da imagem */
-  margin: auto; /* Centraliza horizontalmente */
 
-           
-}

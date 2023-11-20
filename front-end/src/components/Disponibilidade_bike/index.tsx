@@ -46,9 +46,7 @@ export default function Disponibilidade({ idBike }) {
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Disponibilidade</InputLabel>
 
-        <Select value={status} defaultValue={status} onChange={(e) => updateBikeStatus(e.target.value)}
-        sx={{ width: '50%', mx: 'auto'  }}
-        >
+        <Select value={status} defaultValue={status} onChange={(e) => updateBikeStatus(e.target.value)}>
 
           <MenuItem value={"Disponivel"}>Disponivel</MenuItem>
           <MenuItem value={"Alugada"}>Alugada</MenuItem>
@@ -60,3 +58,5 @@ export default function Disponibilidade({ idBike }) {
 
 
 }
+
+

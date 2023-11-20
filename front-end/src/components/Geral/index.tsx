@@ -7,27 +7,36 @@ import Disponibilidade from "../Disponibilidade_bike";
 
 export function Geral() {
   const [bikes, setBikes] = useState([] as BikeProps[]);
-  const [bikeCounter, setBike] = useState(0)
+  const [bikeCounter, setBikeCounter] = useState(0); 
 
   const id = localStorage.getItem('idUsuario')
 
   useEffect(() => {
     function relatorio() {
-
-
       fetch(bikeEndpoint + `/geral?idUser=${id}`)
         .then(r => r.json())
-        .then(r => setBikes(r))
+        .then(data => {
+          if (Array.isArray(data)) {
+            // Ordenar bikes em ordem crescente com base no ID Bike
+            const sortedBikes = data.sort((a, b) => a.cod_bike - b.cod_bike);
+
+            setBikes(sortedBikes);
+
+            // Calcular o total de bikes
+            const totalBikes = data.length;
+            setBikeCounter(totalBikes);
+          }
+        })
     }
-
     relatorio();
-
   }, [])
 
   console.log("TAMANHO DO ARRAY DE BIKES:", bikes.length)
+
   return (
     <MeuEstilo>
       <div className="caixa-de-formulario">
+      <p style={{ color: 'black', fontWeight: 'bold' }}>Bikes Cadastradas: {bikeCounter}</p>
         <table>
           <thead>
             <tr>
@@ -46,25 +55,17 @@ export function Geral() {
                     <td key={bike.status}><Disponibilidade idBike={bike.cod_bike} />  </td>
                     <td key={bike.description}>{bike.description}</td>
                     <td key={bike.media}>{bike.media}</td>
-
                   </tr>)
-
                 : bikes.length === 1 ?
                   <tr key={Math.random()}>
                     <td key={bikes[0].cod_bike}>{bikes[0].cod_bike || ''}</td>
                     <td key={bikes[0].status}><Disponibilidade idBike={bikes[0].cod_bike} />  </td>
                     <td key={bikes[0].description}>{bikes[0].description}</td>
                     <td key={bikes[0].media}>{bikes[0].media}</td>
-
                   </tr>
                   : <></>
-
             }
-
           </tbody>
-
-
-
         </table>
       </div>
     </MeuEstilo>

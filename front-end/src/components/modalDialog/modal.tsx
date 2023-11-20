@@ -54,8 +54,8 @@ export default function ContactDialogs({ idBike }) {
 
   return (
     <>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Reservar!
+      <Button variant="outlined" color="primary" onClick={handleClickOpen} sx={{ fontWeight: "bold" }}>
+        Reservar
       </Button>
       <BootstrapDialog
         onClose={handleClose}

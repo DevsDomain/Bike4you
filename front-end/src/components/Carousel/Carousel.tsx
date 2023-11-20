@@ -1,8 +1,8 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { register } from 'swiper/element/bundle'
-import bike1 from "../../assets/bike1.jpg"
-import bike2 from "../../assets/bike2.jpg"
-import bike3 from "../../assets/bike3.jpg"
+import bike1 from "../../assets/bike1m.jpg"
+import bike2 from "../../assets/bike2m.jpg"
+import bike3 from "../../assets/bike3m.jpg"
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';

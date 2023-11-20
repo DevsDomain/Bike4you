@@ -21,7 +21,7 @@ export const MeuEstilo = styled.div`
         border: 1px solid #aba9b4;
         padding: 15px;
         text-align: center;
-        vertical-align: top;
+        vertical-align: center;
         width: 10%;
       }
 
