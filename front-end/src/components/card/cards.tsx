@@ -48,7 +48,7 @@ function CardBike({ take }) {
         current = current.next;
       }
 
-      setBikes(bikeArray);
+      setBikes(bikeArray.slice(0,take));
       console.log(bikeArray);
 
     }
@@ -57,7 +57,7 @@ function CardBike({ take }) {
 
   return (
     <>
-      {bikes.slice(0,3).map((bike, key) => (
+      {bikes.map((bike, key) => (
         <StyledCard key={key}>
           <div>
             <p></p>
