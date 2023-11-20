@@ -13,6 +13,9 @@ import { Box, Container, Form, ImageContainer, Input, SelectContainer, TextArea 
 import { FaSave } from "react-icons/fa";
 import editarBike from "../../controllers/editarBike";
 
+const filepath = "http://localhost:3026/foto/public/";
+
+
 
 export function Bike() {
     const [formBike, setFormBike] = useState({
@@ -23,11 +26,22 @@ export function Bike() {
         dailyvalue: "",
         image: "",
     })
+    const [category, setCategory] = useState<number>(998);
+    const [newCategory, setNewCategory] = useState("")
+    const [brand, setBrand] = useState<number>(998);
+    const [newBrand, setNewBrand] = useState("")
+    const [description, setDescription] = useState("");
+    const [hourlyvalue, setHourlyvalue] = useState("");
+    const [dailyvalue, setDailyvalue] = useState("");
+    const [image, setImage] = useState<File | null>(null);
+    const [brands, setBrands] = useState<Brand[]>([]);
+    const [categories, setCategories] = useState<Category[]>([]);
+    
      const {id} = useParams();
 
   
     const editaBike = async function () {
-      await editarBike( id: id, idbrand, idcategory, description, image, dailyvalue, hourlyvalue) 
+      await editarBike( id, idbrand, idcategory, description, image, dailyvalue, hourlyvalue) 
     }
 
 
