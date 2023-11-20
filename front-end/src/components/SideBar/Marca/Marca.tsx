@@ -3,8 +3,8 @@ import "./Marca.css";
 
 export default function Marca({ handleChange }) {
   return (
-    <div>
-      <h2 className="sidebar-title price-title">Marca</h2>
+    <div >
+      <h2 className="sidebar-title marca-title">Marca</h2>
 
       <label className="sidebar-label-container">
         <input onChange={handleChange} type="radio" value="" name="test2" />
@@ -25,14 +25,14 @@ export default function Marca({ handleChange }) {
       />
       <InputBikes
         handleChange={handleChange}
-        value="Oggi"
-        title="Oggi"
+        value="Rino"
+        title="Rino"
         name="test2"
       />
       <InputBikes
         handleChange={handleChange}
-        value="SoulCycles"
-        title="SoulCycles"
+        value="Shimano"
+        title="Shimano"
         name="test2"
       />
     </div>

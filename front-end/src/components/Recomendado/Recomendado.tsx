@@ -9,9 +9,12 @@ const Recommendado = ({ handleClick }) => {
         <div className="recomendado-flex">
           <ButtonBikes onClickHandler={handleClick} value="" title="Todas Bikes" />
           <ButtonBikes onClickHandler={handleClick} value="Caloi" title="Caloi" />
-          <ButtonBikes onClickHandler={handleClick} value="Oggi" title="Oggi" />
+          <ButtonBikes onClickHandler={handleClick} value="Athor" title="Athor" />
+          <ButtonBikes onClickHandler={handleClick} value="Rino" title="Rino" />
+          <ButtonBikes onClickHandler={handleClick} value="Track & Bikes" title="Track & Bikes" />
+          <ButtonBikes onClickHandler={handleClick} value="TSW" title="TSW" />
+          <ButtonBikes onClickHandler={handleClick} value="Shimano" title="Shimano" />
           <ButtonBikes onClickHandler={handleClick} value="Sense" title="Sense" />
-          <ButtonBikes onClickHandler={handleClick} value="SoulCycles" title="SoulCycles" />
         </div>
       </div>
     </>

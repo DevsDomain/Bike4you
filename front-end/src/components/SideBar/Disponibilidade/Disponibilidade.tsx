@@ -3,18 +3,18 @@ import "./Disponibilidade.css";
 
 const Disponibilidade= ({ handleChange }) => {
   return (
-    <div>
+    <div >
       <h2 className="sidebar-title disponibilidade-title">Disponibilidade</h2>
       
       <label className="sidebar-label-container">
           <input onChange={handleChange} type="radio" value="" name="test1" />
-          <span className="checkmark"></span>Todos
+          <span className="checkmark"></span>Todas
         </label>
 
         <InputBikes
           handleChange={handleChange}
-          value="Disponivél"
-          title="Disponivél"
+          value="Disponivel"
+          title="Disponivel"
           name="test1"
         />
          <InputBikes

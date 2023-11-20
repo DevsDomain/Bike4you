@@ -8,15 +8,23 @@ export default function Categoria({ handleChange }) {
       <h2 className="sidebar-title">Categoria</h2>
 
       <div>
+      
         <label className="sidebar-label-container">
-        <input onChange={handleChange} type="radio" value="" name="test" />
-          <span className="checmark"></span>Todas
+          <input onChange={handleChange} type="radio" value="" name="test" />
+          <span className="checkmark"></span>Todas
         </label>
+        
 
         <InputBikes
           handleChange={handleChange}
-          value="Estrada"
-          title="Estrada"
+          value="Urbano"
+          title="Urbano"
+          name="test"
+        />
+        <InputBikes
+          handleChange={handleChange}
+          value="Retr├┤"
+          title="Retr├┤"
           name="test"
         />
         <InputBikes
@@ -27,14 +35,14 @@ export default function Categoria({ handleChange }) {
         />
         <InputBikes
           handleChange={handleChange}
-          value="Lazer"
-          title="Lazer"
+          value="Mountain Bike"
+          title="Mountain Bike"
           name="test"
         />
-        <InputBikes
+         <InputBikes
           handleChange={handleChange}
-          value="MountainBike"
-          title="MountainBike"
+          value="Race"
+          title="Race"
           name="test"
         />
       </div>
