@@ -21,7 +21,7 @@ const Preco = ({ handleChange }) => {
 
         <InputBikes
           handleChange={handleChange}
-          value={100}
+          value={20}
           title="$50 - $100"
           name="test6"
         />

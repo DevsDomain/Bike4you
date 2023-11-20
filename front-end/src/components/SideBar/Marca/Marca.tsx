@@ -3,7 +3,7 @@ import "./Marca.css";
 
 export default function Marca({ handleChange }) {
   return (
-    <div >
+    <div>
       <h2 className="sidebar-title marca-title">Marca</h2>
 
       <label className="sidebar-label-container">

@@ -54,9 +54,20 @@ interface BikeInterface {
   };
 
   const filteredItems = bikes.filter(
-    (bikes) => bikes.brand.toLowerCase().indexOf(query.toLowerCase()) !== -1
+    (bike) => {
+      const queryLowerCase = query.toLowerCase();
+      const brandLowerCase = bike.brand.toLowerCase();
+      const statusLowerCase = bike.status.toLowerCase();
+      const categoryLowerCase = bike.category.toLowerCase();
+  
+      // Verifica se a string da consulta está presente em 'brand', 'status' OU 'category' da bicicleta
+      return (
+        brandLowerCase.includes(queryLowerCase) ||
+        statusLowerCase.includes(queryLowerCase) ||
+        categoryLowerCase.includes(queryLowerCase)
+      );
+    }
   );
-
   // ----------- Radio Filtering -----------
   const handleChange = (event) => {
     setSelectedCategory(event.target.value);
