@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 
 
+
 export function Geral() {
   const [bikes, setBikes] = useState([] as BikeProps[]);
   const [bikeCounter, setBike] = useState(0)
@@ -27,6 +28,23 @@ export function Geral() {
   }, [])
 
   console.log("TAMANHO DO ARRAY DE BIKES:", bikes.length)
+  const handleDelete = (bikeId) => {
+    // Make a DELETE request to the server to delete the bike
+    fetch(bikeEndpoint + `/${bikeId}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (response.ok) {
+          // If the deletion is successful, update the state
+          setBikes((prevBikes) => prevBikes.filter((bike) => bike.cod_bike !== bikeId));
+        } else {
+          console.error("Failed to delete bike");
+        }
+      })
+      .catch((error) => {
+        console.error("Error during deletion:", error);
+      });
+  };
   return (
     <MeuEstilo>
       <div className="caixa-de-formulario">
@@ -37,7 +55,7 @@ export function Geral() {
               <th>Status</th>
               <th>Descrição</th>
               <th>Media</th>
-              <th>Editar</th>
+              <th>Excluir</th>
             </tr>
           </thead>
           <tbody>
@@ -50,11 +68,9 @@ export function Geral() {
                     <td key={bike.description}>{bike.description}</td>
                     <td key={bike.media}>{bike.media}</td>
                     <td key={bike.cod_bike}>
-                      <Link to={`/editar/${bike.cod_bike}`}>
-                        <Button  color="primary">
-                            Editar
-                        </Button>
-                      </Link>
+                    <Button color="primary" onClick={() => handleDelete(bike.cod_bike)}>
+                    Excluir
+                  </Button>
                     </td>
 
                   </tr>)
@@ -66,11 +82,9 @@ export function Geral() {
                     <td key={bikes[0].description}>{bikes[0].description}</td>
                     <td key={bikes[0].media}>{bikes[0].media}</td>
                     <td key={bikes[0].cod_bike}>
-                    <Link to={`/editar/${bikes[0].cod_bike}`}>
-                        <Button  color="primary">
-                            Editar
-                        </Button>
-                      </Link>
+                    <Button color="primary" onClick={() => handleDelete(bikes[0].cod_bike)}>
+                    Excluir
+                  </Button>
                     </td>
 
                   </tr>
