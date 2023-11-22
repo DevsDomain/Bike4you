@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { detalheEndpoint } from "../../service/detalhe";
+import  { useEffect, useState } from "react";
 import exemploimg from "../../assets/image2.png"
 import { useParams } from "react-router-dom";
 
-import { editarEndpoint } from "../../service/editarbike";
-import { bikeEndpoint } from "../../service/bike";
 import buscarMarcas, { Brand } from "../../controllers/buscarMarcas";
 import BuscarCategoria, { Category } from "../../controllers/buscarCategoria";
 import CadastrarMarca from "../../controllers/cadastrarMarca";
@@ -41,7 +38,7 @@ export function Bike() {
 
   
     const editaBike = async function () {
-      await editarBike( id, idbrand, idcategory, description, image, dailyvalue, hourlyvalue) 
+      await editarBike( {id, brand, category, description, image, dailyvalue, hourlyvalue}) 
     }
 
 
@@ -78,8 +75,7 @@ export function Bike() {
           description,
           image,
           dailyvalue,
-          hourlyvalue,
-          idUsuario
+          hourlyvalue
     
         )
         if (bike === 201) {

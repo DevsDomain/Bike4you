@@ -3,7 +3,8 @@ import { bikeEndpoint } from "../../service/bike";
 import { BikeProps } from "../../types";
 import { MeuEstilo } from "./styles";
 import Disponibilidade from "../Disponibilidade_bike";
-import EditarBike from "../EditarBike/EditarBike";
+import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
 
 
 export function Geral() {
@@ -48,7 +49,13 @@ export function Geral() {
                     <td key={bike.status}><Disponibilidade idBike={bike.cod_bike} />  </td>
                     <td key={bike.description}>{bike.description}</td>
                     <td key={bike.media}>{bike.media}</td>
-                    <td key={bike.cod_bike}><EditarBike idBike={bike.cod_bike} /> </td>
+                    <td key={bike.cod_bike}>
+                      <Link to={`/editar/${bike.cod_bike}`}>
+                        <Button  color="primary">
+                            Editar
+                        </Button>
+                      </Link>
+                    </td>
 
                   </tr>)
 
@@ -58,6 +65,13 @@ export function Geral() {
                     <td key={bikes[0].status}><Disponibilidade idBike={bikes[0].cod_bike} />  </td>
                     <td key={bikes[0].description}>{bikes[0].description}</td>
                     <td key={bikes[0].media}>{bikes[0].media}</td>
+                    <td key={bikes[0].cod_bike}>
+                    <Link to={`/editar/${bikes[0].cod_bike}`}>
+                        <Button  color="primary">
+                            Editar
+                        </Button>
+                      </Link>
+                    </td>
 
                   </tr>
                   : <></>

@@ -1,32 +1,34 @@
-import { api } from "../service/api";
+import { bikeEndpoint } from "../service/bike"
 
-export default async function EditarBike(id: string | number, idbrand: number | undefined, idcategory: number | undefined, description: string, image: File | null, dailyvalue: string, hourlyvalue: string): Promise<Response | number> {
+export default async function editarBike({ id, ...rest }): Promise<Response | number> {
     try {
-        console.log(id,"ID BIKE")
-        const bike = await api.put("/bike", { id, idcategory, idbrand, description, hourlyvalue, dailyvalue });
-        if (bike.data.error) {
-            alert(bike.data.error);
-            return 401;
-        } else {
-            if (image) {
-                console.log("ALTEROU A IMAGEM")
-                const idbike = bike.data
-                const formData = new FormData();
-                formData.append("idbike", idbike);
-                formData.append("file", image || '')
-                await api.post("/foto", formData);
-                return 201;
-            }
-            else {
-                return 201;
-            }
+
+        const editBike = await fetch(bikeEndpoint, {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                id, brandName: rest.brandName || null,
+                category: rest.category || null,
+                hourlyvalue: rest.dailyvalue || null,
+                description: rest.description || null,
+                image: rest.image || null
+
+            })
+        })
+        if (editBike.status === 201) {
+            alert("Bike editado com sucesso!")
         }
-    } catch (error) {
+        else {
+            alert("Erro ao editar bike")
 
-        console.log(error);
-        return 401;
+        }
+        return editBike.json()
     }
-
-
+    catch (error) {
+        console.log("Erro ao editar bike!:", error)
+        return 401
+    }
 
 }
