@@ -23,8 +23,8 @@ export default function Categoria({ handleChange }) {
         />
         <InputBikes
           handleChange={handleChange}
-          value="Retr├┤"
-          title="Retr├┤"
+          value="Retro"
+          title="Retro"
           name="test"
         />
         <InputBikes
