@@ -1,6 +1,7 @@
 import AppDataSource from "../data-source";
 import { Request, Response } from 'express';
 import { User } from '../entities/User';
+import { Like } from "typeorm";
 
 const cache_login = {}
 
@@ -121,6 +122,26 @@ class UserController {
         } catch (error) {
             console.log(error)
             return res.status(401).json({ message: "Login incorreto!" })
+        }
+    }
+
+    public async searchCliente(req: Request, res: Response): Promise<Response> {
+        try {
+            const { nome } = req.body
+            console.log(nome)
+
+            const user = await AppDataSource.manager.find(User, {
+                where: {
+                    userName: Like(`%${nome}%`)
+                }
+            })
+
+           /*  const userFind = user.map((res) => {
+                res.userName, res.mail, res.phone;
+            }) */
+            return res.status(201).json(user)
+        } catch (error) {
+            return res.status(401).json("User not found!")
         }
     }
 

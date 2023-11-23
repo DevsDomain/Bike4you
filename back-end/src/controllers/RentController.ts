@@ -3,24 +3,52 @@ import { Request, Response } from 'express';
 import { Rent } from '../entities/Rent';
 import { User } from "../entities/User";
 
-class RentController {  
-    public async  create(req: Request, res: Response): Promise<Response> {
-        const { idclient, idowner, date, ownervaluation } = req.body;
- 
-        //obtém o usuário na tabela users
-        const owner = await AppDataSource.manager.findOneBy(User, { id: idowner });
-        if (!owner) {
-            return res.status(400).json({ error: "Proprietário desconhecido", props: "owner" });
-        }
+class RentController {
+    public async clientValuate(req: Request, res: Response): Promise<Response> {
+        try {
+            const { id, clientvaluation } = req.body;
 
-        //obtém o usuário na tabela users
-        const client = await AppDataSource.manager.findOneBy(User, { id: idclient });
-        if (!client) {
-            return res.status(400).json({ error: "Cliente desconhecido", props: "client" });
+            const rent = await AppDataSource.manager.update(Rent, id, {
+                clientvaluation
+            });
+            return res.status(201).json(rent)
+        } catch (error) {
+            return res.status(401)
         }
+    }
 
-        const rent = await AppDataSource.manager.save(Rent, { owner, client, date, ownervaluation });
-        return res.json(rent);
+
+
+    public async ownerValuate(req: Request, res: Response): Promise<Response> {
+        const { idowner, idClient, ownervaluation, bike } = req.body
+        let [owner, client] = [idowner, idClient]
+
+
+        // PEGAR A DATA ATUAL
+        const currentDate = new Date();
+
+        const year = currentDate.getFullYear();
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        const date = `${year}-${month}-${day}`
+
+        try {
+            const rent = await AppDataSource.manager.save(Rent, {
+                owner,
+                client,
+                bike,
+                date,
+                ownervaluation,
+
+
+            })
+            return res.status(201).json(rent)
+
+
+        }
+        catch (error) {
+            return res.status(401).json(error)
+        }
     }
 
     public async update(req: Request, res: Response): Promise<Response> {
@@ -55,6 +83,33 @@ class RentController {
         return res.json(rents);
     }
 
+    public async listarContratos(req: Request, res: Response): Promise<Response> {
+        const { client } = req.body
+        try {
+            const rent = await AppDataSource.manager.find(Rent, {
+                relations: {
+                    client: true,
+                    owner: true,
+                    bike: true,
+                },
+                where: {
+                    client: {
+                        id: client
+                    }
+                },
+                order: {
+                    date: "DESC"
+                }
+            })
+
+            return res.json(rent)
+        } catch (error) {
+            res.json(error)
+        }
+
+
+    }
+
 
     public async rating(req: Request, res: Response): Promise<Response> {
         const idBike = Number(req.query.idBike)
@@ -85,7 +140,6 @@ class RentController {
             return res.status(201).json({ "bikeRate": Number(rating.toFixed(2)) })
 
         } catch (error) {
-            console.log("CATCH ERRO")
             return res.status(401).json({ message: "Erro ao buscar avaliações" })
         }
 
