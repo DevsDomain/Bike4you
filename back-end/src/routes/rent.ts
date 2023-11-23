@@ -3,7 +3,7 @@ import controller from "../controllers/RentController";
 
 const routes = Router();
 
-routes.post('/', controller.create);
+routes.post('/', controller.clientValuate);
 routes.get('/', controller.list);
 routes.delete('/', controller.delete);
 routes.put('/', controller.update);

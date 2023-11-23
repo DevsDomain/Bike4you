@@ -53,6 +53,7 @@ export function Reservas() {
               <th>Data</th>
               <th>Descrição</th>
               <th>Locatário</th>
+              <th>Avaliação disponível</th>
             </tr>
           </thead>
           <tbody>
@@ -64,8 +65,8 @@ export function Reservas() {
                     <td key={bike.date}>{bike.date}</td>
                     <td key={bike.bike.description}>{bike.bike.description}</td>
                     <td key={bike.owner.userName}>{bike.owner.userName}
-                      {!bike.clientvaluation && <Button className="bottom-button-sm"><ContactDialogs idContrato={bike.id} client={id} locatario={bike.owner.userName} key={'teste'} /></Button>
-                      }
+                      <td>{!bike.clientvaluation ? <Button className="bottom-button-sm"><ContactDialogs idContrato={bike.id} client={id} locatario={bike.owner.userName} key={'teste'} /></Button>
+                      :<>Sem avaliação disponível</>}</td>
                     </td>
                   </tr>)
                 : data.length === 1 ?
@@ -73,7 +74,9 @@ export function Reservas() {
                     <td key={data[0].id}>{data[0].id || ''}</td>
                     <td key={data[0].date}>{data[0].date}</td>
                     <td key={data[0].bike.description}>{data[0].bike.description}</td>
-                    <td key={data[0].owner.userName}>{data[0].owner.userName}<Button className="bottom-button-sm"><ContactDialogs idContrato={data[0].id} locatario={data[0].owner.userName} client={id} key={'teste'} /></Button></td>
+                    <td key={data[0].owner.userName}>{data[0].owner.userName}</td>
+                   <td> {!data[0].clientvaluation ? <Button className="bottom-button-sm"><ContactDialogs idContrato={data[0].id} client={id} locatario={data[0].owner.userName} key={'teste'} /></Button>
+                      : <>Sem avaliação disponível</>}</td>
                   </tr>
                   : <></>
             }

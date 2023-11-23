@@ -85,7 +85,7 @@ export default function ContactDialogs({ id, idBike }) {
   return (
     <>
       <Button size='small' variant="text" color="primary" onClick={handleClickOpen} sx={{ fontWeight: "100" }} >
-        Avaliar
+        Gerar Avaliação
       </Button>
       <BootstrapDialog
         onClose={handleClose}
@@ -133,7 +133,6 @@ export default function ContactDialogs({ id, idBike }) {
                       </Button>
                     </div>}
 
-                    <DialogContent dividers />
 
                   </Typography>
 

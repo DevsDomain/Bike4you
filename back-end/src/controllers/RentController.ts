@@ -11,7 +11,7 @@ class RentController {
             const rent = await AppDataSource.manager.update(Rent, id, {
                 clientvaluation
             });
-            return res.status(201)
+            return res.status(201).json(rent)
         } catch (error) {
             return res.status(401)
         }
@@ -85,7 +85,6 @@ class RentController {
 
     public async listarContratos(req: Request, res: Response): Promise<Response> {
         const { client } = req.body
-        console.log(client)
         try {
             const rent = await AppDataSource.manager.find(Rent, {
                 relations: {
@@ -103,7 +102,6 @@ class RentController {
                 }
             })
 
-            console.log("RENTS", rent)
             return res.json(rent)
         } catch (error) {
             res.json(error)
@@ -142,7 +140,6 @@ class RentController {
             return res.status(201).json({ "bikeRate": Number(rating.toFixed(2)) })
 
         } catch (error) {
-            console.log("CATCH ERRO")
             return res.status(401).json({ message: "Erro ao buscar avaliações" })
         }
 

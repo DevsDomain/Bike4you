@@ -9,7 +9,7 @@ import { Button } from "react-bootstrap";
 
 export function Geral() {
   const [bikes, setBikes] = useState([] as BikeProps[]);
-  const [bikeCounter, setBikeCounter] = useState(0); 
+  const [bikeCounter, setBikeCounter] = useState(0);
 
   const id = localStorage.getItem('idUsuario')
 
@@ -39,7 +39,7 @@ export function Geral() {
   return (
     <MeuEstilo>
       <div className="caixa-de-formulario">
-      <p style={{ color: 'black', fontWeight: 'bold' }}>Bikes Cadastradas: {bikeCounter}</p>
+        <p style={{ color: 'black', fontWeight: 'bold' }}>Bikes Cadastradas: {bikeCounter}</p>
         <table>
           <thead>
             <tr>
@@ -47,6 +47,7 @@ export function Geral() {
               <th>Status</th>
               <th>Descrição</th>
               <th>Media</th>
+              <th>Avaliações</th>
             </tr>
           </thead>
           <tbody>
@@ -57,14 +58,16 @@ export function Geral() {
                     <td key={bike.cod_bike}>{bike.cod_bike || ''}</td>
                     <td key={bike.status}><Disponibilidade idBike={bike.cod_bike} />  </td>
                     <td key={bike.description}>{bike.description}</td>
-                    <td key={bike.media}>{bike.media} <Button  variant="outline-primary" className="bottom-button-sm"><ContactDialogs id={id} idBike={bike.cod_bike} key={'teste'}/></Button></td>
+                    <td key={bike.media}>{bike.media} </td>
+                    <td><Button variant="outline-primary" className="bottom-button-sm"><ContactDialogs id={id} idBike={bike.cod_bike} key={'teste'} /></Button></td>
                   </tr>)
                 : bikes.length === 1 ?
                   <tr key={Math.random()}>
                     <td key={bikes[0].cod_bike}>{bikes[0].cod_bike || ''}</td>
                     <td key={bikes[0].status}><Disponibilidade idBike={bikes[0].cod_bike} />  </td>
                     <td key={bikes[0].description}>{bikes[0].description}</td>
-                    <td key={bikes[0].media}>{bikes[0].media} <Button  variant="outline-primary" className="bottom-button-sm"><ContactDialogs id={id} idBike={bikes[0].cod_bike} key={'teste'}/></Button></td>
+                    <td key={bikes[0].media}>{bikes[0].media} </td>
+                    <td><Button variant="outline-primary" className="bottom-button-sm"><ContactDialogs id={id} idBike={bikes[0].cod_bike} key={'teste'} /></Button></td>
                   </tr>
                   : <></>
             }

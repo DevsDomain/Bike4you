@@ -40,8 +40,7 @@ export default function ContactDialogs({ idContrato, locatario, client }) {
       },
       body: JSON.stringify({ clientvaluation: client, id: idContrato })
     }).then((res) => {
-      console.log(res.status)
-      res.status === 201 && alert("Avaliação gerada com sucesso!")
+      res.status === 201 && alert("Avaliação Gerada com sucesso!")
       setOpen(false)
 
       res.status !== 201 && alert("Erro ao gerar avaliação")
