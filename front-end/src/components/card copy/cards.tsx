@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { BasicRating } from '../rating/ratings';
 import { MyNode, List } from "./list";
 import ContactDialogs from "../modalDialog/modal";
+import { Link } from "react-router-dom";
 
 const filepath = "http://localhost:3026/foto/public/";
 
@@ -47,9 +48,16 @@ export function CardFiltro({  status, brand, category,id,hourlyvalue,photos  }) 
               R$ {hourlyvalue} / h
             </div>
             <BasicRating id={id} />
+            <div className="div-card">
             <Button key={id} variant="contained" color="primary" className="bottom-button">
               <ContactDialogs idBike={id} />
             </Button>
+            <Link to={`/detalhes/${id}`}>
+            <Button variant="outline-primary" className="bottom-button">
+              Ver mais
+            </Button>
+            </Link>
+          </div>
           </div>
         </StyledCard>
     </>

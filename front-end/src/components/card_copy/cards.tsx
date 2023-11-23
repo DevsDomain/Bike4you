@@ -47,6 +47,9 @@ export function CardFiltro({ status, brand, category, id, hourlyvalue, photos })
           <Button key={id} variant="outline-primary" className="bottom-button">
             <ContactDialogs idBike={id} />
           </Button>
+          <Button variant="outline-primary" className="bottom-button">
+            Detalhes 
+          </Button>
         </div>
       </StyledCard>
     </>
