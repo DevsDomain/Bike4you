@@ -84,6 +84,8 @@ const StyledCard = styled.div`
     border-radius: 12px;
     top: 55%;
 }
+
+
 `;
 
 export { StyledCard }

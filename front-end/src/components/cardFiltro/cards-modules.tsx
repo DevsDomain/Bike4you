@@ -67,9 +67,9 @@ const StyledCard = styled.div`
  
   }
 
-  .bottom-button {
-    background-color: mediumblue;
-    color: white;
+  .bottom-button3 {
+    background-color: #f0f0e7;
+    color: #1e086bte;
     font-size: 19px;
     font-family: Calibri;
     display: flex;
@@ -82,9 +82,9 @@ const StyledCard = styled.div`
     top: 55%;
 
 }
-.bottom-button2 {
-    background-color: mediumblue;
-    color: white;
+.bottom-button4 {
+  background-color: #f0f0e7;
+    color: #5a6479te;
     font-size: 19px;
     font-family: Calibri;
     display: flex;

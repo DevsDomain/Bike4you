@@ -56,16 +56,15 @@ export default function Detalhes() {
           Categoria:{" "}
           {bikes.category ? bikes.category.name : "Marca não disponível"}
         </Typography>
-      </div>
-      {bikes.photos && bikes.photos.length > 0 && (
-        <AspectRatio minHeight="120px" maxHeight="500px">
+        </div>
+        {bikes.photos && bikes.photos.length > 0 && (
           <img
             src={filepath + bikes.photos[0].filename}
             loading="lazy"
             alt=""
+            style={{ width: '60%', height: 'auto', objectFit: 'cover', maxHeight: '500px' }}
           />
-        </AspectRatio>
-      )}
+        )}
       <CardContent orientation="horizontal">
         <div>
           <Typography fontSize="lg" fontWeight="lg">
@@ -93,9 +92,9 @@ export default function Detalhes() {
         </div>
 
         <Button
-          variant="soft"
-          size="md"
-          color="primary"
+          variant="plain"
+          size="sm"
+          color="neutral"
           aria-label="Explore Bike"
           sx={{ m: "auto", alignSelf: "center", fontWeight: 600 }}
         >

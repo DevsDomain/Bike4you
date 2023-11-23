@@ -36,14 +36,14 @@ export function CardFiltro({  status, brand, category,id,hourlyvalue,photos  }) 
             </div>
             <BasicRating id={id} />
             <div className="div-card">
-            <Button key={id} variant="outline-primary" className="bottom-button">
-              
+            <Button key={id} className="bottom-button3">
+            <p style={{fontSize:'15px', fontWeight:'bold'}}></p>
               <ContactDialogs idBike={id} />
             </Button>
 
             <Link to={`/detalhes/${id}`}>
-            <Button variant="outline-primary" color="primary" className="bottom-button2">
-              <p style={{fontSize:'15px', fontWeight:'bold'}}>DETALHES</p>
+            <Button key={id} className="bottom-button4">
+              <p style={{fontSize:'15px', fontWeight:'bold', color: 'blue'}}>DETALHES</p>
             </Button>
             </Link>
             </div>
