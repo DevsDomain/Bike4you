@@ -23,21 +23,37 @@ class RentController {
         return res.json(rent);
     }
 
+
+
     public async ownerValuate(req: Request, res: Response): Promise<Response> {
-        const { idowner, ownervaluation, idClient } = req.body
-        const data = new Date()
+        const { idowner, idClient, ownervaluation, bike } = req.body
+        let [owner, client] = [idowner, idClient]
+
+
+        // PEGAR A DATA ATUAL
+        const currentDate = new Date();
+
+        const year = currentDate.getFullYear();
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        const date = `${year}-${month}-${day}`
+
         try {
             const rent = await AppDataSource.manager.save(Rent, {
-                owner: idowner,
-                ownervaluation: ownervaluation, 
-                client: idClient, data: data
+                owner,
+                client,
+                bike,
+                date,
+                ownervaluation,
+
+
             })
-            return res.json(rent)
+            return res.status(201).json(rent)
 
 
         }
         catch (error) {
-            return res.json(error)
+            return res.status(401).json(error)
         }
     }
 
@@ -71,6 +87,35 @@ class RentController {
             }
         });
         return res.json(rents);
+    }
+
+    public async listarContratos(req: Request, res: Response): Promise<Response> {
+        const { client } = req.body
+        console.log(client)
+        try {
+            const rent = await AppDataSource.manager.find(Rent, {
+                relations: {
+                    client: true,
+                    owner: true,
+                    bike: true,
+                },
+                where: {
+                    client:{
+                        id:client
+                    }
+                },
+                order: {
+                    date: "DESC"
+                }
+            })
+
+            console.log("RENTS",rent)
+            return res.json(rent)
+        } catch (error) {
+            res.json(error)
+        }
+
+
     }
 
 

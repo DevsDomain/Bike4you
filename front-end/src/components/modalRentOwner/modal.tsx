@@ -20,7 +20,6 @@ interface Cliente {
   nome: string
   mail: string
   phone: string
-  visible: false
 }
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -32,7 +31,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-export default function ContactDialogs({ id }) {
+export default function ContactDialogs({ id, idBike }) {
   const [open, setOpen] = useState(false);
   const [cliente, setCliente] = useState<Cliente[]>([])
   const [searchClient, setSearchClient] = useState("")
@@ -67,16 +66,17 @@ export default function ContactDialogs({ id }) {
   }
 
   async function contract() {
-    const rent = await fetch("http://localhost:3026/rent/owner", {
+    await fetch("http://localhost:3026/rent/owner", {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ idowner: id, ownervaluation: media, idClient: cliente[0].id })
+      body: JSON.stringify({ idowner: id, ownervaluation: media, idClient: cliente[0].id, bike: idBike })
     }).then((res) => {
-      res.json().then((r) => {
-        console.log(r)
-      })
+      res.status === 201 && alert("Avaliação gerada com sucesso!")
+      setOpen(false)
+
+      res.status !== 201 && alert("Erro ao gerar avaliação")
     })
 
 

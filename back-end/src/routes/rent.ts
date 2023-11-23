@@ -9,6 +9,7 @@ routes.delete('/', controller.delete);
 routes.put('/', controller.update);
 routes.get('/rate', controller.rating)
 routes.post('/owner',controller.ownerValuate)
+routes.post('/client',controller.listarContratos)
 
 
 //aceita qualquer método HTTP ou URL
