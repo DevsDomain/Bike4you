@@ -57,11 +57,35 @@ const StyledCard = styled.div`
 }
 
   /* Estilos para o botão no final do Card */
+  .div-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+ 
+  }
   .bottom-button {
     margin-left: 15px;
     background-color: #cad0db;
     border-radius: 12px;
 }
+.bottom-button2 {
+  background-color: #cad0db;
+    color: #1976d2;
+    font-size: 19px;
+    font-weight: bold;
+    font-family: Calibri;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 42px;
+    padding: 16px;
+    border-radius: 12px;
+    top: 55%;
+}
+
+
 `;
 
 export { StyledCard }

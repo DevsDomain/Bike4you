@@ -2,7 +2,7 @@ import AppDataSource from "../data-source";
 import { Request, Response } from 'express';
 import { Brand } from '../entities/Brand';
 
-class BrandController {
+class BrandController {  
     public async create(req: Request, res: Response): Promise<Response> {
         let { name } = req.body;
         if (!name || name.trim() === "") {
@@ -13,12 +13,12 @@ class BrandController {
             // testa se o name é repetido
             if (/(name)[\s\S]+(already exists)/.test(e.detail)) {
                 return { error: 'Marca já existe', props: "name" };
-            }
-            return { error: e.message };
+            } 
+            return { error: e.message }; 
         });
         return res.json(brand);
     }
-
+ 
     public async update(req: Request, res: Response): Promise<Response> {
         let { id, name } = req.body;
         if (!name || name.trim() === "") {

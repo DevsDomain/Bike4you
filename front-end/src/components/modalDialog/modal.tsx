@@ -43,7 +43,6 @@ export default function ContactDialogs({ idBike }) {
   }, [])
 
 
-  console.log(data)
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -54,8 +53,9 @@ export default function ContactDialogs({ idBike }) {
 
   return (
     <>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen} sx={{ fontWeight: "bold" }}>
-        Reservar
+    
+      <Button variant="outlined" color="primary" onClick={handleClickOpen} sx={{ fontWeight: "bold", fontFamily:'Calibri' ,fontSize:'15px' }}>
+      Reservar
       </Button>
       <BootstrapDialog
         onClose={handleClose}

@@ -72,15 +72,10 @@ export default function Detalhes() {
             {bikes.dailyvalue}
           </Typography>
         </div>
-        <Button
-          variant="solid"
-          size="md"
-          color="primary"
-          aria-label="Explore Bike"
-          sx={{ ml: "auto", alignSelf: "center", fontWeight: 600 }}
-        >
-          Reservar
-        </Button>
+        <Button variant="outlined" color="primary" onClick={handleClickOpen} sx={{ fontWeight: "bold", fontFamily:'Calibri' ,fontSize:'15px' }}>
+      Reservar
+      </Button>
+
       </CardContent>
     </Card>
   );

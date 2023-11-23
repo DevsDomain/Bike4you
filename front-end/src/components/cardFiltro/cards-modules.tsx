@@ -59,9 +59,32 @@ const StyledCard = styled.div`
 }
 
   /* Estilos para o botão no final do Card */
-  .bottom-button {
-    background-color: mediumblue;
-    color: white;
+  .div-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+ 
+  }
+
+  .bottom-button3 {
+    background-color: #f0f0e7;
+    color: #1e086bte;
+    font-size: 19px;
+    font-family: Calibri;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 15px;
+    padding: 16px;
+    border-radius: 12px;
+    top: 55%;
+
+}
+.bottom-button4 {
+  background-color: #f0f0e7;
+    color: #5a6479te;
     font-size: 19px;
     font-family: Calibri;
     display: flex;

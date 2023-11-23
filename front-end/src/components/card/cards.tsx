@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { BasicRating } from '../rating/ratings';
 import { MyNode, List } from "./list";
 import ContactDialogs from "../modalDialog/modal";
+import { Link } from "react-router-dom";
 
 const filepath = "http://localhost:3026/foto/public/";
 
@@ -81,9 +82,18 @@ function CardBike({ take }) {
               R$ {bike.hourlyvalue} / h
             </div>
             <BasicRating id={bike.id} />
+            <div className="div-card">
             <Button key={bike.id} variant="outline-primary" className="bottom-button">
+              
               <ContactDialogs idBike={bike.id} />
             </Button>
+
+            <Link to={`/detalhes/${bike.id}`}>
+            <Button variant="outline-primary" color="primary" className="bottom-button2">
+              <p style={{fontSize:'15px', fontWeight:'bold'}}>DETALHES</p>
+            </Button>
+            </Link>
+            </div>
           </div>
         </StyledCard>
       ))}
