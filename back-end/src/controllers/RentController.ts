@@ -4,23 +4,17 @@ import { Rent } from '../entities/Rent';
 import { User } from "../entities/User";
 
 class RentController {
-    public async create(req: Request, res: Response): Promise<Response> {
-        const { idclient, idowner, date, ownervaluation } = req.body;
+    public async clientValuate(req: Request, res: Response): Promise<Response> {
+        try {
+            const { id, clientvaluation } = req.body;
 
-        //obtém o usuário na tabela users
-        const owner = await AppDataSource.manager.findOneBy(User, { id: idowner });
-        if (!owner) {
-            return res.status(400).json({ error: "Proprietário desconhecido", props: "owner" });
+            const rent = await AppDataSource.manager.update(Rent, id, {
+                clientvaluation
+            });
+            return res.status(201)
+        } catch (error) {
+            return res.status(401)
         }
-
-        //obtém o usuário na tabela users
-        const client = await AppDataSource.manager.findOneBy(User, { id: idclient });
-        if (!client) {
-            return res.status(400).json({ error: "Cliente desconhecido", props: "client" });
-        }
-
-        const rent = await AppDataSource.manager.save(Rent, { owner, client, date, ownervaluation });
-        return res.json(rent);
     }
 
 
@@ -100,8 +94,8 @@ class RentController {
                     bike: true,
                 },
                 where: {
-                    client:{
-                        id:client
+                    client: {
+                        id: client
                     }
                 },
                 order: {
@@ -109,7 +103,7 @@ class RentController {
                 }
             })
 
-            console.log("RENTS",rent)
+            console.log("RENTS", rent)
             return res.json(rent)
         } catch (error) {
             res.json(error)

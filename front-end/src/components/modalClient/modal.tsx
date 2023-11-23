@@ -4,14 +4,9 @@ import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
-import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import { MdPersonSearch } from "react-icons/md";
 import { useEffect, useState } from 'react';
-import { userEndpoint } from '../../service/user';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
+
 
 
 
@@ -38,13 +33,14 @@ export default function ContactDialogs({ idContrato, locatario, client }) {
 
 
   async function contract() {
-    await fetch("http://localhost:3026/rent/owner", {
+    await fetch("http://localhost:3026/rent", {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({})
+      body: JSON.stringify({ clientvaluation: client, id: idContrato })
     }).then((res) => {
+      console.log(res.status)
       res.status === 201 && alert("Avaliação gerada com sucesso!")
       setOpen(false)
 
