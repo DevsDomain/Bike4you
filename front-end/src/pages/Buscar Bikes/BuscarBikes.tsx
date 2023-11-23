@@ -4,8 +4,7 @@ import Produto from "../../components/Produtos/Produtos";
 import Recomendado from "../../components/Recomendado/Recomendado";
 import Sidebar from "../../components/SideBar/Sidebar";
 import { bikeEndpoint } from "../../service/bike";
-import CardBike from "../../components/card/cards";
-import CardFiltro from "../../components/card copy/cards";
+import CardFiltro from "../../components/cardFiltro/cards";
 
 export default function BuscarBikes() {
 

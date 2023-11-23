@@ -84,11 +84,13 @@ function CardBike({ take }) {
             <BasicRating id={bike.id} />
             <div className="div-card">
             <Button key={bike.id} variant="outline-primary" className="bottom-button">
+              
               <ContactDialogs idBike={bike.id} />
             </Button>
+
             <Link to={`/detalhes/${bike.id}`}>
             <Button variant="outline-primary" color="primary" className="bottom-button2">
-              <span>Detalhes</span>
+              <p style={{fontSize:'15px', fontWeight:'bold'}}>DETALHES</p>
             </Button>
             </Link>
             </div>

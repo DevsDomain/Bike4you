@@ -3,10 +3,10 @@ import { Request, Response } from 'express';
 import { Rent } from '../entities/Rent';
 import { User } from "../entities/User";
 
-class RentController {
-    public async create(req: Request, res: Response): Promise<Response> {
+class RentController {  
+    public async  create(req: Request, res: Response): Promise<Response> {
         const { idclient, idowner, date, ownervaluation } = req.body;
-
+ 
         //obtém o usuário na tabela users
         const owner = await AppDataSource.manager.findOneBy(User, { id: idowner });
         if (!owner) {
