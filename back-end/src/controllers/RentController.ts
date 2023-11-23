@@ -23,6 +23,24 @@ class RentController {
         return res.json(rent);
     }
 
+    public async ownerValuate(req: Request, res: Response): Promise<Response> {
+        const { idowner, ownervaluation, idClient } = req.body
+        const data = new Date()
+        try {
+            const rent = await AppDataSource.manager.save(Rent, {
+                owner: idowner,
+                ownervaluation: ownervaluation, 
+                client: idClient, data: data
+            })
+            return res.json(rent)
+
+
+        }
+        catch (error) {
+            return res.json(error)
+        }
+    }
+
     public async update(req: Request, res: Response): Promise<Response> {
         const { id, idclient, idowner, date, ownervaluation } = req.body;
 

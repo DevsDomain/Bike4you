@@ -5,6 +5,7 @@ const routes = Router();
 
 routes.post('/', controller.create);
 routes.post('/logar',controller.login)
+routes.post('/modal',controller.searchCliente)
 routes.get('/', controller.findUser);
 routes.delete('/', controller.delete);
 routes.put('/', controller.update);

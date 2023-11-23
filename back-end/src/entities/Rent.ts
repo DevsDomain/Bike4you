@@ -5,15 +5,15 @@ import { User } from "./User";
 export type Valuation = 1 | 2 | 3 | 4 | 5;
 
 @Entity({ name: "rents" })
-export class Rent {
+export class Rent { 
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ nullable: false, type: "date" })
+    @Column({ nullable: true, type: "date" })
     date: Date;
 
     @Column({
-        nullable: false,
+        nullable: true,
         type: "enum",
         enum: [1, 2, 3, 4, 5],
     })
