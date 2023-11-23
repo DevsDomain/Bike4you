@@ -4,7 +4,7 @@ import { Usuario } from "../../components/Usuario";
 import Cadastro from "../../components/Cadastro";
 import { useAuth } from "../../hooks/auth";
 import { Geral } from "../../components/Geral";
-
+import Reservas from "../../components/Reservas";
 
 function Gerenciar() {
   const user = useAuth()
@@ -16,6 +16,8 @@ function Gerenciar() {
     1: "#0d193f", // Cor para o botão "Editar Usuário"
     2: "#0d193f", // Cor para o botão "Cadastrar Bike"
     3: "#0d193f", // Cor para o botão "Geral"
+    4: "#0d193f", // Cor para o botão "Geral"
+
   };
 
 
@@ -47,11 +49,19 @@ function Gerenciar() {
           >
             Geral
           </button>
+          <button
+            className="botao"
+            style={{ backgroundColor: menu === 4 ? buttonColors[3] : "#0f0f0fca" }}
+            onClick={() => setMenu(4)}
+          >
+            Reservas
+          </button>
         </div>
 
         {menu === 2 ? <Cadastro />
           : menu === 1 ? <Usuario />
-            : <Geral />
+            : menu === 3 ? <Geral />
+            : <Reservas/>
         }
       </div>
     </MeuEstilo >
