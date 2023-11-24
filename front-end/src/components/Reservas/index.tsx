@@ -64,10 +64,10 @@ export function Reservas() {
                     <td key={bike.id}>{bike.id || ''}</td>
                     <td key={bike.date}>{bike.date}</td>
                     <td key={bike.bike.description}>{bike.bike.description}</td>
-                    <td key={bike.owner.userName}>{bike.owner.userName}
+                    <td key={bike.owner.userName}>{bike.owner.userName}</td>
                       <td>{!bike.clientvaluation ? <Button className="bottom-button-sm"><ContactDialogs idContrato={bike.id} client={id} locatario={bike.owner.userName} key={'teste'} /></Button>
                       :<>Sem avaliação disponível</>}</td>
-                    </td>
+                    
                   </tr>)
                 : data.length === 1 ?
                   <tr key={Math.random()}>
