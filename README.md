@@ -23,7 +23,8 @@ Cada entrega foi realizada a partir da criação de uma **tag** Observe a relaç
 |:--:|:----------:|:-------------------|:-------------------------------------------------:|:-------------------------------------------------:|:-------------------------------------------------:|
 | 01 | 27/09/2023 | :heavy_check_mark: Entregue | [Ver release](https://github.com/Dev-s-Domain/Bike4you/releases/tag/1.0.1) |[Sprint1](https://github.com/orgs/DevsDomain/projects/1/views/1)|[Ver BurnDown#1](https://github.com/DevsDomain/Bike4you/blob/main/Documentos/BurnDown-1Sprint.png)|
 | 02 | 25/10/2023 | :heavy_check_mark: Entregue | [Ver release](https://github.com/DevsDomain/Bike4you/releases/tag/2.0) | [Sprint2](https://github.com/orgs/DevsDomain/projects/3)|[Ver BurnDown#2](https://github.com/DevsDomain/Bike4you/blob/main/Documentos/BurnDown-2Sprint.png)|
-| 03 | 22/11/2023 | 🚧 Em andamento| [Ver release]() |
+| 03 | 22/11/2023 |  :heavy_check_mark: Entregue | [Ver release](https://github.com/DevsDomain/Bike4you/releases) | [Sprint3](https://github.com/orgs/DevsDomain/projects/9/views/1)|[Ver BurnDown#3](https://github.com/DevsDomain/Bike4you/blob/main/Documentos/burndown3.png)|
+
 
 🚧 Em andamento /🛑 Não iniciada/:heavy_check_mark: Entregue 
 
