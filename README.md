@@ -26,10 +26,6 @@ Cada entrega foi realizada a partir da criação de uma **tag** Observe a relaç
 | 03 | 22/11/2023 |  :heavy_check_mark: Entregue | [Ver release](https://github.com/DevsDomain/Bike4you/releases) | [Sprint3](https://github.com/orgs/DevsDomain/projects/9/views/1)|[Ver BurnDown#3](https://github.com/DevsDomain/Bike4you/blob/main/Documentos/burndown3.png)|
 
 
-🚧 Em andamento /🛑 Não iniciada/:heavy_check_mark: Entregue 
-
-
-
 ## :wrench: Tecnologias utilizadas
 
 #### Backend
